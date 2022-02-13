@@ -9,6 +9,10 @@ The website provides the following features:
 -   Multi-language support (my fiancee is Catalonia)
 -   Ability to RSVP (site authentication uses AWS Amplify)
 
+## Getting Started
+
+This build appears to work with Node v14.19.0. Testing with Node v16.14.0 resulted in errors with `gyp`.
+
 ## Deploying the Site
 
 ### 1. Deploy CloudFormation Stack
