@@ -23,7 +23,7 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        We have reserved a block at the Westin for a fixed rate of $259/night. Please wait to reserve until we provide additional information to ensure you are in the official wedding block.
+                        We have reserved a block at the Westin for a fixed rate of $259/night plus tax. Please wait to reserve until we provide additional information to ensure you are in the official wedding block.
                         {/* If you find an alternative option, make sure it is nearby if you would like to take the shuttle. */}
                     </p>
                 </>
@@ -51,7 +51,10 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        Voc&ecirc; pode voar para ambos aeroportos O'Hare International (ORD) o Midway (MDW). O "L" (o metro de Chicago) vai direto dos aerportos para o centro. Voc&ecirc; tambem pode alugar um carro no aeroporto.
+                        {/* Voc&ecirc; pode voar para ambos aeroportos O'Hare International (ORD) o Midway (MDW).  */}
+                        {/* Para chegar ao centro da cidade, pode se usar o metrô Linha ….  */}
+                        
+                        Para que chega de avião, poderá pousar tanto no aeroporto O'Hare International (ORD), como Midway (MDW). O "L" (o metro de Chicago) vai direto dos aerportos para o centro. Voc&ecirc; tambem pode alugar um carro no aeroporto ou utilizar um Táxi, Uber ou Lift.
                     </p>
                 </>
             ),
@@ -65,7 +68,7 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        Reservamos um bloco no Westin por $259/noite. Please wait to reserve until we provide additional information to ensure you are in the official wedding block.
+                        Reservamos um bloco no Westin por $259/noite mais taxes. Please wait to reserve until we provide additional information to ensure you are in the official wedding block.
                         {/* Existem opções mais em conta proximas ao Westin". */}
                     </p>
                 </>

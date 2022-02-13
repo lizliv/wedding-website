@@ -64,7 +64,7 @@ export default {
             Question: () => <>Devo levar casacos?</>,
             Answer: () => (
                 <>
-                    Junho corresponde ao verão em Chicago, as temperaturas giram em torno de 26ºC durante o dia e 18ºC durante a noite!
+                    Junho &eacute; ver&atilde;o nos Estados Unidos. Em Chicago, as temperaturas giram em torno de 26ºC durante o dia e 18ºC durante a noite!
                 </>
             ),
         },
