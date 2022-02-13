@@ -14,7 +14,7 @@ export default {
         ),
     },
     [LANGUAGE.PT]: {
-        Heading: () => <>Registre</>,
+        Heading: () => <>Lista de presentes</>,
         SubHeading: () => (
             <span>
                 La vostra asistència és més que suficient i no esperem cap

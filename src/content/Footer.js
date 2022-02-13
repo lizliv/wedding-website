@@ -10,17 +10,17 @@ export default {
             <>
                 <p>
                     Contact us at{" "}
-                    <a href="mailto:hola@lledoisalim.com">
-                        hola@lledoisalim.com
+                    <a href="mailto:elizabethrenee.livingston@gmail.com">
+                    elizabethrenee.livingston@gmail.com
                     </a>
                     .
                 </p>
                 <p>
-                    <Emoji text="Made with 💚 in Seattle by Salim and Lledó." />
+                    <Emoji text="Made with 💚 in Ann Arbor by Liz and Christian." />
                 </p>
                 <p>
                     <a
-                        href="https://github.com/salimhamed/wedding-website"
+                        href="https://github.com/lizliv/wedding-website"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -36,17 +36,17 @@ export default {
             <>
                 <p>
                     Contacteu-nos a{" "}
-                    <a href="mailto:hola@lledoisalim.com">
-                        hola@lledoisalim.com
+                    <a href="mailto:hola@elizabethrenee.livingston@gmail.com">
+                    elizabethrenee.livingston@gmail.com
                     </a>
                     .
                 </p>
                 <p>
-                    <Emoji text="Fet amb 💚 des de Seattle per Salim i Lledó." />
+                    <Emoji text="Faz com 💚 no Ann Arbor per Liz e Christian." />
                 </p>
                 <p>
                     <a
-                        href="https://github.com/salimhamed/wedding-website"
+                        href="https://github.com/lizliv/wedding-website"
                         target="_blank"
                         rel="noopener noreferrer"
                     >

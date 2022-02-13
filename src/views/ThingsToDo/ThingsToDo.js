@@ -6,7 +6,7 @@ import { selectLanguage } from "utilities/cookies"
 import { thingsToDo, title } from "content/ThingsToDo"
 import { Header } from "components/Header"
 import { Item } from "components/Item"
-import headerImg from "photos/sky_diving.jpeg"
+import headerImg from "photos/thingstodo.jpg"
 
 function ThingsToDo() {
     const [cookies] = useCookies(["language"])

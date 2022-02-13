@@ -8,22 +8,20 @@ export default {
         SubHeading: () => (
             <>
                 We’re so excited to share a few of our favorite places in the
-                area with you. If you wish to explore them, we recommend renting
-                a car from Barcelona's airport. At dusk, if you are planning to
-                be close to the water, we recommend to use mosquito repellent.
+                area with you.
+
+                We will update this page soon.
             </>
         ),
-        link: "https://terresdelebre.travel/en",
+        link: "https://www.choosechicago.com/",
     },
     [LANGUAGE.PT]: {
-        Heading: () => <>Què fer</>,
+        Heading: () => <>O Que fazer</>,
         SubHeading: () => (
             <>
-                Aquí teniu algunes idees de què fer per les Terres de l'Ebre. Al
-                capvespre, si esteu a prop de l'aigua, recomanem utilitzar
-                repel·lent de mosquits.
+                Alguns lugares de interesso em Chicago.
             </>
         ),
-        link: "https://terresdelebre.travel",
+        link: "https://www.choosechicago.com/",
     },
 }

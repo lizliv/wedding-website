@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie"
 import { selectLanguage } from "utilities/cookies"
 import { title } from "content/Registry"
 import { Header } from "components/Header"
-import headerImg from "photos/snow.png"
+import headerImg from "photos/registry.jpg"
 
 function Registry() {
     const [cookies] = useCookies(["language"])
