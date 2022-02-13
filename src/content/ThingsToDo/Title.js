@@ -15,7 +15,7 @@ export default {
         ),
         link: "https://terresdelebre.travel/en",
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Heading: () => <>Què fer</>,
         SubHeading: () => (
             <>

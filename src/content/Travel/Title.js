@@ -15,7 +15,7 @@ export default {
             </>
         ),
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Heading: () => <>Com arribar</>,
         SubHeading: () => (
             <>

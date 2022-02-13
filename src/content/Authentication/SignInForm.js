@@ -17,7 +17,7 @@ export default {
         emailPlaceholder: "Email",
         passwordPlaceholder: "Password",
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Header: () => <>Per favor, inicieu la sessió</>,
         SubmitButton: () => <>Inicia sessió</>,
         SubmitButtonLoading: () => <>Iniciant sessió...</>,

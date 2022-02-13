@@ -23,7 +23,7 @@ export default {
             </>
         ),
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Header: () => <>Per favor, registreu-vos</>,
         namePlaceholder: "Nom",
         emailPlaceholder: "Email",

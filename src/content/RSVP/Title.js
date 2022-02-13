@@ -19,7 +19,7 @@ export default {
             </span>
         ),
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Heading: () => <>RSUP</>,
         SubHeadingAuthenticated: ({ user }) => (
             <span>

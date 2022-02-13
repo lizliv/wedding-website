@@ -13,7 +13,7 @@ export default {
             </span>
         ),
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Heading: () => <>Registre</>,
         SubHeading: () => (
             <span>

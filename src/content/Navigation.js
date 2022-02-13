@@ -14,7 +14,7 @@ export default {
         signIn: () => <span>Sign In</span>,
         manageRsvp: () => <span>Manage RSVP</span>,
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         schedule: () => <span>El Plan</span>,
         travel: () => <span>Com Arribar</span>,
         thingsToDo: () => <span>Què Fer</span>,

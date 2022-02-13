@@ -13,7 +13,7 @@ export default {
             </>
         ),
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Heading: () => <>Preguntes?</>,
         SubHeading: () => (
             <>

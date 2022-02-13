@@ -12,7 +12,7 @@ export default {
             </span>
         ),
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Heading: () => <>El Plan</>,
         SubHeading: () => (
             <span>

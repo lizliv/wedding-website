@@ -31,7 +31,7 @@ export default {
             </>
         ),
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Content: () => (
             <>
                 <p>

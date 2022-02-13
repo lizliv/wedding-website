@@ -103,7 +103,7 @@ export default {
                 "https://www.booking.com/index.ca.html?label=gen173nr-1BCAEoggI46AdIM1gEaLQCiAEBmAEEuAEHyAEN2AEB6AEBiAIBqAIDuAKd2ffxBcACAQ;sid=9a89e727464401b3616fc4b7b66218c9;keep_landing=1&sb_price_type=total&",
         },
     ],
-    [LANGUAGE.CAT]: [
+    [LANGUAGE.PT]: [
         {
             Type: () => <>Terres de l'Ebre</>,
             Details: () => (

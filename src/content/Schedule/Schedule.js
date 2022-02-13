@@ -56,7 +56,7 @@ export default {
             ),
         },
     ],
-    [LANGUAGE.CAT]: [
+    [LANGUAGE.PT]: [
         {
             Title: () => <>Pica-pica de Benvinguda</>,
             Date: () => <>TBD</>,

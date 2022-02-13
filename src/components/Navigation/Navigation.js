@@ -33,7 +33,7 @@ function Navigation({ history }) {
     const handleSignOut = () => signOut(dispatch)
 
     const languageCodes = {
-        [LANGUAGE.CAT]: "ES-CT",
+        [LANGUAGE.PT]: "BR",
         [LANGUAGE.EN]: "US",
     }
 
@@ -152,11 +152,11 @@ function Navigation({ history }) {
                                 {LANGUAGE.EN}
                             </Dropdown.Item>
                             <Dropdown.Item
-                                eventKey={LANGUAGE.CAT}
+                                eventKey={LANGUAGE.PT}
                                 onSelect={handleSelectLanguage}
                             >
-                                <ReactCountryFlag countryCode="ES-CT" svg />{" "}
-                                {LANGUAGE.CAT}
+                                <ReactCountryFlag countryCode="BR" svg />{" "}
+                                {LANGUAGE.PT}
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

@@ -154,7 +154,7 @@ export default {
             link: "https://catedraldelvi.com/en/?v=907eba32d950",
         },
     ],
-    [LANGUAGE.CAT]: [
+    [LANGUAGE.PT]: [
         {
             Title: () => <>Delta de l'Ebre</>,
             Details: () => (

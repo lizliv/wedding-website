@@ -64,7 +64,7 @@ export default {
         ),
         AlertRSVPUpdated: () => <>Thanks for your RSVP!</>,
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         AlertNoEmail: () => (
             <>
                 Uups, sembla que no tenim el vostre email. Envieu-nos un email a{" "}

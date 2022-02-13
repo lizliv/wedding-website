@@ -16,7 +16,7 @@ export default {
         locationLink: "https://goo.gl/maps/Ad5FzWZs14nSD9QT6",
         hashtag,
     },
-    [LANGUAGE.CAT]: {
+    [LANGUAGE.PT]: {
         Title: () => <span>Christian e Liz est&atilde;o se casando!</span>,
         Date: () => (
             <div className="d-flex flex-column">

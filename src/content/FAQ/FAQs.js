@@ -52,7 +52,7 @@ export default {
             ),
         },
     ],
-    [LANGUAGE.CAT]: [
+    [LANGUAGE.PT]: [
         {
             Question: () => <>Chicago ve?</>,
             Answer: () => <>Pos claro!</>,
