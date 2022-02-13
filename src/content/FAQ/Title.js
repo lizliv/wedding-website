@@ -9,16 +9,16 @@ export default {
             <>
                 If you have any other questions other than what we’ve listed
                 here, please reach out to{" "}
-                <a href="mailto:elizabethrenee.livingston@gmail.com">elizabethrenee.livingston@gmail.com</a>.
+                <a href="mailto:lizandchristian2022@gmail.com">lizandchristian2022@gmail.com</a>.
             </>
         ),
     },
     [LANGUAGE.PT]: {
-        Heading: () => <>Perguntas?</>,
+        Heading: () => <>Dúvidas Frequentes</>,
         SubHeading: () => (
             <>
                 Se você tiver outras dúvidas além das listadas aqui, por favor, entre em contato {" "}
-                <a href="mailto:elizabethrenee.livingston@gmail.com">elizabethrenee.livingston@gmail.com</a>.
+                <a href="mailto:lizandchristian2022@gmail.com">lizandchristian2022@gmail.com</a>.
             </>
         ),
     },

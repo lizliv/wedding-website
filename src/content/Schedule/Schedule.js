@@ -4,24 +4,24 @@ import { LANGUAGE } from "actions/constants"
 
 export default {
     [LANGUAGE.EN]: [
-        {
-            Title: () => <>Welcome Dinner</>,
-            Date: () => <>TBD</>,
-            Time: () => null,
-            Location: () => <>Chicago, IL, USA</>,
-            locationLink:
-                "https://goo.gl/maps/dcKQQq5SKt9tmoMn6",
-            Address: () => null,
-            mapLink:
-               null,
-            Details: () => (
-                <>
-                    <p>
-                        There will be a few light bites in addition to drinks.
-                    </p>
-                </>
-            ),
-        },
+        // {
+        //     Title: () => <>Welcome Dinner</>,
+        //     Date: () => <>TBD</>,
+        //     Time: () => null,
+        //     Location: () => <>Chicago, IL, USA</>,
+        //     locationLink:
+        //         "https://goo.gl/maps/dcKQQq5SKt9tmoMn6",
+        //     Address: () => null,
+        //     mapLink:
+        //        null,
+        //     Details: () => (
+        //         <>
+        //             <p>
+        //                 There will be a few light bites in addition to drinks.
+        //             </p>
+        //         </>
+        //     ),
+        // },
         {
             Title: () => <>Wedding</>,
             Date: () => <>June 12th, 2022</>,
@@ -46,24 +46,24 @@ export default {
         },
     ],
     [LANGUAGE.PT]: [
-        {
-            Title: () => <>Jantar de Boas-vindas</>,
-            Date: () => <>TBD</>,
-            Time: () => null,
-            Location: () => <>Chicago, IL, USA</>,
-            locationLink:
-                "https://goo.gl/maps/dcKQQq5SKt9tmoMn6",
-            Address: () => null,
-            mapLink:
-               null,
-            Details: () => (
-                <>
-                    <p>
-                    Haverá aperitivos, além de bebidas.
-                    </p>
-                </>
-            ),
-        },
+        // {
+        //     Title: () => <>Jantar de Boas-vindas</>,
+        //     Date: () => <>TBD</>,
+        //     Time: () => null,
+        //     Location: () => <>Chicago, IL, USA</>,
+        //     locationLink:
+        //         "https://goo.gl/maps/dcKQQq5SKt9tmoMn6",
+        //     Address: () => null,
+        //     mapLink:
+        //        null,
+        //     Details: () => (
+        //         <>
+        //             <p>
+        //             Haverá aperitivos, além de bebidas.
+        //             </p>
+        //         </>
+        //     ),
+        // },
         {
             Title: () => <>Casamento</>,
             Date: () => <>June 12th, 2022</>,
@@ -81,7 +81,7 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        A cerimônia, janta e a festa sera no Cafe Brauer, no Zool&oacute;gico de Lincoln Park. 
+                        A cerimônia, jantar e festa serão no Cafe Brauer, no Zoológico de Lincoln Park. 
                     </p>
                 </>
             ),

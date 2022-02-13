@@ -23,26 +23,27 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        We have reserved a block at the Westin for a fixed rate of $259/night. If you find an alternative option, make sure it is nearby if you would like to take the shuttle.
+                        We have reserved a block at the Westin for a fixed rate of $259/night. Please wait to reserve until we provide additional information to ensure you are in the official wedding block.
+                        {/* If you find an alternative option, make sure it is nearby if you would like to take the shuttle. */}
                     </p>
                 </>
             ),
             link: "https://www.marriott.com/en-us/hotels/chiwi-the-westin-michigan-avenue-chicago/overview/",
         },
-        {
-            Type: () => <>Shuttle</>,
-            Title: () => <>The Westin Michigan Ave</>,
-            Address: null,
-            Phone: null,
-            Details: () => (
-                <>
-                    <p>
-                        We will provide shuttle transportation from The Westin to Cafe Brauer.
-                    </p>
-                </>
-            ),
-            link: null,
-        },
+        // {
+        //     Type: () => <>Shuttle</>,
+        //     Title: () => <>The Westin Michigan Ave</>,
+        //     Address: null,
+        //     Phone: null,
+        //     Details: () => (
+        //         <>
+        //             <p>
+        //                 We will provide shuttle transportation from The Westin to Cafe Brauer.
+        //             </p>
+        //         </>
+        //     ),
+        //     link: null,
+        // },
     ],
     [LANGUAGE.PT]: [
         {
@@ -64,25 +65,26 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        Reservamos um bloco no Westin por $259/noite. Existem op&ccedil;&otilde;es mais razoaveis proximas ao Westin.
+                        Reservamos um bloco no Westin por $259/noite. Please wait to reserve until we provide additional information to ensure you are in the official wedding block.
+                        {/* Existem opções mais em conta proximas ao Westin". */}
                     </p>
                 </>
             ),
             link: "https://www.marriott.com/en-us/hotels/chiwi-the-westin-michigan-avenue-chicago/overview/",
         },
-        {
-            Type: () => <>Transporte</>,
-            Title: () => <>The Westin Michigan Ave</>,
-            Address: null,
-            Phone: null,
-            Details: () => (
-                <>
-                    <p>
-                        Trasporte sera provisionado do Westin para o Cafe Brauer.
-                    </p>
-                </>
-            ),
-            link: null,
-        },
+        // {
+        //     Type: () => <>Transporte</>,
+        //     Title: () => <>The Westin Michigan Ave</>,
+        //     Address: null,
+        //     Phone: null,
+        //     Details: () => (
+        //         <>
+        //             <p>
+        //                 Transporte será oferecido do Westin ao Cafe Brauer.
+        //             </p>
+        //         </>
+        //     ),
+        //     link: null,
+        // },
     ],
 }

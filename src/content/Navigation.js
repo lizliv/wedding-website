@@ -18,7 +18,7 @@ export default {
         schedule: () => <span>Programa&ccedil;&atilde;o</span>,
         travel: () => <span>Como Chegar</span>,
         thingsToDo: () => <span>O Que Fazer</span>,
-        faq: () => <span>Perguntas</span>,
+        faq: () => <span>FAQ</span>,
         registry: () => <span>Lista de presentes</span>,
         // rsvp: () => <span>RSVP</span>,
         // signOut: () => <span>Logout</span>,

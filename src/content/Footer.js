@@ -10,8 +10,8 @@ export default {
             <>
                 <p>
                     Contact us at{" "}
-                    <a href="mailto:elizabethrenee.livingston@gmail.com">
-                    elizabethrenee.livingston@gmail.com
+                    <a href="mailto:lizandchristian2022@gmail.com">
+                    lizandchristian2022@gmail.com
                     </a>
                     .
                 </p>
@@ -35,14 +35,14 @@ export default {
         Content: () => (
             <>
                 <p>
-                    Contacteu-nos a{" "}
-                    <a href="mailto:hola@elizabethrenee.livingston@gmail.com">
-                    elizabethrenee.livingston@gmail.com
+                    Contate-nos a{" "}
+                    <a href="mailto:hola@lizandchristian2022@gmail.com">
+                    lizandchristian2022@gmail.com
                     </a>
                     .
                 </p>
                 <p>
-                    <Emoji text="Faz com 💚 no Ann Arbor per Liz e Christian." />
+                    <Emoji text="Feito com 💚 no Ann Arbor por Liz e Christian." />
                 </p>
                 <p>
                     <a
@@ -50,9 +50,9 @@ export default {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Codi font
+                        C&oacute;digo fonte
                     </a>{" "}
-                    disponible a <Octicon icon={MarkGithub} size={11} />
+                    acessi&iacute;vel a <Octicon icon={MarkGithub} size={11} />
                 </p>
             </>
         ),
