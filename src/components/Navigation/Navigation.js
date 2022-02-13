@@ -60,7 +60,7 @@ function Navigation({ history }) {
                 to="/"
                 className={classNames("navbar-brand", styles.brand)}
             >
-                S & L
+                C & L
             </RouterNavLink>
             <Navbar.Toggle />
             <Navbar.Collapse>
