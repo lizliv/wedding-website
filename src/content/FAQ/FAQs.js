@@ -5,29 +5,12 @@ import { LANGUAGE } from "actions/constants"
 export default {
     [LANGUAGE.EN]: [
         {
-            Question: () => <>Is Chicago coming?</>,
-            Answer: () => <>O-B-V-I-O-U-S-L-Y.</>,
-        },
-        {
             Question: () => <>Is there a bus to and from the wedding site?</>,
             Answer: () => (
                 <>
                     Yes, because we want you to be able to party your face off.
-                    There will be buses from Tortosa and L'Ampolla to Les Moles.
-                    Schedule will be posted soon.
-                </>
-            ),
-        },
-        {
-            Question: () => <>What languages do the guests speak?</>,
-            Answer: () => (
-                <>
-                    Half of the people speak Catalan and Spanish (some of them
-                    also know English). There will be people visiting from
-                    Lebanon that speak Arabic and English. Guests from the
-                    States speak English and maybe other languages.
-                    Communication goes beyond language, so we're sure everyone
-                    is going to have a blast regardless!
+                    There will be buses from the Westin to Cafe Brauer.
+                    See the schedule for more details.
                 </>
             ),
         },
@@ -37,8 +20,7 @@ export default {
                 <>
                     The wedding will be formal. We recommend long or elegant
                     cocktail dresses for ladies and suits for gents. White is
-                    reserved for the bride. For the Pica-pica party casual
-                    attire is preferred.
+                    reserved for the bride.
                 </>
             ),
         },
@@ -47,61 +29,40 @@ export default {
             Answer: () => (
                 <>
                     The weather during this time of year is usually sunny and in
-                    the 80s during the day and 70s at night (ºF).
+                    the 70s during the day and 60s at night (ºF).
                 </>
             ),
         },
     ],
     [LANGUAGE.PT]: [
         {
-            Question: () => <>Chicago ve?</>,
-            Answer: () => <>Pos claro!</>,
-        },
-        {
             Question: () => (
                 <>
-                    Hi ha autobús que ens porti i ens reculli del lloc del
-                    casament?
+                    Terá um transporte de ida e volta do hotel para o casamento?
                 </>
             ),
             Answer: () => (
                 <>
-                    Sí, perquè volem que ho pugueu donar tot! Hi haurà autobusos
-                    des de Tortosa i l’Ampolla fins a Les Moles. Publicarem els
-                    horaris aviat.
-                </>
-            ),
-        },
-        {
-            Question: () => <>Quins idiomes parlen els convidats?</>,
-            Answer: () => (
-                <>
-                    La meitat de la gent parla català i castellà (alguns també
-                    saben anglès). Hi haurà gent que ens visita des del Líban i
-                    parlen àrab i anglès. Els convidats dels Estats Units parlen
-                    anglès i potser altres idiomes. La comunicació va més enllà
-                    de la llengua, així que estem segurs que ens ho pasarem tots
-                    molt bé!
+                    Sim, por que queremos todos festejando at&eacute; cair. 
+                    Teremos um onibus do Westin para o Caf&eacute; Brauer e vice versa.
+                    Os horarios v&atilde;o ser postados no futuro.
+
                 </>
             ),
         },
         {
-            Question: () => <>Quina es la vestimenta recomanada?</>,
+            Question: () => <>Qual os trajes recomendados?</>,
             Answer: () => (
                 <>
-                    Recomanem vestits de còctel llargs o elegants per a dones i
-                    "traje" per als homes. El color blanc està reservat per a la
-                    núvia. Per al Pica-pica vestits informals.
+                    O casamento sera formal. Recomendamos vestidos longos ou de tipo "cocktail" para as Mulheres, e palet&oacute;s para os Homens. O unico vestido branco pertence a noiva.
                 </>
             ),
         },
         {
-            Question: () => <>Quin temps fa?</>,
+            Question: () => <>Qual &eacute; a temperatura em Chicago?</>,
             Answer: () => (
                 <>
-                    Pos sol i caloreta! Durant el dia les temperatures poden
-                    arribar als 30 ºC (20 llargs segur). Per la nit refresca una
-                    mica (20 i pocs).
+                    Come&ccedil;o de ver&atilde;o, alta de 26 ºC durante o dia. Pela noite a temperatura pode cair para 18 ºC.
                 </>
             ),
         },

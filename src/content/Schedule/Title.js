@@ -13,10 +13,10 @@ export default {
         ),
     },
     [LANGUAGE.PT]: {
-        Heading: () => <>Cronograma</>,
+        Heading: () => <>Programa&ccedil;&atilde;o</>,
         SubHeading: () => (
             <span>
-                Aqui está o que esperar durante o nosso fim de semana de casamento. Nós não podemos esperar para comemorar com você! 
+                Aqui está o cronograma para o fim de semana do casamento. Estamos muito felizes em poder comemorar com vocês! 
             </span>
         ),
     },

@@ -5,200 +5,84 @@ import { LANGUAGE } from "actions/constants"
 export default {
     [LANGUAGE.EN]: [
         {
-            Type: () => <>Terres de l'Ebre</>,
+            Type: () => <>Getting to Chicago</>,
             Details: () => (
                 <>
                     <p>
-                        Les Terres de l'Ebre is located in the south-west of
-                        Catalonia, in the southern part of river Ebre. It is a
-                        UNESCO Biosphere Reserve since 2013. We recommend to
-                        stay either in Tortosa or L'Ampolla.
+                        You can fly into either O'Hare International (ORD) or Midway (MDW). The "L" (Chicago's train system) runs directly from the airport to downtown. You can also rent a car from the airport if you prefer.
                     </p>
                 </>
             ),
-            link: "https://terresdelebre.travel/en",
-        },
-        {
-            Type: () => <>Flight</>,
-            Title: () => <>BCN</>,
-            Address: null,
-            Phone: null,
-            Details: () => (
-                <>
-                    <p>Barcelona is the best place to fly into.</p>
-                </>
-            ),
-            link:
-                "https://www.google.com/flights?lite=0#flt=SEA./m/01f62.2020-08-01*/m/01f62.SEA.2020-08-10;c:USD;e:1;sd:1;t:f",
-        },
-        {
-            Type: () => <>Car</>,
-            Title: () => <>BCN</>,
-            Address: null,
-            Phone: null,
-            Details: () => (
-                <>
-                    <p>We recommend to rent a car from Barcelona Airport.</p>
-                </>
-            ),
-            link:
-                "https://www.barcelona-airport.com/eng/car-hire.php#/searchcars",
-        },
-        {
-            Type: () => <>Train</>,
-            Title: () => <>Tortosa/L'Ampolla</>,
-            Address: null,
-            Phone: null,
-            Details: () => (
-                <>
-                    <p>
-                        Renfe is the state-owned company which operates freight
-                        and passenger trains in Spain. There are trains from the
-                        airport to the city of Barcelona, and from there to
-                        Tortosa and L'Ampolla.
-                    </p>
-                </>
-            ),
-            link: "http://www.renfe.com/EN/viajeros/index.html",
-        },
-        {
-            Type: () => <>Bus</>,
-            Title: () => <>Tortosa/L'Ampolla</>,
-            Address: null,
-            Phone: null,
-            Details: () => (
-                <>
-                    <p>
-                        Hife is a bus company with headquarters in Tortosa.
-                        There are buses from the airport to Tortosa and
-                        L'Ampolla.
-                    </p>
-                </>
-            ),
-            link: "http://hife.es/en-GB",
+            link: null,
         },
         {
             Type: () => <>Lodging for Wedding</>,
-            Title: () => <>Tortosa/L' Ampolla</>,
+            Title: () => <>The Westin Michigan Ave</>,
             Address: null,
             Phone: null,
             Details: () => (
                 <>
                     <p>
-                        We recommend to stay either in Tortosa (Lledó's
-                        hometown) or L'Ampolla (if you want to stay by the
-                        beach). The Welcome Pica-pica will be in L'Ampolla, and
-                        there will be buses from both Tortosa and L'Ampolla to
-                        Les Moles on the day of the wedding. In L'Ampolla, Les
-                        Oliveres and Hotel Cap Roig are good options; however,
-                        you will need car transportation (5 min drive) to the
-                        Welcome Pica-pica. The Parador, in Tortosa, is located
-                        in the spectacular Zuda Castle, overlooking the city
-                        from high above. In Spain, booking.com is usually better
-                        than airbnb.com.
+                        We have reserved a block at the Westin for a fixed rate of $259/night. If you find an alternative option, make sure it is nearby if you would like to take the shuttle.
                     </p>
                 </>
             ),
-            link:
-                "https://www.booking.com/index.ca.html?label=gen173nr-1BCAEoggI46AdIM1gEaLQCiAEBmAEEuAEHyAEN2AEB6AEBiAIBqAIDuAKd2ffxBcACAQ;sid=9a89e727464401b3616fc4b7b66218c9;keep_landing=1&sb_price_type=total&",
+            link: "https://www.marriott.com/en-us/hotels/chiwi-the-westin-michigan-avenue-chicago/overview/",
+        },
+        {
+            Type: () => <>Shuttle</>,
+            Title: () => <>The Westin Michigan Ave</>,
+            Address: null,
+            Phone: null,
+            Details: () => (
+                <>
+                    <p>
+                        We will provide shuttle transportation from The Westin to Cafe Brauer.
+                    </p>
+                </>
+            ),
+            link: null,
         },
     ],
     [LANGUAGE.PT]: [
         {
-            Type: () => <>Terres de l'Ebre</>,
+            Type: () => <>Como Chegar em Chicago</>,
             Details: () => (
                 <>
                     <p>
-                        Les Terres de l'Ebre es troba al sud-oest de Catalunya,
-                        al curs baix del riu Ebre. Al 2013, la UNESCO va
-                        declarar les Terres de l'Ebre com a espai natural i humà
-                        únic a tot el món, atorgant-li el reconeixement de
-                        Reserva Natural de la Biosfera. Us recomanem que us
-                        allotgeu a Tortosa o L'Ampolla.
+                        Voc&ecirc; pode voar para ambos aeroportos O'Hare International (ORD) o Midway (MDW). O "L" (o metro de Chicago) vai direto dos aerportos para o centro. Voc&ecirc; tambem pode alugar um carro no aeroporto.
                     </p>
                 </>
             ),
-            link: "https://terresdelebre.travel",
+            link: null,
         },
         {
-            Type: () => <>Vol</>,
-            Title: () => <>BCN</>,
-            Address: null,
-            Phone: null,
-            Details: () => (
-                <>
-                    <p>L'aeroport de Barcelona és el que queda més proper.</p>
-                </>
-            ),
-            link:
-                "https://www.google.com/flights?lite=0#flt=SEA./m/01f62.2020-08-01*/m/01f62.SEA.2020-08-10;c:USD;e:1;sd:1;t:f",
-        },
-        {
-            Type: () => <>Cotxe</>,
-            Title: () => <>BCN</>,
-            Address: null,
-            Phone: null,
-            Details: () => (
-                <>
-                    <p>Podeu llogar cotxe des de l'aeroport de Barcelona.</p>
-                </>
-            ),
-            link:
-                "https://www.barcelona-airport.com/cat/lloguer-cotxes-aeroport-barcelona.php#/searchcars",
-        },
-        {
-            Type: () => <>Tren</>,
-            Title: () => <>Tortosa/L'Ampolla</>,
+            Type: () => <>Hotel para o Casamento</>,
+            Title: () => <>The Westin Michigan Ave</>,
             Address: null,
             Phone: null,
             Details: () => (
                 <>
                     <p>
-                        Renfe (Rogamos Empujen Nuestros Ferrocarriles
-                        Estropeados) us pot portar des de diferent parts de
-                        l'Estat Espanyol a Tortosa o L'Ampolla.
+                        Reservamos um bloco no Westin por $259/noite. Existem op&ccedil;&otilde;es mais razoaveis proximas ao Westin.
                     </p>
                 </>
             ),
-            link: "http://www.renfe.com/CA/viajeros/index.html",
+            link: "https://www.marriott.com/en-us/hotels/chiwi-the-westin-michigan-avenue-chicago/overview/",
         },
         {
-            Type: () => <>Autobús</>,
-            Title: () => <>Tortosa/L'Ampolla</>,
+            Type: () => <>Transporte</>,
+            Title: () => <>The Westin Michigan Ave</>,
             Address: null,
             Phone: null,
             Details: () => (
                 <>
                     <p>
-                        Hife és una altra bona opció, amd autobús directe a
-                        Tortosa i L'Ampolla.
+                        Trasporte sera provisionado do Westin para o Cafe Brauer.
                     </p>
                 </>
             ),
-            link: "http://hife.es",
-        },
-        {
-            Type: () => <>Allotjament</>,
-            Title: () => <>Tortosa/L' Ampolla</>,
-            Address: null,
-            Phone: null,
-            Details: () => (
-                <>
-                    <p>
-                        Us suggerim que us quedeu a Tortosa (d'on és la Lledó) o
-                        a L'Ampolla (si voleu estar al costat de la platja). El
-                        Pica-pica de Benvinguda serà a L'Ampolla; el dia del
-                        casament, hi haurà autobusos desde Tortosa i L'Ampolla a
-                        Les Moles. A L'Ampolla, Les Oliveres i Hotel Cap Roig
-                        són bones opcions (però necessitaríeu cotxe per arribar
-                        al lloc del Pica-pica). El Parador, a Tortosa, està
-                        situat a l’espectacular castell de la Suda, amb vistes a
-                        la ciutat. Podeu trobar altres opcions per booking.com.
-                    </p>
-                </>
-            ),
-            link:
-                "https://www.booking.com/index.ca.html?label=gen173nr-1BCAEoggI46AdIM1gEaLQCiAEBmAEEuAEHyAEN2AEB6AEBiAIBqAIDuAKd2ffxBcACAQ;sid=9a89e727464401b3616fc4b7b66218c9;keep_landing=1&sb_price_type=total&",
+            link: null,
         },
     ],
 }

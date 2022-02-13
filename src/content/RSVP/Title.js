@@ -9,7 +9,7 @@ export default {
         SubHeadingAuthenticated: ({ user }) => (
             <span>
                 Hi <strong>{user.name}</strong>! We can't wait to see you in
-                Catalonia! Use the form below to manage your RSVP.
+                Chicago! Use the form below to manage your RSVP.
             </span>
         ),
         SubHeading: () => (
@@ -20,18 +20,16 @@ export default {
         ),
     },
     [LANGUAGE.PT]: {
-        Heading: () => <>RSUP</>,
+        Heading: () => <>Confirme sua Presen&ccedil;a</>,
         SubHeadingAuthenticated: ({ user }) => (
             <span>
-                Hola {user.name}! Quines ganes tenim de veure-us! Fes servir el
-                següent formulari per confirmar-nos la vostra asistència.
+                Bem Vindo {user.name}! Estamos muito felizes de compartilhar esse momento especial com nossas familias e amigos! Use o formulário abaixo para gerenciar sua presen&ccedil;a.
             </span>
         ),
         SubHeading: () => (
             <span>
-                <Link to="/auth">Inicieu la sessió</Link> per confirmar-nos la
-                vostra asistència. No teniu un compte?{" "}
-                <Link to="/auth/signup">Registreu-vos</Link>!
+                <Link to="/auth">Login</Link> para confirmar sua presen&ccedil;a. N&atilde;o tem uma conta?{" "}
+                <Link to="/auth/signup">Registre-se</Link>!
             </span>
         ),
     },

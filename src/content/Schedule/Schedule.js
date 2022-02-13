@@ -17,8 +17,7 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        There will be a few light bites in addition to drinks. 
-                        Stop by whenever works for you between the indicated hours!
+                        There will be a few light bites in addition to drinks.
                     </p>
                 </>
             ),
@@ -26,7 +25,7 @@ export default {
         {
             Title: () => <>Wedding</>,
             Date: () => <>June 12th, 2022</>,
-            Time: () => <>6 pm</>,
+            Time: () => <>6 pm-12 am</>,
             Location: () => <>Cafe Brauer</>,
             locationLink: "https://www.lpzoo.org/venue/cafe-brauer/",
             Address: () => (
@@ -60,8 +59,7 @@ export default {
             Details: () => (
                 <>
                     <p>
-                    Haverá algumas mordidas leves, além de bebidas.
-                    Pare sempre que funcionar para você entre as horas indicadas! 
+                    Haverá aperitivos, além de bebidas.
                     </p>
                 </>
             ),
@@ -69,7 +67,7 @@ export default {
         {
             Title: () => <>Casamento</>,
             Date: () => <>June 12th, 2022</>,
-            Time: () => <>6 pm</>,
+            Time: () => <>18:00-00:00 </>,
             Location: () => <>Cafe Brauer</>,
             locationLink: "https://www.lpzoo.org/venue/cafe-brauer/",
             Address: () => (
@@ -83,7 +81,7 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        A cerimônia, o jantar e a festa acontecerão no Cafe Brauer, no Lincoln Park Zoo. 
+                        A cerimônia, janta e a festa sera no Cafe Brauer, no Zool&oacute;gico de Lincoln Park. 
                     </p>
                 </>
             ),

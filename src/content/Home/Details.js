@@ -17,10 +17,10 @@ export default {
         hashtag,
     },
     [LANGUAGE.PT]: {
-        Title: () => <span>Christian e Liz est&atilde;o se casando!</span>,
+        Title: () => <span>Christian e Liz v&atilde;o casar!</span>,
         Date: () => (
             <div className="d-flex flex-column">
-                <div>12th Junho, 2022</div>
+                <div>12 de Junho, 2022</div>
             </div>
         ),
         Location: () => <span>Caf&eacute; Brauer, Chicago, IL, USA</span>,

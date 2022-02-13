@@ -6,7 +6,7 @@ import { selectLanguage } from "utilities/cookies"
 import { title, faqs } from "content/FAQ"
 import { Header } from "components/Header"
 import { Item } from "components/Item"
-import headerImg from "photos/deck_with_chicago.jpg"
+import headerImg from "photos/faq.jpg"
 
 function FAQ() {
     const [cookies] = useCookies(["language"])

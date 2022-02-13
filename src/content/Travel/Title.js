@@ -7,21 +7,15 @@ export default {
         Heading: () => <>Travel</>,
         SubHeading: () => (
             <>
-                We're getting married in a region called{" "}
-                <strong>Terres de l'Ebre</strong>. Here's info on how to get
-                there and where to stay. There are bus and train options;
-                however, if you want to enjoy the area, we recommend to rent a
-                car.
+                We're getting married in Chicago, the windy city! Here's info on how to get there and where to stay. You shouldn't need a car because Chicago is one of the only US cities with great trains and busses!
             </>
         ),
     },
     [LANGUAGE.PT]: {
-        Heading: () => <>Com arribar</>,
+        Heading: () => <>Como chegar</>,
         SubHeading: () => (
             <>
-                Com arribo a aquesta preciosa regió de Catalunya anomenada les
-                Terres de l'Ebre? Es pot arribar amb autobús i tren, tot i que,
-                recomanem venir amb cotxe si voleu explorar la zona.
+                Nosso casamento sera em Chicago, a cidade do vento! Segue a informa&ccedil;&atilde;o de como chegar e onde ficar. Carros n&atilde;o s&atilde;o necessarios em Chicago devido ao sistema de transporte publico robusto.
             </>
         ),
     },
