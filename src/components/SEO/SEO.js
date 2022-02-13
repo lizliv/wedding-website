@@ -3,10 +3,10 @@ import { Helmet } from "react-helmet"
 import { withRouter } from "react-router-dom"
 
 import { getPublicURL } from "utilities/pages"
-import imageUrl from "photos/orcas_thumb.png"
+import imageUrl from "photos/thumb.jpg"
 
 const SEO = ({
-    title = "Lledó and Salim",
+    title = "Christian and Liz",
     description = "We're getting married!",
     image = imageUrl,
     article = false,
