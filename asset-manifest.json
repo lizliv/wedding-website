@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/wedding-website/static/css/main.5853abef.chunk.css",
+    "main.js": "/wedding-website/static/js/main.bc92d36a.chunk.js",
+    "main.js.map": "/wedding-website/static/js/main.bc92d36a.chunk.js.map",
+    "runtime-main.js": "/wedding-website/static/js/runtime-main.777097ae.js",
+    "runtime-main.js.map": "/wedding-website/static/js/runtime-main.777097ae.js.map",
+    "static/css/2.3661fc73.chunk.css": "/wedding-website/static/css/2.3661fc73.chunk.css",
+    "static/js/2.92e29b6f.chunk.js": "/wedding-website/static/js/2.92e29b6f.chunk.js",
+    "static/js/2.92e29b6f.chunk.js.map": "/wedding-website/static/js/2.92e29b6f.chunk.js.map",
+    "index.html": "/wedding-website/index.html",
+    "precache-manifest.9c8b65e216b9d27c73d6b1703e8fb40f.js": "/wedding-website/precache-manifest.9c8b65e216b9d27c73d6b1703e8fb40f.js",
+    "service-worker.js": "/wedding-website/service-worker.js",
+    "static/css/2.3661fc73.chunk.css.map": "/wedding-website/static/css/2.3661fc73.chunk.css.map",
+    "static/css/main.5853abef.chunk.css.map": "/wedding-website/static/css/main.5853abef.chunk.css.map",
+    "static/js/2.92e29b6f.chunk.js.LICENSE.txt": "/wedding-website/static/js/2.92e29b6f.chunk.js.LICENSE.txt",
+    "static/media/airplane.jpg": "/wedding-website/static/media/airplane.3b3208bf.jpg",
+    "static/media/deck_with_chicago.jpg": "/wedding-website/static/media/deck_with_chicago.082273f0.jpg",
+    "static/media/Header.module.scss": "/wedding-website/static/media/header_small.a3081ddf.jpg",
+    "static/media/rsvp.jpg": "/wedding-website/static/media/rsvp.5d3f2328.jpg",
+    "static/media/schedule.jpg": "/wedding-website/static/media/schedule.b919db3f.jpg",
+    "static/media/sky_diving.jpeg": "/wedding-website/static/media/sky_diving.f7a80ae7.jpeg",
+    "static/media/snow.png": "/wedding-website/static/media/snow.1be8f760.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.777097ae.js",
+    "static/css/2.3661fc73.chunk.css",
+    "static/js/2.92e29b6f.chunk.js",
+    "static/css/main.5853abef.chunk.css",
+    "static/js/main.bc92d36a.chunk.js"
+  ]
+}
