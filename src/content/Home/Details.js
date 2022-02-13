@@ -2,39 +2,29 @@ import React from "react"
 
 import { LANGUAGE } from "actions/constants"
 
-const hashtag = "lledoisalim"
+const hashtag = "reichstein"
 
 export default {
     [LANGUAGE.EN]: {
-        Title: () => <span>Salim and Lledó are getting married!</span>,
+        Title: () => <span>Christian and Liz are getting married!</span>,
         Date: () => (
             <div className="d-flex flex-column">
-                <div>
-                    <span style={{ textDecoration: "line-through" }}>
-                        06/19/2021
-                    </span>
-                </div>
-                <div>Love is patient...</div>
+                <div>June 12th, 2022</div>
             </div>
         ),
-        Location: () => <span>Terres de l&apos;Ebre, Catalonia</span>,
-        locationLink: "https://goo.gl/maps/93vJLAEHGgZwUvET9",
+        Location: () => <span>Caf&eacute; Brauer, Chicago, IL, USA</span>,
+        locationLink: "https://goo.gl/maps/Ad5FzWZs14nSD9QT6",
         hashtag,
     },
     [LANGUAGE.CAT]: {
-        Title: () => <span>El Salim i la Lledó es casen!</span>,
+        Title: () => <span>Christian e Liz est&atilde;o se casando!</span>,
         Date: () => (
             <div className="d-flex flex-column">
-                <div>
-                    <span style={{ textDecoration: "line-through" }}>
-                        19/06/2021
-                    </span>
-                </div>
-                <div>L'amor és pacient...</div>
+                <div>12th Junho, 2022</div>
             </div>
         ),
-        Location: () => <span>Terres de l&apos;Ebre, Catalunya</span>,
-        locationLink: "https://goo.gl/maps/93vJLAEHGgZwUvET9",
+        Location: () => <span>Caf&eacute; Brauer, Chicago, IL, USA</span>,
+        locationLink: "https://goo.gl/maps/Ad5FzWZs14nSD9QT6",
         hashtag,
     },
 }
