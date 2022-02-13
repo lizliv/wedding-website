@@ -13,11 +13,10 @@ export default {
         ),
     },
     [LANGUAGE.PT]: {
-        Heading: () => <>El Plan</>,
+        Heading: () => <>Cronograma</>,
         SubHeading: () => (
             <span>
-                Aquest és el plan durant el nostre cap de setmana de noces.
-                Quines ganes tenim de celebrar-ho amb vosaltres!
+                Aqui está o que esperar durante o nosso fim de semana de casamento. Nós não podemos esperar para comemorar com você! 
             </span>
         ),
     },

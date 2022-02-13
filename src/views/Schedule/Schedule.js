@@ -6,7 +6,7 @@ import { selectLanguage } from "utilities/cookies"
 import { schedule, title } from "content/Schedule"
 import { Header } from "components/Header"
 import { Item } from "components/Item"
-import headerImg from "photos/spain_octopus.jpg"
+import headerImg from "photos/schedule.jpg"
 
 function Schedule() {
     const [cookies] = useCookies(["language"])
