@@ -18,7 +18,7 @@ export default {
         passwordPlaceholder: "Password",
     },
     [LANGUAGE.PT]: {
-        Header: () => <>Per favor, inicieu la sessió</>,
+        Header: () => <>Por favor, inicieu la sessió</>,
         SubmitButton: () => <>Inicia sessió</>,
         SubmitButtonLoading: () => <>Iniciant sessió...</>,
         NoAccountPrompt: () => (

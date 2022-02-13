@@ -96,16 +96,16 @@ function Navigation({ history }) {
                     >
                         <RegistryNavText />
                     </RouterNavLink>
-                    <RouterNavLink
+                    {/* <RouterNavLink
                         to="/rsvp"
                         className="nav-link"
                         role="button"
                     >
                         <RSVPNavText />
-                    </RouterNavLink>
+                    </RouterNavLink> */}
                 </Nav>
                 <Nav className="ml-auto">
-                    {isAuthenticated ? (
+                    {/* {isAuthenticated ? (
                         <Dropdown as={NavItem}>
                             <Dropdown.Toggle as={NavLink}>
                                 {name}
@@ -132,7 +132,7 @@ function Navigation({ history }) {
                         >
                             <SignInText />
                         </RouterNavLink>
-                    )}
+                    )} */}
                     <Dropdown as={NavItem}>
                         <Dropdown.Toggle as={NavLink}>
                             <ReactCountryFlag
