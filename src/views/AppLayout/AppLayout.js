@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component} from "react"
 import { Route, Switch } from "react-router-dom"
 
 import { Navigation } from "components/Navigation"
@@ -12,9 +12,32 @@ import { FAQ } from "views/FAQ"
 import { Registry } from "views/Registry"
 import { RSVP } from "views/RSVP"
 
-const AppLayout = () => (
-    <>
-        <main className="mb-4">
+import {Modal} from "components/CovidBanner"
+
+
+class AppLayout extends Component {
+    constructor (){
+        super();
+        this.state = {
+        show: true
+        };
+        this.showModal = this.showModal.bind(this);
+        this.hideModal = this.hideModal.bind(this);
+    }
+
+    showModal = () => {
+        this.setState({ show: true });
+    };
+
+    hideModal = () => {
+        this.setState({ show: false });
+    };
+
+    
+    render() {
+        return (
+        <>
+        <main className="mb-4">        
             <Navigation />
             <Switch>
                 <Route exact path={"/"} component={Home} />
@@ -25,9 +48,12 @@ const AppLayout = () => (
                 <Route exact path={"/registry"} component={Registry} />
                 <Route exact path={"/rsvp"} component={RSVP} />
             </Switch>
+            <Modal show={this.state.show} handleClose={this.hideModal}></Modal>
         </main>
         <Footer />
-    </>
-)
+        </>
+        );
+    }
+}
 
 export default AppLayout
