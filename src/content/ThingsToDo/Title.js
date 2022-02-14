@@ -19,7 +19,7 @@ export default {
         Heading: () => <>O Que fazer</>,
         SubHeading: () => (
             <>
-                Sugestões de passeios em Chicago.
+                Sugestões de passeios em Chicago. Christian vai traduzir em breve 
             </>
         ),
         link: "https://www.choosechicago.com/",

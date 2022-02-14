@@ -22,10 +22,12 @@ function ThingsToDo() {
                 SubHeading={SubHeading}
             />
             <Container fluid>
-                {thingsToDoItems.map(({ Title, Details, link }, idx) => (
+                {thingsToDoItems.map(({ Title, Date, Time, Details, link }, idx) => (
                     <Item
                         key={idx}
                         LeftMainTitle={Title}
+                        LeftFirstSubTitle={Date}
+                        LeftSecondSubTitle={Time}
                         RightDetails={Details}
                         infoLink={link}
                     />
