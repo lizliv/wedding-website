@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react"
 import { useCookies } from "react-cookie"
 import ReactDOM from "react-dom"
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { HashRouter, Route, Switch } from "react-router-dom"
 import Auth from "@aws-amplify/auth"
 import { CookiesProvider } from "react-cookie"
 import get from "lodash/get"
@@ -40,12 +40,12 @@ const App = () => {
     }, [dispatch, setCookie, language])
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Switch>
                 <Route path={"/auth"} component={Authentication} />
                 <Route component={AppLayout} />
             </Switch>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
