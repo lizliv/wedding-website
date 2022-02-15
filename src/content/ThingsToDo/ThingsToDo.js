@@ -87,27 +87,27 @@ export default {
     ],
     [LANGUAGE.PT]: [
         {
-            Title: () => <>Lincoln Park Zoo</>,
+            Title: () => <>Zoológico de Lincoln Park</>,
             Details: () => (
                 <>
                     <p>
-                        The wedding is located within the Lincoln Park Zoo. This zoo completely free and is surrounded by nature with a Conservatory to the north and a boardwalk to the south. The zoo is in the neighborhood of Lincoln Park which is filled with great places to shop and eat!
+                        Todos os eventos do casamento serão dentro do Parque Zoológico de Lincoln Park. O parque &eacute; completamente grat&iacute;s. Situado no bairro de Lincoln Park, existem otimas lojas e restaurante perto do parque.                       
                     </p>
                 </>
             ),
-            Date: () => <>Daily</>,
+            Date: () => <>Aberto Diariamente</>,
             Time: () => <>10:00 - 17:00</>,
             link:
                 "https://www.lpzoo.org/",
         },
         {
             Title: () => <>Chicago Museum of Science and Industry</>,
-            Date: () => <>Daily</>,
+            Date: () => <>Aberto Diariamente</>,
             Time: () => <>9:30 - 16:00</>,
             Details: () => (
                 <>
                     <p>
-                        One of our favorite museums in the city. Find your inner child while interacting with the displays or walk through exhibits designed for adults (boo!). Some exhibits we're re-visited are the U-505 submarine kept underground, the Coal Mine, and Take Flight. 
+                        O nosso museu favorito na cidade! &Eacute; um museu de ciências aplicadas, repleto de exposições interativas para pessoas de todas as idades. De submarinos e uma mina de carvão para a exibi&ccedil;&atilde;o "Take Flight", existe algo para todos.
                     </p>
                 </>
             ),
@@ -116,12 +116,13 @@ export default {
         },
         {
             Title: () => <>Millenium Park</>,
-            Date: () => <>Daily</>,
+            Date: () => <>Aberto Diariamente</>,
             Time: () => <>8:00 - 21:00</>,
             Details: () => (
                 <>
                     <p>
-                        One of the most popular parks in Chicago, this is where you will find famous sculptures like the Bean. Walk south and you can go to the Art Institute of Chicago, Buckingham Fountain, and then Grant Park.
+                        O parque central de Chicago, a beira do lago, este parque contem a escultura mais famosa de Chicago "The Bean" (O Feij&atilde;o) (O nome real &eacute; Cloud Gate)
+                        {/* Walk south and you can go to the Art Institute of Chicago, Buckingham Fountain, and then Grant Park. */}
                     </p>
                 </>
             ),
@@ -129,23 +130,23 @@ export default {
                 "https://www.chicago.gov/city/en/depts/dca/supp_info/millennium_park.html",
         },
         {
-            Title: () => <>The Beach!</>,
+            Title: () => <>A Praia!</>,
             Details: () => (
                 <>
                     <p>
-                        You might be thinking, "Chicago has no ocean, what are you talking about?". Just wait until you see Lake Michigan!
+                        Sim, Chicago n&atilde;o est&aacute; na beira do mar, mas se você estiver na beira do Lago Michigan seria difícil pensar que n&atilde;o estivesse avistando um mar.
                     </p>
                 </>
             ),
         },
         {
             Title: () => <><strike>Sears</strike> Willis Tower</>,
-            Date: () => <>Daily</>,
+            Date: () => <>Aberto Diariamente</>,
             Time: () => <>9:00 - 22:00</>,
             Details: () => (
                 <>
                     <p>
-                        The tallest building in Chicago, visit the <a href="https://theskydeck.com/" target="_blank">Sky Deck</a> for some great views of the city!
+                        O edifício mais alto de Chicago, visite o <a href="https://theskydeck.com/" target="_blank">Sky Deck</a> para ter uma vista incrível da cidade!
                     </p>
                 </>
             ),
@@ -154,12 +155,12 @@ export default {
         },
         {
             Title: () => <>Navy Pier</>,
-            Date: () => <>Sunday – Thursday, 11:00 - 19:00 pm</>,
-            Time: () => <>Friday - Saturday, 11:00 - 21:00 pm </>,
+            Date: () => <>Domingo – Quinta, 11:00 - 19:00 pm</>,
+            Time: () => <>Sexta - Sabado, 11:00 - 21:00 pm </>,
             Details: () => (
                 <>
                     <p>
-                        A typical tourist attraction, Liz has actually never been to Navy Pier. The Centennial Ferris Wheel will provide some great views of the city.
+                        Um pier clássico, com uma roda gigante.
                     </p>
                 </>
             ),
