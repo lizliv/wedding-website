@@ -17,9 +17,7 @@ export default {
         Heading: () => <>Lista de presentes</>,
         SubHeading: () => (
             <span>
-                La vostra asistència és més que suficient i no esperem cap
-                regal. Però, si voleu contribuir a la nostra vida de casats
-                aviat penjarem la nostra llista de noces.
+                Sua presença é mais que suficiente e não estamos esperando nenhum presente. Mas, se você deseja contribuir com nossa vida de casado, volte em breve para ver nosso registro. 
             </span>
         ),
     },

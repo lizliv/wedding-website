@@ -19,9 +19,9 @@ export default {
             Question: () => <>What is the dress code?</>,
             Answer: () => (
                 <>
-                    The wedding will be formal. We recommend long or elegant
-                    cocktail dresses for ladies and suits for gents. White is
-                    reserved for the bride.
+                    The wedding will be formal. We recommend long or elegant cocktail dresses or suits. 
+                    
+                    As always, white is reserved for the bride.
                 </>
             ),
         },
@@ -76,7 +76,7 @@ export default {
             Question: () => <>Qual é o dress code?</>,
             Answer: () => (
                 <>
-                    O casamento sera traje social completo. Recomendamos vestidos longos ou de tipo "cocktail" para as Mulheres, e palet&oacute;s para os Homens. O unico vestido branco pertence a noiva.
+                    O casamento sera traje social completo. Recomendamos vestidos longos ou de tipo "cocktail" e palet&oacute;s. O unico vestido branco pertence a noiva.
                 </>
             ),
         },
