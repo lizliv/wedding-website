@@ -35,14 +35,14 @@ export default {
         Content: () => (
             <>
                 <p>
-                    Contate-nos a{" "}
+                    Contato: {" "}
                     <a href="mailto:hola@lizandchristian2022@gmail.com">
                     lizandchristian2022@gmail.com
                     </a>
                     .
                 </p>
                 <p>
-                    <Emoji text="Feito com 💚 no Ann Arbor por Liz e Christian." />
+                    <Emoji text="Feito com 💚 em Ann Arbor pela Liz e Christian." />
                 </p>
                 <p>
                     <a

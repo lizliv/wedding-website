@@ -9,8 +9,6 @@ export default {
             <>
                 We’re so excited to share a few of our favorite places in the
                 area with you.
-
-                We will update this page soon.
             </>
         ),
         link: "https://www.choosechicago.com/",
@@ -19,7 +17,7 @@ export default {
         Heading: () => <>O Que fazer</>,
         SubHeading: () => (
             <>
-                Sugestões de passeios em Chicago. Christian vai traduzir em breve 
+                Sugestões de passeios em Chicago. 
             </>
         ),
         link: "https://www.choosechicago.com/",
