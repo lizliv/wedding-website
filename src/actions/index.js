@@ -9,6 +9,13 @@ import {
     putItemToDynamo,
 } from "services"
 
+import {
+    auth,
+    logInWithEmailAndPassword,
+    registerWithEmailAndPassword,
+    logOut,
+  } from "services";
+
 import { APP } from "./constants"
 
 export const initializeApp = async dispatch => {
@@ -38,7 +45,7 @@ export const signUp = async (
     dispatch
 ) => {
     try {
-        const { userSub: username } = await signUpWithCognito({
+        const { userSub: username } = await registerWithEmailAndPassword({
             username: email,
             password,
             attributes: {
@@ -47,7 +54,7 @@ export const signUp = async (
             },
         })
 
-        await signInWithCognito(username, password)
+        await logInWithEmailAndPassword(username, password)
 
         dispatch({
             type: APP.SET.USER_SIGN_IN,
@@ -77,7 +84,7 @@ export const signIn = async (
     dispatch
 ) => {
     try {
-        const CognitoUser = await signInWithCognito(providedEmail, password)
+        const CognitoUser = await logInWithEmailAndPassword(providedEmail, password)
 
         const {
             attributes: { sub: username, name, email },
@@ -105,7 +112,7 @@ export const signIn = async (
 
 export const signOut = async dispatch => {
     try {
-        await signOutWithCognito()
+        await logOut()
         dispatch({
             type: APP.SET.USER_SIGN_OUT,
         })

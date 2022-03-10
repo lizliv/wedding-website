@@ -10,8 +10,8 @@ export default {
         faq: () => <span>FAQs</span>,
         registry: () => <span>Registry</span>,
         // rsvp: () => <span>RSVP</span>,
-        // signOut: () => <span>Sign Out</span>,
-        // signIn: () => <span>Sign In</span>,
+        signOut: () => <span>Sign Out</span>,
+        signIn: () => <span>Sign In</span>,
         // manageRsvp: () => <span>Manage RSVP</span>,
     },
     [LANGUAGE.PT]: {
@@ -21,8 +21,8 @@ export default {
         faq: () => <span>FAQ</span>,
         registry: () => <span>Lista de presentes</span>,
         // rsvp: () => <span>RSVP</span>,
-        // signOut: () => <span>Logout</span>,
-        // signIn: () => <span>Login</span>,
+        signOut: () => <span>Logout</span>,
+        signIn: () => <span>Login</span>,
         // manageRsvp: () => <span>Gerir RSVP</span>,
     },
 }
