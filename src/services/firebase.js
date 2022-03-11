@@ -36,20 +36,20 @@ const logInWithEmailAndPassword = async (email, password) => {
     }
 };
 
-const registerWithEmailAndPassword = async (name, email, password) => {
-    try {
-        const res = await createUserWithEmailAndPassword(auth, email, password);
-        const user = res.user;
-        await addDoc(collection(db, "users"), {
-            uid: user.uid,
-            name,
-            authProvider: "local",
-            email,
-        });
-    } catch (err) {
-        console.error(err);
-        alert(err.message);
-    }
+const registerWithEmailAndPassword = async ({ username, email, password }) => {
+  try {
+      const res = await createUserWithEmailAndPassword(auth, email, password)
+      const user = res.user
+      await addDoc(collection(db, "users"), {
+          uid: user.uid,
+          username,
+          authProvider: "local",
+          email,
+      })
+  } catch (err) {
+      console.error(err)
+      alert(err.message)
+  }
 };
 
 const sendPasswordReset = async (email) => {
@@ -66,6 +66,23 @@ const logout = () => {
     signOut(auth);
 };
 
+const currentAuthenticatedUser = async () => {
+  let myUser
+
+  try {
+    myUser = await auth.currentUser
+      // CognitoUser = await Auth.currentAuthenticatedUser()
+  } catch (e) {
+      // sign out will clear all existing cognito keys from localStorage
+      await logout()
+      myUser = null
+  }
+
+  console.log("Current user is:")
+  console.log(myUser)
+  return myUser
+}
+
 export {
     auth,
     db,
@@ -73,4 +90,5 @@ export {
     registerWithEmailAndPassword,
     sendPasswordReset,
     logout,
+    currentAuthenticatedUser,
 };

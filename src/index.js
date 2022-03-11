@@ -23,7 +23,7 @@ Auth.configure({
     region: process.env.REACT_APP_REGION,
     userPoolId: process.env.REACT_APP_USER_POOL,
     userPoolWebClientId: process.env.REACT_APP_USER_POOL_CLIENT,
-    mandatorySignIn: false, // Enforce user authentication prior to accessing AWS resources or not
+    mandatorySignIn: false, // Enforce user authentication prior to accessing authentication resources or not
 })
 
 const App = () => {

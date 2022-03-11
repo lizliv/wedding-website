@@ -12,6 +12,7 @@
     "aws-sdk": "^2.614.0",
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
+    "dotenv": "^16.0.0",
     "firebase": "^9.6.6",
     "formik": "^2.1.4",
     "lodash": "^4.17.19",

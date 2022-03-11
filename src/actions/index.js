@@ -1,7 +1,5 @@
 import get from "lodash/get"
 
-import { useAuthState } from "react-firebase-hooks/auth";
-
 import {
     signUpWithCognito,
     signInWithCognito,
@@ -16,6 +14,7 @@ import {
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,
     logout,
+    currentAuthenticatedUser,
   } from "services";
 
 import { APP } from "./constants"
@@ -23,12 +22,12 @@ import { APP } from "./constants"
 export const initializeApp = async dispatch => {
     // const [user, loading, error] = useAuthState(auth);
 
-    const CognitoUser = await currentAuthenticatedUserWithCognito()
+    const myUser = await currentAuthenticatedUser()
 
-    if (CognitoUser) {
+    if (myUser) {
         const {
             attributes: { sub: username, name, email },
-        } = CognitoUser
+        } = myUser
 
         dispatch({
             type: APP.SET.INITIALIZE_USER,
@@ -43,19 +42,17 @@ export const initializeApp = async dispatch => {
 
 export const signUp = async (
     { name, email, password },
-    setSubmitting, setStatus, history, dispatch) => {
+    setSubmitting,
+    setStatus,
+    history,
+    dispatch
+) => {
     try {
         const { userSub: username } = await registerWithEmailAndPassword({
-            username: email,
+            username: name,
+            email,
             password,
-            attributes: {
-                email,
-                name,
-            },
         })
-
-        console.log(username);
-        console.log(password);
 
         await logInWithEmailAndPassword(username, password)
 
@@ -74,10 +71,8 @@ export const signUp = async (
             type: APP.SET.USER_ERROR,
             payload: message,
         })
-        console.log("PRINT");
     }
 
-    console.log("PRINNNNNNNNNNT");
     setSubmitting(false)
 }
 
