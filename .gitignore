@@ -139,3 +139,5 @@ Temporary Items
 .apdisk
 
 package-lock.json
+
+.env
