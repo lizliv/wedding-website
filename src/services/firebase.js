@@ -35,8 +35,8 @@ const logInWithEmailAndPassword = async (email, password) => {
       console.error(err);
       alert(err.message);
     }
-    console.log("Current user is:")
-    console.log(email)
+
+    return auth.currentUser
 };
 
 const registerWithEmailAndPassword = async ({ username, email, password }) => {
@@ -81,6 +81,19 @@ const currentAuthenticatedUser = async () => {
   }
 
   return myUser
+
+  // return new Promise((resolve, reject) => {
+  //   auth.onAuthStateChanged(async (_user) => {
+  //     if (_user) {
+  //       // commit('setUser', _user)
+  //       myUser = _user
+  //     } else {
+  //       // commit('setUser', null)
+  //     }
+  //     console.log('current user in checkAuth action:', _user)
+  //     resolve(true)
+  //   })
+  // })
 }
 
 export {
