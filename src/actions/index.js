@@ -1,5 +1,7 @@
 import get from "lodash/get"
 
+import { useAuthState } from "react-firebase-hooks/auth";
+
 import {
     signUpWithCognito,
     signInWithCognito,
@@ -13,12 +15,14 @@ import {
     auth,
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,
-    logOut,
+    logout,
   } from "services";
 
 import { APP } from "./constants"
 
 export const initializeApp = async dispatch => {
+    // const [user, loading, error] = useAuthState(auth);
+
     const CognitoUser = await currentAuthenticatedUserWithCognito()
 
     if (CognitoUser) {
@@ -39,11 +43,7 @@ export const initializeApp = async dispatch => {
 
 export const signUp = async (
     { name, email, password },
-    setSubmitting,
-    setStatus,
-    history,
-    dispatch
-) => {
+    setSubmitting, setStatus, history, dispatch) => {
     try {
         const { userSub: username } = await registerWithEmailAndPassword({
             username: email,
@@ -53,6 +53,9 @@ export const signUp = async (
                 name,
             },
         })
+
+        console.log(username);
+        console.log(password);
 
         await logInWithEmailAndPassword(username, password)
 
@@ -71,8 +74,10 @@ export const signUp = async (
             type: APP.SET.USER_ERROR,
             payload: message,
         })
+        console.log("PRINT");
     }
 
+    console.log("PRINNNNNNNNNNT");
     setSubmitting(false)
 }
 
@@ -112,7 +117,7 @@ export const signIn = async (
 
 export const signOut = async dispatch => {
     try {
-        await logOut()
+        await logout()
         dispatch({
             type: APP.SET.USER_SIGN_OUT,
         })
