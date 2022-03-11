@@ -12,6 +12,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -34,6 +35,8 @@ const logInWithEmailAndPassword = async (email, password) => {
       console.error(err);
       alert(err.message);
     }
+    console.log("Current user is:")
+    console.log(email)
 };
 
 const registerWithEmailAndPassword = async ({ username, email, password }) => {
@@ -70,16 +73,13 @@ const currentAuthenticatedUser = async () => {
   let myUser
 
   try {
-    myUser = await auth.currentUser
-      // CognitoUser = await Auth.currentAuthenticatedUser()
+    myUser = await auth.currentUser()
   } catch (e) {
       // sign out will clear all existing cognito keys from localStorage
       await logout()
       myUser = null
   }
 
-  console.log("Current user is:")
-  console.log(myUser)
   return myUser
 }
 

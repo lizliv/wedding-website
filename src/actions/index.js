@@ -20,7 +20,6 @@ import {
 import { APP } from "./constants"
 
 export const initializeApp = async dispatch => {
-    // const [user, loading, error] = useAuthState(auth);
 
     const myUser = await currentAuthenticatedUser()
 
@@ -84,11 +83,13 @@ export const signIn = async (
     dispatch
 ) => {
     try {
-        const CognitoUser = await logInWithEmailAndPassword(providedEmail, password)
+        const myUser = await logInWithEmailAndPassword(providedEmail, password)
 
+        console.log("The username is:")
+        console.log(myUser)
         const {
             attributes: { sub: username, name, email },
-        } = CognitoUser
+        } = myUser
 
         dispatch({
             type: APP.SET.USER_SIGN_IN,

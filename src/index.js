@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react"
 import { useCookies } from "react-cookie"
 import ReactDOM from "react-dom"
 import { HashRouter, Route, Switch } from "react-router-dom"
-import Auth from "@aws-amplify/auth"
 import { CookiesProvider } from "react-cookie"
 import get from "lodash/get"
 import isNull from "lodash/isNull"
@@ -17,14 +16,6 @@ import { LANGUAGE } from "actions/constants"
 
 import { StoreProvider, Store } from "./store"
 import * as serviceWorker from "./serviceWorker"
-
-Auth.configure({
-    identityPoolId: process.env.REACT_APP_IDENTITY_POOL_ID,
-    region: process.env.REACT_APP_REGION,
-    userPoolId: process.env.REACT_APP_USER_POOL,
-    userPoolWebClientId: process.env.REACT_APP_USER_POOL_CLIENT,
-    mandatorySignIn: false, // Enforce user authentication prior to accessing authentication resources or not
-})
 
 const App = () => {
     const { dispatch } = useContext(Store)
