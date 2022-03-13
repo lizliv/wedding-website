@@ -1,10 +1,6 @@
 import get from "lodash/get"
 
 import {
-    signUpWithCognito,
-    signInWithCognito,
-    signOutWithCognito,
-    currentAuthenticatedUserWithCognito,
     getItemFromDynamo,
     putItemToDynamo,
 } from "services"
