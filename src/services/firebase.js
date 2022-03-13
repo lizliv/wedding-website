@@ -8,7 +8,10 @@ import {
 } from "firebase/auth";
 import {
   getFirestore,
+  query,
+  getDocs,
   collection,
+  where,
   addDoc,
 } from "firebase/firestore";
 
@@ -69,39 +72,50 @@ const logout = () => {
     signOut(auth);
 };
 
-const currentAuthenticatedUser = async () => {
-  let myUser
 
-  try {
-    myUser = await auth.currentUser()
-  } catch (e) {
-      // sign out will clear all existing cognito keys from localStorage
-      await logout()
-      myUser = null
+const fetchUserName = async (user) => {
+  let username 
+
+  if (user){
+    try {
+      console.log('The user is:')
+      console.log(user)
+      const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+      const doc = await getDocs(q);
+      const data = doc.docs[0].data();
+
+      // setName(data.name);
+      username = data.name
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
+    } 
   }
 
-  return myUser
+  return username
+};
 
-  // return new Promise((resolve, reject) => {
-  //   auth.onAuthStateChanged(async (_user) => {
-  //     if (_user) {
-  //       // commit('setUser', _user)
-  //       myUser = _user
-  //     } else {
-  //       // commit('setUser', null)
-  //     }
-  //     console.log('current user in checkAuth action:', _user)
-  //     resolve(true)
-  //   })
-  // })
-}
+// const currentAuthenticatedUser = async () => {
+//   let myUser
+
+//   try {
+//     myUser = await auth.currentUser()
+//   } catch (e) {
+//       // sign out will clear all existing cognito keys from localStorage
+//       await logout()
+//       myUser = null
+//   }
+
+//   return myUser
+// }
 
 export {
     auth,
     db,
+    fetchUserName,
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,
     sendPasswordReset,
     logout,
-    currentAuthenticatedUser,
+    // currentAuthenticatedUser,
 };

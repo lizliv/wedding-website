@@ -9,6 +9,9 @@ import isNull from "lodash/isNull"
 import "./index.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 
+import { auth} from "./services";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 import { Authentication } from "views/Authentication"
 import { AppLayout } from "views/AppLayout"
 import { initializeApp } from "actions"
@@ -19,12 +22,14 @@ import * as serviceWorker from "./serviceWorker"
 
 const App = () => {
     const { dispatch } = useContext(Store)
+    const [user, loading, error] = useAuthState(auth);
 
     const [cookies, setCookie] = useCookies(["language"])
     const language = get(cookies, ["language"], null)
 
     useEffect(() => {
-        initializeApp(dispatch)
+        console.log("use Effect is running")
+        initializeApp(dispatch,user)
         if (isNull(language)) {
             setCookie("language", LANGUAGE.EN, { path: "/" })
         }

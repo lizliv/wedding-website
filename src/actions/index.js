@@ -6,31 +6,32 @@ import {
 } from "services"
 
 import {
-    auth,
+    // auth,
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,
     logout,
-    currentAuthenticatedUser,
+    // currentAuthenticatedUser,
+    fetchUserName,
   } from "services";
 
 import { APP } from "./constants"
 
-export const initializeApp = async dispatch => {
+export const initializeApp = async (dispatch,user) => {
 
-    const myUser = await currentAuthenticatedUser()
+    const myUser = await fetchUserName(user)
 
     if (myUser) {
-        // const {
-        //     attributes: { sub: username, name, email },
-        // } = myUser
+        const {
+            attributes: { sub: username, name, email },
+        } = myUser
 
-        const email = myUser.email
+        // const email = myUser.email
 
         dispatch({
             type: APP.SET.INITIALIZE_USER,
             payload: {
-                // username,
-                // name,
+                username,
+                name,
                 email,
             },
         })
@@ -88,6 +89,8 @@ export const signIn = async (
         // } = myUser
         const email = myUser.email
 
+        console.log('User has been logged in, dispatching email:')
+
         dispatch({
             type: APP.SET.USER_SIGN_IN,
             payload: {
@@ -96,16 +99,20 @@ export const signIn = async (
                 email,
             },
         })
+        console.log('Email dispatched')
     } catch (error) {
         let { message } = error
 
+        console.log('Sign in error being dispatched')
         setStatus(message)
         dispatch({
             type: APP.SET.USER_ERROR,
             payload: message,
         })
     }
+    console.log('set submitting...')
     setSubmitting(false)
+    console.log('set submitting done')
 }
 
 export const signOut = async dispatch => {
