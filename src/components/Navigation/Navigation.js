@@ -96,13 +96,13 @@ function Navigation({ history }) {
                     >
                         <RegistryNavText />
                     </RouterNavLink>
-                    {/* <RouterNavLink
+                    <RouterNavLink
                         to="/rsvp"
                         className="nav-link"
                         role="button"
                     >
                         <RSVPNavText />
-                    </RouterNavLink> */}
+                    </RouterNavLink>
                 </Nav>
                 <Nav className="ml-auto">
                     {isAuthenticated ? (
