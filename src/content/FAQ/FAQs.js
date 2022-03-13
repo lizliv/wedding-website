@@ -50,7 +50,7 @@ export default {
                     
                     <p>There are a few other unique traditions, but for now, we will skip to the end of the ceremony where the groom <b>breaks a glass</b>. This tradition has a couple of different symbolic meanings, but mostly we just want to stomp on a glass!</p>
 
-                    <p>Finally, during the reception there is a celebratory dance called the <b>hora</b>. During this dance, the bride and groom are lifted onto chairs while holding a cloth such as a napkin in between them. There are many aspects to a Jewish wedding that were not listed here, we will not include all traditional aspects, but you can read a nice summary <a href="https://www.brides.com/jewish-wedding-traditions-4783360" target="_blank">here</a></p>
+                    <p>Finally, during the reception there is a celebratory dance called the <b>hora</b>. During this dance, the bride and groom are lifted onto chairs while holding a cloth such as a napkin in between them. There are many aspects to a Jewish wedding that were not listed here, we will not include all traditional aspects, but you can read a nice summary <a href="https://www.brides.com/jewish-wedding-traditions-4783360" target="_blank" rel="noopener noreferrer">here</a></p>
                 </>
             ),
         },
@@ -104,7 +104,7 @@ export default {
                     
                     <p>There are a few other unique traditions, but for now, we will skip to the end of the ceremony where the groom <b>breaks a glass</b>. This tradition has a couple of different symbolic meanings, but mostly we just want to stomp on a glass!</p>
 
-                    <p>Finally, during the reception there is a celebratory dance called the <b>hora</b>. During this dance, the bride and groom are lifted onto chairs while holding a cloth such as a napkin in between them. There are many aspects to a Jewish wedding that were not listed here, we will not include all traditional aspects, but you can read a nice summary <a href="https://www.brides.com/jewish-wedding-traditions-4783360" target="_blank">here</a></p>
+                    <p>Finally, during the reception there is a celebratory dance called the <b>hora</b>. During this dance, the bride and groom are lifted onto chairs while holding a cloth such as a napkin in between them. There are many aspects to a Jewish wedding that were not listed here, we will not include all traditional aspects, but you can read a nice summary <a href="https://www.brides.com/jewish-wedding-traditions-4783360" target="_blank" rel="noopener noreferrer">here</a></p>
                 </>
             ),
         },

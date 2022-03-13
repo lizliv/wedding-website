@@ -63,7 +63,7 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        The tallest building in Chicago, visit the <a href="https://theskydeck.com/" target="_blank">Sky Deck</a> for some great views of the city!
+                        The tallest building in Chicago, visit the <a href="https://theskydeck.com/" target="_blank" rel="noopener noreferrer">Sky Deck</a> for some great views of the city!
                     </p>
                 </>
             ),
@@ -146,7 +146,7 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        O edifício mais alto de Chicago, visite o <a href="https://theskydeck.com/" target="_blank">Sky Deck</a> para ter uma vista incrível da cidade!
+                        O edifício mais alto de Chicago, visite o <a href="https://theskydeck.com/" target="_blank" rel="noopener noreferrer">Sky Deck</a> para ter uma vista incrível da cidade!
                     </p>
                 </>
             ),
