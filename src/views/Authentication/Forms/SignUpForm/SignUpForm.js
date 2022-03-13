@@ -29,7 +29,8 @@ function SignUpForm({ history }) {
 
     const submitForm = (values, actions) => {
         const { setSubmitting, setStatus } = actions
-        signUp(values, setSubmitting, setStatus, history, dispatch)
+        signUp(values, setStatus, history, dispatch)
+        setSubmitting(false)
     }
 
     const {

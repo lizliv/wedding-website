@@ -41,7 +41,8 @@ function SignInForm({ history }) {
 
     const submitForm = (values, actions) => {
         const { setSubmitting, setStatus } = actions
-        signIn(values, setSubmitting, setStatus, history, dispatch)
+        signIn(values, setStatus, history, dispatch)
+        setSubmitting(false)
     }
 
     return (

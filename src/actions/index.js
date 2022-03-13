@@ -24,7 +24,6 @@ export const initializeApp = async (dispatch,user) => {
         const {
             attributes: { sub: username, name, email },
         } = myUser
-
         // const email = myUser.email
 
         dispatch({
@@ -40,7 +39,6 @@ export const initializeApp = async (dispatch,user) => {
 
 export const signUp = async (
     { name, email, password },
-    setSubmitting,
     setStatus,
     history,
     dispatch
@@ -71,12 +69,10 @@ export const signUp = async (
         })
     }
 
-    setSubmitting(false)
 }
 
 export const signIn = async (
     { email: providedEmail, password },
-    setSubmitting,
     setStatus,
     history,
     dispatch
@@ -110,9 +106,6 @@ export const signIn = async (
             payload: message,
         })
     }
-    console.log('set submitting...')
-    setSubmitting(false)
-    console.log('set submitting done')
 }
 
 export const signOut = async dispatch => {
