@@ -42,13 +42,15 @@ const logInWithEmailAndPassword = async (email, password) => {
     return auth.currentUser
 };
 
-const registerWithEmailAndPassword = async ({ username, email, password }) => {
+const registerWithEmailAndPassword = async ({ name, email, password }) => {
   try {
       const res = await createUserWithEmailAndPassword(auth, email, password)
       const user = res.user
+      console.log('Registering with name:',name)
+      console.log('For the email:', email)
       await addDoc(collection(db, "users"), {
           uid: user.uid,
-          username,
+          name,
           authProvider: "local",
           email,
       })
@@ -74,7 +76,7 @@ const logout = () => {
 
 
 const fetchUserName = async (user) => {
-  let username 
+  let name 
 
   if (user){
     try {
@@ -85,14 +87,18 @@ const fetchUserName = async (user) => {
       const data = doc.docs[0].data();
 
       // setName(data.name);
-      username = data.name
+
+      console.log(data)
+      
+      name = data.name
+      email = data.email
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
     } 
   }
 
-  return username
+  return {name,email}
 };
 
 // const currentAuthenticatedUser = async () => {

@@ -18,18 +18,19 @@ import { APP } from "./constants"
 
 export const initializeApp = async (dispatch,user) => {
 
-    const myUser = await fetchUserName(user)
+    const {name,email} = await fetchUserName(user)
 
-    if (myUser) {
-        const {
-            attributes: { sub: username, name, email },
-        } = myUser
+    if (name) {
+        // const {
+        //     attributes: { sub: name, email },
+        // } = myUser
+        
+        // const name = myUser.name
         // const email = myUser.email
 
         dispatch({
             type: APP.SET.INITIALIZE_USER,
             payload: {
-                username,
                 name,
                 email,
             },
@@ -44,18 +45,17 @@ export const signUp = async (
     dispatch
 ) => {
     try {
-        const { userSub: username } = await registerWithEmailAndPassword({
-            username: name,
+        await registerWithEmailAndPassword({
+            name,
             email,
             password,
         })
 
-        await logInWithEmailAndPassword(username, password)
+        await logInWithEmailAndPassword(email, password)
 
         dispatch({
             type: APP.SET.USER_SIGN_IN,
             payload: {
-                username,
                 name,
                 email,
             },
@@ -81,25 +81,20 @@ export const signIn = async (
         const myUser = await logInWithEmailAndPassword(providedEmail, password)
 
         // const { 
-        //     attributes: { sub: username, name, email }, 
+        //     attributes: { sub: name, email }, 
         // } = myUser
+        const name = myUser.name
         const email = myUser.email
-
-        console.log('User has been logged in, dispatching email:')
 
         dispatch({
             type: APP.SET.USER_SIGN_IN,
             payload: {
-                // username,
-                // name,
+                name,
                 email,
             },
         })
-        console.log('Email dispatched')
     } catch (error) {
         let { message } = error
-
-        console.log('Sign in error being dispatched')
         setStatus(message)
         dispatch({
             type: APP.SET.USER_ERROR,
