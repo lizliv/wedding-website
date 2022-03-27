@@ -28,7 +28,6 @@ const App = () => {
     const language = get(cookies, ["language"], null)
 
     useEffect(() => {
-        console.log("use Effect is running")
         initializeApp(dispatch,user)
         if (isNull(language)) {
             setCookie("language", LANGUAGE.EN, { path: "/" })

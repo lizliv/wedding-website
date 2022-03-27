@@ -252,12 +252,12 @@ function RSVPForm() {
                             <SongsHelp />
                         </Form.Text>
                     </Form.Group>
-                    <div className="text-center mt-5">
+                    {/* <div className="text-center mt-5">
                         <h5 className="text-muted">
                             <DinnerFormHeader />
                         </h5>
-                    </div>
-                    <Form.Group controlId="controlIdRehearsalGuests">
+                    </div> */}
+                    {/* <Form.Group controlId="controlIdRehearsalGuests">
                         <Form.Label>
                             <DinnerGuestsLabel />
                         </Form.Label>
@@ -284,7 +284,7 @@ function RSVPForm() {
                         <Form.Text className="text-muted">
                             <DinnerGuestsHelp />
                         </Form.Text>
-                    </Form.Group>
+                    </Form.Group> */}
                     <Button
                         className="mt-5"
                         variant="primary"

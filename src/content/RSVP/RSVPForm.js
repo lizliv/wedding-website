@@ -54,14 +54,14 @@ export default {
         SongsHelp: () => (
             <>Let us know which songs will keep you partying all night!</>
         ),
-        DinnerFormHeader: () => <>Welcome &ldquo;Pica-pica&ldquo;</>,
-        DinnerGuestsLabel: () => <>Number of guests attending</>,
-        DinnerGuestsHelp: () => (
-            <>
-                The number of guests (including yourself) that will be in
-                attendance.
-            </>
-        ),
+        // DinnerFormHeader: () => <>Welcome &ldquo;Pica-pica&ldquo;</>,
+        // DinnerGuestsLabel: () => <>Number of guests attending</>,
+        // DinnerGuestsHelp: () => (
+        //     <>
+        //         The number of guests (including yourself) that will be in
+        //         attendance.
+        //     </>
+        // ),
         AlertRSVPUpdated: () => <>Thanks for your RSVP!</>,
     },
     [LANGUAGE.PT]: {
@@ -112,11 +112,11 @@ export default {
                 Feu-nos saber quines cançons us mantindran de festa tota la nit!
             </>
         ),
-        DinnerFormHeader: () => <>Pica-pica de Benvinguda</>,
-        DinnerGuestsLabel: () => <>Número de convidats</>,
-        DinnerGuestsHelp: () => (
-            <>Número de convidats (incloen-te a tu) que vindran.</>
-        ),
+        // DinnerFormHeader: () => <>Pica-pica de Benvinguda</>,
+        // DinnerGuestsLabel: () => <>Número de convidats</>,
+        // DinnerGuestsHelp: () => (
+        //     <>Número de convidats (incloen-te a tu) que vindran.</>
+        // ),
         AlertRSVPUpdated: () => <>Gràcies pel vostre RSUP!</>,
     },
 }

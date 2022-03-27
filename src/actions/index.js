@@ -12,6 +12,9 @@ import {
     logout,
     // currentAuthenticatedUser,
     fetchUserName,
+    fetchUserRSVPallowed,
+    putRSVPDataToDB,
+    fetchUserRSVPdata,
   } from "services";
 
 import { APP } from "./constants"
@@ -21,6 +24,7 @@ export const initializeApp = async (dispatch,user) => {
     const {name,email} = await fetchUserName(user)
 
     if (name) {
+
         // const {
         //     attributes: { sub: name, email },
         // } = myUser
@@ -85,6 +89,10 @@ export const signIn = async (
         // } = myUser
         
         const {name,email} = await fetchUserName(myUser)
+        // const userData = await fetchUserName(myUser)
+
+        // name = userData.name
+        // email = userData.email
 
         dispatch({
             type: APP.SET.USER_SIGN_IN,
@@ -120,18 +128,21 @@ export const signOut = async dispatch => {
 
 export const fetchUserRSVPInformation = async (email, dispatch) => {
     try {
-        const { Item } = await getItemFromDynamo({
-            Email: email.toLowerCase(),
-            Domain: "RSVP",
-        })
+        // const { Item } = await fetchUserRSVP({
+        //     Email: email.toLowerCase(),
+        //     Domain: "RSVP",
+        // })
 
-        const { Item: ConfirmationItem } = await getItemFromDynamo({
-            Email: email.toLowerCase(),
-            Domain: "RSVP_CONFIRMATION",
-        })
+        // const { Item: ConfirmationItem } = await fetchUserRSVP({
+        //     Email: email.toLowerCase(),
+        //     Domain: "RSVP_CONFIRMATION",
+        // })
 
-        const allowed = get(Item, ["Data"], null)
-        const confirmed = get(ConfirmationItem, ["Data"], null)
+        // const allowed = get(Item, ["Data"], null)
+        // const confirmed = get(ConfirmationItem, ["Data"], null)
+        
+        const {allowed,confirmed} = await fetchUserRSVPallowed(email.toLowerCase())
+        // let confirmed
 
         dispatch({
             type: APP.SET.RSVP,
@@ -153,13 +164,13 @@ export const putUserRSVPInformation = async (
     dispatch
 ) => {
     try {
-        await putItemToDynamo({
+        await putRSVPDataToDB({
             Email: email.toLowerCase(),
-            Domain: "RSVP_CONFIRMATION",
+            // Domain: "RSVP_CONFIRMATION",
             Data: {
-                Rehearsal: {
-                    ConfirmedGuests: rehearsalGuests,
-                },
+                // Rehearsal: {
+                //     ConfirmedGuests: rehearsalGuests,
+                // },
                 Wedding: {
                     ConfirmedGuests: weddingGuests,
                     ...(songs ? { Songs: songs } : {}),

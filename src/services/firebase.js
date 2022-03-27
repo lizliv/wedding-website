@@ -9,10 +9,12 @@ import {
 import {
   getFirestore,
   query,
+  getDoc,
   getDocs,
   collection,
   where,
   addDoc,
+  setDoc
 } from "firebase/firestore";
 
 
@@ -38,7 +40,6 @@ const logInWithEmailAndPassword = async (email, password) => {
       console.error(err);
       alert(err.message);
     }
-
     return auth.currentUser
 };
 
@@ -76,19 +77,21 @@ const logout = () => {
 
 
 const fetchUserName = async (user) => {
+  // let userData
   let name, email
 
   if (user){
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
-      const data = doc.docs[0].data();
+      const userData = doc.docs[0].data();
 
+      console.log('user data:',userData)
       // setName(data.name);
 
-      
-      name = data.name
-      email = data.email
+      name = userData.name
+      email = userData.email
+
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
@@ -96,6 +99,7 @@ const fetchUserName = async (user) => {
   }
 
   return {name,email}
+  // return userData
 };
 
 // const currentAuthenticatedUser = async () => {
@@ -112,6 +116,78 @@ const fetchUserName = async (user) => {
 //   return myUser
 // }
 
+const fetchUserRSVPallowed = async (email) => {
+  let rsvpAllowed, rsvpConfirmed
+
+  console.log('Fetch RSVP',email)
+
+  if (email){
+    try {
+      const q = query(collection(db, "rsvp"), where("email", "==", email));
+      const doc = await getDocs(q);
+      const rsvpData = doc.docs[0].data();
+      
+      // console.log('Doc data 0')
+      // console.log(doc.docs[0])
+
+      // console.log('Final')
+      // console.log(doc.docs[0].data())
+
+      rsvpAllowed = rsvpData.allowed
+      rsvpConfirmed = rsvpData.confirmed
+
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
+    } 
+  }
+
+  return {rsvpAllowed,rsvpConfirmed}
+};
+
+const putRSVPDataToDB = async ({Email,Data}) => {
+  try {
+    const q = query(collection(db, "rsvp"), where("email", "==", Email));
+    const doc = await getDoc(q);
+    // const rsvpData = doc.docs[0].data();
+
+    // setDoc(doc, {test: "just added"}, { merge: true });
+
+    await doc.update({test: "added"})
+      // const user = res.user
+      // console.log('Registering with name:',name)
+      // console.log('For the email:', email)
+      // await updateData(collection(db, "rsvp"), {
+      //     Data
+      // })
+  } catch (err) {
+      console.error(err)
+      alert(err.message)
+  }
+};
+
+const fetchUserRSVPdata = async (email) => {
+  let attending
+
+  console.log('Fetch RSVP',email)
+
+  if (email){
+    try {
+      const q = query(collection(db, "rsvp"), where("email", "==", email));
+      const doc = await getDocs(q);
+      const rsvpData = doc.docs[0].data();
+
+      attending = rsvpData.attending
+
+    } catch (err) {
+      console.error(err);
+      alert("An error occured while fetching user data");
+    } 
+  }
+
+  return {attending}
+};
+
 export {
     auth,
     db,
@@ -120,5 +196,8 @@ export {
     registerWithEmailAndPassword,
     sendPasswordReset,
     logout,
+    fetchUserRSVPallowed,
+    putRSVPDataToDB,
+    fetchUserRSVPdata,
     // currentAuthenticatedUser,
 };
