@@ -9,12 +9,11 @@ import {
 import {
   getFirestore,
   query,
-  getDoc,
   getDocs,
   collection,
   where,
   addDoc,
-  setDoc
+  setDoc,
 } from "firebase/firestore";
 
 
@@ -85,8 +84,6 @@ const fetchUserName = async (user) => {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
       const userData = doc.docs[0].data();
-
-      console.log('user data:',userData)
       // setName(data.name);
 
       name = userData.name
@@ -119,19 +116,11 @@ const fetchUserName = async (user) => {
 const fetchUserRSVPallowed = async (email) => {
   let rsvpAllowed, rsvpConfirmed
 
-  console.log('Fetch RSVP',email)
-
   if (email){
     try {
       const q = query(collection(db, "rsvp"), where("email", "==", email));
       const doc = await getDocs(q);
       const rsvpData = doc.docs[0].data();
-      
-      // console.log('Doc data 0')
-      // console.log(doc.docs[0])
-
-      // console.log('Final')
-      // console.log(doc.docs[0].data())
 
       rsvpAllowed = rsvpData.allowed
       rsvpConfirmed = rsvpData.confirmed
@@ -148,18 +137,11 @@ const fetchUserRSVPallowed = async (email) => {
 const putRSVPDataToDB = async ({Email,Data}) => {
   try {
     const q = query(collection(db, "rsvp"), where("email", "==", Email));
-    const doc = await getDoc(q);
-    // const rsvpData = doc.docs[0].data();
-
-    // setDoc(doc, {test: "just added"}, { merge: true });
-
-    await doc.update({test: "added"})
-      // const user = res.user
-      // console.log('Registering with name:',name)
-      // console.log('For the email:', email)
-      // await updateData(collection(db, "rsvp"), {
-      //     Data
-      // })
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.id, " => ", doc.data())
+      setDoc(doc.ref, Data, { merge: true })
+    });
   } catch (err) {
       console.error(err)
       alert(err.message)
@@ -168,8 +150,6 @@ const putRSVPDataToDB = async ({Email,Data}) => {
 
 const fetchUserRSVPdata = async (email) => {
   let attending
-
-  console.log('Fetch RSVP',email)
 
   if (email){
     try {
