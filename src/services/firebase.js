@@ -76,19 +76,16 @@ const logout = () => {
 
 
 const fetchUserName = async (user) => {
-  let name 
+  let name, email
 
   if (user){
     try {
-      console.log('The user is:')
-      console.log(user)
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
       const data = doc.docs[0].data();
 
       // setName(data.name);
 
-      console.log(data)
       
       name = data.name
       email = data.email

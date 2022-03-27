@@ -8,7 +8,7 @@ export const Store = React.createContext({})
 const initialState = {
     app: {
         user: {
-            username: null,
+            // username: null,
             email: null,
             name: null,
             error: null,

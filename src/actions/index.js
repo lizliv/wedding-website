@@ -83,8 +83,8 @@ export const signIn = async (
         // const { 
         //     attributes: { sub: name, email }, 
         // } = myUser
-        const name = myUser.name
-        const email = myUser.email
+        
+        const {name,email} = await fetchUserName(myUser)
 
         dispatch({
             type: APP.SET.USER_SIGN_IN,
