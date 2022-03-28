@@ -43,7 +43,7 @@ function RSVPForm() {
     const {
         app: {
             user: { email },
-            rsvp: { allowed, confirmed },
+            rsvp: { allowed, confirmed, weddingData },
         },
     } = state
 
@@ -105,10 +105,10 @@ function RSVPForm() {
     }
 
     // wedding values
-    const weddingMaxGuests = get(allowed, ["Wedding", "MaxGuests"])
-    const weddingConfirmedGuests = get(confirmed, ["Wedding", "ConfirmedGuests"])
-    const weddingFoodChoice = get(confirmed, ["Wedding", "FoodChoice"])
-    const weddingDietRestrictions = get(confirmed, ["Wedding", "DietRestrictions"])
+    const weddingMaxGuests = get(weddingData, "MaxGuests")
+    const weddingConfirmedGuests = get(weddingData, "ConfirmedGuests")
+    const weddingFoodChoice = get(weddingData, "FoodChoice")
+    const weddingDietRestrictions = get(weddingData, "DietRestrictions")
     // const weddingOrigin = get(confirmed, ["Wedding", "Origin"])
 
     // // rehearsal values

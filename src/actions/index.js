@@ -142,6 +142,7 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
         // const confirmed = get(ConfirmationItem, ["Data"], null)
         
         const {allowed,confirmed} = await fetchUserRSVPallowed(email.toLowerCase())
+        const {weddingData} = await fetchUserRSVPdata(email.toLowerCase())
         // let confirmed
 
         dispatch({
@@ -149,6 +150,7 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
             payload: {
                 allowed,
                 confirmed,
+                weddingData,
             },
         })
     } catch (error) {

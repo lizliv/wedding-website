@@ -149,7 +149,7 @@ const putRSVPDataToDB = async ({Email,Data}) => {
 };
 
 const fetchUserRSVPdata = async (email) => {
-  let attending
+  let weddingData
 
   if (email){
     try {
@@ -157,15 +157,15 @@ const fetchUserRSVPdata = async (email) => {
       const doc = await getDocs(q);
       const rsvpData = doc.docs[0].data();
 
-      attending = rsvpData.attending
+      weddingData = rsvpData.Wedding
 
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
     } 
   }
-
-  return {attending}
+  
+  return {weddingData}
 };
 
 export {

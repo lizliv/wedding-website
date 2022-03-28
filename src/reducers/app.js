@@ -27,6 +27,7 @@ export default (state, action) => ({
     [APP.SET.USER_ERROR]: set(["app", "user", "error"], action.payload, state),
     [APP.SET.RSVP]: flow(
         set(["app", "rsvp", "allowed"], get(action, ["payload", "allowed"])),
-        set(["app", "rsvp", "confirmed"], get(action, ["payload", "confirmed"]))
+        set(["app", "rsvp", "confirmed"], get(action, ["payload", "confirmed"])),
+        set(["app", "rsvp", "weddingData"], get(action, ["payload", "weddingData"]))
     )(state),
 })
