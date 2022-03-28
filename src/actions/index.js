@@ -15,6 +15,7 @@ import {
     fetchUserRSVPallowed,
     putRSVPDataToDB,
     fetchUserRSVPdata,
+    fetchPartyUsers,
   } from "services";
 
 import { APP } from "./constants"
@@ -142,10 +143,11 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
         // const confirmed = get(ConfirmationItem, ["Data"], null)
         // let confirmed
 
-        let weddingData
+        let weddingData, partyGuests
         const {allowed,confirmed} = await fetchUserRSVPallowed(email.toLowerCase())
         if(allowed){
             weddingData = await fetchUserRSVPdata(email.toLowerCase())
+            partyGuests = await fetchPartyUsers(email)
         }
 
         dispatch({
@@ -154,6 +156,7 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
                 allowed,
                 confirmed,
                 weddingData,
+                partyGuests,
             },
         })
     } catch (error) {

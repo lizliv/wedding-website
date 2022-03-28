@@ -28,6 +28,7 @@ export default (state, action) => ({
     [APP.SET.RSVP]: flow(
         set(["app", "rsvp", "allowed"], get(action, ["payload", "allowed"])),
         set(["app", "rsvp", "confirmed"], get(action, ["payload", "confirmed"])),
-        set(["app", "rsvp", "weddingData"], get(action, ["payload", "weddingData"]))
+        set(["app", "rsvp", "weddingData"], get(action, ["payload", "weddingData"])),
+        set(["app", "rsvp", "partyGuests"], get(action, ["payload", "partyGuests"]))
     )(state),
 })

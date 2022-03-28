@@ -169,6 +169,22 @@ const putRSVPDataToDB = async ({Email,Data}) => {
   }
 };
 
+const fetchPartyUsers = async(email) => {
+  let partyGuests
+  try{
+    const q = query(collection(db, "parties"), where("guests", "array-contains", email));
+    const doc = await getDocs(q);
+    const partyData = doc.docs[0].data();
+
+    partyGuests = partyData.guests
+
+  } catch (err){
+    console.error(err)
+    alert(err.message)
+  }
+  return partyGuests
+}
+
 export {
     auth,
     db,
@@ -180,5 +196,6 @@ export {
     fetchUserRSVPallowed,
     fetchUserRSVPdata,
     putRSVPDataToDB,
+    fetchPartyUsers,
     // currentAuthenticatedUser,
 };

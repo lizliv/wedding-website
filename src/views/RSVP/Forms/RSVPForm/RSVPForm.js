@@ -29,6 +29,7 @@ const schema = object({
     // origin: string(),
 })
 
+
 const YES = "yes"
 const NO = "no"
 
@@ -45,7 +46,7 @@ function RSVPForm() {
     const {
         app: {
             user: { name, email },
-            rsvp: { allowed, confirmed, weddingData },
+            rsvp: { allowed, confirmed, weddingData, partyGuests},
         },
     } = state
 
@@ -118,6 +119,9 @@ function RSVPForm() {
     const weddingNote               = get(weddingData, "Note")
     // const weddingOrigin = get(confirmed, ["Wedding", "Origin"])
     console.log(weddingData)
+
+    console.log('Party Guests:', partyGuests)
+    console.log('Party Guest 1:', partyGuests[0])
 
     // // rehearsal values
     // const rehearsalMaxGuests = get(allowed, ["Rehearsal", "MaxGuests"])
