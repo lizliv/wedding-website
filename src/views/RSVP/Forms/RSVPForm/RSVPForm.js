@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useCookies } from "react-cookie"
-import { object, number, string } from "yup"
+import { object, number, string, boolean } from "yup"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
@@ -20,15 +20,17 @@ import { rsvpForm } from "content/RSVP"
 import styles from "../Forms.module.scss"
 
 const schema = object({
-    weddingGuests: number().required(),
+    // weddingGuests: number().required(),
     // rehearsalGuests: number().required(),
+    isAttending: string().required(),
     foodChoice: string(),
     dietRestrictions: string(),
-    origin: string(),
+    guestNote: string(),
+    // origin: string(),
 })
 
-const YES = "Yes"
-const NO = "No"
+const YES = "yes"
+const NO = "no"
 
 const CHICKEN = "Chicken"
 const VEGETARIAN = "Vegetarian"
@@ -60,15 +62,19 @@ function RSVPForm() {
         // otherLabel,
         otherLabelExtra,
         WeddingFormHeader,
-        NumberOfGuestsLabel,
         zeroLabel,
+        NumberOfGuestsLabel,
         NumberOfGuestsHelp,
+        AttendingLabel,
+        AttendingHelp,
         FoodChoiceLabel,
         FoodChoiceHelp,
         OriginLabel,
         OriginHelp,
         DietRestrictionsLabel,
         DietRestrictionsHelp,
+        WeddingNoteLabel,
+        WeddingNoteHelp,
         // DinnerFormHeader,
         // DinnerGuestsLabel,
         // DinnerGuestsHelp,
@@ -105,11 +111,13 @@ function RSVPForm() {
     }
 
     // wedding values
-    const weddingMaxGuests = get(weddingData, "MaxGuests")
-    const weddingConfirmedGuests = get(weddingData, "ConfirmedGuests")
-    const weddingFoodChoice = get(weddingData, "FoodChoice")
-    const weddingDietRestrictions = get(weddingData, "DietRestrictions")
+    // const weddingMaxGuests = get(weddingData, "MaxGuests")
+    const weddingIsAttending        = get(weddingData, "IsAttending")
+    const weddingFoodChoice         = get(weddingData, "FoodChoice")
+    const weddingDietRestrictions   = get(weddingData, "DietRestrictions")
+    const weddingNote               = get(weddingData, "Note")
     // const weddingOrigin = get(confirmed, ["Wedding", "Origin"])
+    console.log(weddingData)
 
     // // rehearsal values
     // const rehearsalMaxGuests = get(allowed, ["Rehearsal", "MaxGuests"])
@@ -118,7 +126,7 @@ function RSVPForm() {
     //     "ConfirmedGuests",
     // ])
 
-    const buttonText = isUndefined(weddingConfirmedGuests)
+    const buttonText = isUndefined(weddingIsAttending)
         ? submitButtonText
         : updateButtonText
 
@@ -126,10 +134,12 @@ function RSVPForm() {
         <Formik
             validationSchema={schema}
             initialValues={{
-                weddingGuests: weddingConfirmedGuests || 0,
+                // weddingGuests: weddingConfirmedGuests || 0,
                 // rehearsalGuests: rehearsalConfirmedGuests || 0,
+                isAttending: weddingIsAttending || "",
                 foodChoice: weddingFoodChoice || "",
                 dietRestrictions: weddingDietRestrictions || "",
+                guestNote: weddingNote || "",
                 // origin: weddingOrigin || TORTOSA,
             }}
             onSubmit={submitForm}
@@ -154,7 +164,7 @@ function RSVPForm() {
                             <WeddingFormHeader />
                         </h5>
                     </div>
-                    <Form.Group controlId="controlIdWeddingGuests">
+                    {/* <Form.Group controlId="controlIdWeddingGuests">
                         <Form.Label>
                             <NumberOfGuestsLabel />
                         </Form.Label>
@@ -181,28 +191,106 @@ function RSVPForm() {
                         <Form.Text className="text-muted">
                             <NumberOfGuestsHelp />
                         </Form.Text>
+                    </Form.Group> */}
+                    <Form.Group controlId="controlIdAttending">
+                        <Form.Label>
+                            <AttendingLabel />
+                        </Form.Label>
+                        <Form.Check
+                            name="isAttending"
+                            aria-label="Radio 1"
+                            type="radio"
+                            value={YES}
+                            label={yesLabel} 
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={touched.isAttending && errors.isAttending}
+                            checked={values.isAttending===YES}
+                        >
+                        </Form.Check>
+                        <Form.Check
+                            name="isAttending"
+                            aria-label="Radio 2"
+                            type="radio"
+                            value={NO}
+                            label={noLabel} 
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={touched.isAttending && errors.isAttending}
+                            checked={values.isAttending===NO}
+                        >
+                        </Form.Check>
+                        <Form.Text className="text-muted">
+                            <AttendingHelp />
+                        </Form.Text>
                     </Form.Group>
+                    {values.isAttending === YES && (
                     <Form.Group controlId="controlIdFoodChoice">
                         <Form.Label>
                             <FoodChoiceLabel />
                         </Form.Label>
-                        <Form.Control
+                        <Form.Check
                             name="foodChoice"
-                            as="select"
-                            value={values.foodChoice}
+                            aria-label="Radio 1"
+                            type="radio"
+                            value={CHICKEN}
+                            label={chickenLabel} 
                             onChange={handleChange}
                             onBlur={handleBlur}
                             isInvalid={touched.foodChoice && errors.foodChoice}
+                            checked={values.foodChoice===CHICKEN}
                         >
-                            <option label={chickenLabel} value={CHICKEN}>
-                                {chickenLabel}
-                            </option>
-                            <option label={veggieLabel} value={VEGETARIAN}>
-                                {veggieLabel}
-                            </option>
-                        </Form.Control>
+                        </Form.Check>
+                        <Form.Check
+                            name="foodChoice"
+                            aria-label="Radio 2"
+                            type="radio"
+                            value={VEGETARIAN}
+                            label={veggieLabel} 
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={touched.foodChoice && errors.foodChoice}
+                            checked={values.foodChoice===VEGETARIAN}
+                        ></Form.Check>
                         <Form.Text className="text-muted">
                             <FoodChoiceHelp />
+                        </Form.Text>
+                    </Form.Group> 
+                    )}
+                    {values.isAttending === YES && (
+                    <Form.Group controlId="controlIdWeddingDietRestrictions">
+                        <Form.Label>
+                            <DietRestrictionsLabel />
+                        </Form.Label>
+                        <Form.Control
+                            name="dietRestrictions"
+                            as="textarea"
+                            rows="1"
+                            value={values.dietRestrictions}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={touched.dietRestrictions && errors.dietRestrictions}
+                        />
+                        <Form.Text className="text-muted">
+                            <DietRestrictionsHelp />
+                        </Form.Text>
+                    </Form.Group>
+                    )}
+                    <Form.Group controlId="controlIdWeddingNote">
+                        <Form.Label>
+                            <WeddingNoteLabel />
+                        </Form.Label>
+                        <Form.Control
+                            name="guestNote"
+                            as="textarea"
+                            rows="3"
+                            value={values.guestNote}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={touched.guestNote && errors.guestNote}
+                        />
+                        <Form.Text className="text-muted">
+                            <WeddingNoteHelp />
                         </Form.Text>
                     </Form.Group>
                     {/* {values.foodChoice === YES && (
@@ -234,23 +322,6 @@ function RSVPForm() {
                             </Form.Text>
                         </Form.Group>
                     )} */}
-                    <Form.Group controlId="controlIdWeddingDietRestrictions">
-                        <Form.Label>
-                            <DietRestrictionsLabel />
-                        </Form.Label>
-                        <Form.Control
-                            name="dietRestrictions"
-                            as="textarea"
-                            rows="3"
-                            value={values.dietRestrictions}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={touched.dietRestrictions && errors.dietRestrictions}
-                        />
-                        <Form.Text className="text-muted">
-                            <DietRestrictionsHelp />
-                        </Form.Text>
-                    </Form.Group>
                     {/* <div className="text-center mt-5">
                         <h5 className="text-muted">
                             <DinnerFormHeader />

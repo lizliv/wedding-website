@@ -162,7 +162,7 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
 }
 
 export const putUserRSVPInformation = async (
-    { email, weddingGuests, foodChoice, dietRestrictions },
+    { email, isAttending, foodChoice, dietRestrictions, guestNote},
     setSubmitting,
     setStatus,
     setShowConfirmation,
@@ -177,11 +177,13 @@ export const putUserRSVPInformation = async (
                 //     ConfirmedGuests: rehearsalGuests,
                 // },
                 Wedding: {
-                    ConfirmedGuests: weddingGuests,
+                    IsAttending: isAttending,
                     ...(foodChoice ? { FoodChoice: foodChoice } : {}),
                     DietRestrictions: dietRestrictions,
+                    Note: guestNote,
                     // Origin: origin,
                 },
+                confirmed: isAttending,
             },
         })
         await fetchUserRSVPInformation(email, dispatch)

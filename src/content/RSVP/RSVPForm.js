@@ -35,6 +35,14 @@ export default {
                 will be in attendance.
             </>
         ),
+        AttendingLabel: () => (
+            <>Will you be attending the wedding?</>
+        ),
+        AttendingHelp: () => (
+            <>
+                The ceremony is at 5:30 pm on Sunday, June 12th, 2022.
+            </>
+        ),
         FoodChoiceLabel: () => (
             <>Which food option would you like?</>
         ),
@@ -54,6 +62,10 @@ export default {
         DietRestrictionsLabel: () => <>Dietary Restrictions</>,
         DietRestrictionsHelp: () => (
             <>Do you have any dietary restrictions? (i.e. vegetarian, vegan, Kosher, gluten free, etc.)</>
+        ),
+        WeddingNoteLabel: () => <>Message</>,
+        WeddingNoteHelp: () => (
+            <>Want to leave a message for the bride and groom?</>
         ),
         // DinnerFormHeader: () => <>Welcome &ldquo;Pica-pica&ldquo;</>,
         // DinnerGuestsLabel: () => <>Number of guests attending</>,
@@ -93,6 +105,14 @@ export default {
         NumberOfGuestsHelp: () => (
             <>Número de convidats (incloen-te a tu) que vindran.</>
         ),
+        AttendingLabel: () => (
+            <>Will you be attending the wedding?</>
+        ),
+        AttendingHelp: () => (
+            <>
+                The ceremony is at 5:30 on Sunday, June 12th, 2022.
+            </>
+        ),
         FoodChoiceLabel: () => (
             <>Qual opção de comida você gostaria?</>
         ),
@@ -113,6 +133,10 @@ export default {
             <>
                 Você tem alguma restrição alimentar? (ou seja, vegetariano, vegano, Kosher, sem glúten, etc.)
             </>
+        ),
+        WeddingNoteLabel: () => <>Message</>,
+        WeddingNoteHelp: () => (
+            <>Want to leave a message for the bride and groom?</>
         ),
         // DinnerFormHeader: () => <>Pica-pica de Benvinguda</>,
         // DinnerGuestsLabel: () => <>Número de convidats</>,
