@@ -21,18 +21,18 @@ import styles from "../Forms.module.scss"
 
 const schema = object({
     weddingGuests: number().required(),
-    rehearsalGuests: number().required(),
-    songs: string(),
-    needBus: string(),
+    // rehearsalGuests: number().required(),
+    foodChoice: string(),
+    dietRestrictions: string(),
     origin: string(),
 })
 
 const YES = "Yes"
 const NO = "No"
 
-const LAMPOLLA = "L'Ampolla"
-const TORTOSA = "Tortosa"
-const OTHER = "Other"
+const CHICKEN = "Chicken"
+const VEGETARIAN = "Vegetarian"
+// const OTHER = "Other"
 
 function RSVPForm() {
     const { state, dispatch } = useContext(Store)
@@ -53,23 +53,25 @@ function RSVPForm() {
         updateButtonText,
         yesLabel,
         noLabel,
-        lampollaLabel,
-        tortosaLabel,
-        otherLabel,
+        chickenLabel,
+        veggieLabel,
+        // lampollaLabel,
+        // tortosaLabel,
+        // otherLabel,
         otherLabelExtra,
         WeddingFormHeader,
         NumberOfGuestsLabel,
         zeroLabel,
         NumberOfGuestsHelp,
-        TransportationLabel,
-        TransportationHelp,
+        FoodChoiceLabel,
+        FoodChoiceHelp,
         OriginLabel,
         OriginHelp,
-        SongsLabel,
-        SongsHelp,
-        DinnerFormHeader,
-        DinnerGuestsLabel,
-        DinnerGuestsHelp,
+        DietRestrictionsLabel,
+        DietRestrictionsHelp,
+        // DinnerFormHeader,
+        // DinnerGuestsLabel,
+        // DinnerGuestsHelp,
         AlertRSVPUpdated,
     } = rsvpForm[selectLanguage(cookies)]
 
@@ -104,20 +106,17 @@ function RSVPForm() {
 
     // wedding values
     const weddingMaxGuests = get(allowed, ["Wedding", "MaxGuests"])
-    const weddingConfirmedGuests = get(confirmed, [
-        "Wedding",
-        "ConfirmedGuests",
-    ])
-    const weddingSongs = get(confirmed, ["Wedding", "Songs"])
-    const weddingNeedBus = get(confirmed, ["Wedding", "NeedBus"])
-    const weddingOrigin = get(confirmed, ["Wedding", "Origin"])
+    const weddingConfirmedGuests = get(confirmed, ["Wedding", "ConfirmedGuests"])
+    const weddingFoodChoice = get(confirmed, ["Wedding", "FoodChoice"])
+    const weddingDietRestrictions = get(confirmed, ["Wedding", "DietRestrictions"])
+    // const weddingOrigin = get(confirmed, ["Wedding", "Origin"])
 
-    // rehearsal values
-    const rehearsalMaxGuests = get(allowed, ["Rehearsal", "MaxGuests"])
-    const rehearsalConfirmedGuests = get(confirmed, [
-        "Rehearsal",
-        "ConfirmedGuests",
-    ])
+    // // rehearsal values
+    // const rehearsalMaxGuests = get(allowed, ["Rehearsal", "MaxGuests"])
+    // const rehearsalConfirmedGuests = get(confirmed, [
+    //     "Rehearsal",
+    //     "ConfirmedGuests",
+    // ])
 
     const buttonText = isUndefined(weddingConfirmedGuests)
         ? submitButtonText
@@ -128,10 +127,10 @@ function RSVPForm() {
             validationSchema={schema}
             initialValues={{
                 weddingGuests: weddingConfirmedGuests || 0,
-                rehearsalGuests: rehearsalConfirmedGuests || 0,
-                needBus: weddingNeedBus || NO,
-                origin: weddingOrigin || TORTOSA,
-                songs: weddingSongs || "",
+                // rehearsalGuests: rehearsalConfirmedGuests || 0,
+                foodChoice: weddingFoodChoice || "",
+                dietRestrictions: weddingDietRestrictions || "",
+                // origin: weddingOrigin || TORTOSA,
             }}
             onSubmit={submitForm}
         >
@@ -183,30 +182,30 @@ function RSVPForm() {
                             <NumberOfGuestsHelp />
                         </Form.Text>
                     </Form.Group>
-                    <Form.Group controlId="controlIdNeedBus">
+                    <Form.Group controlId="controlIdFoodChoice">
                         <Form.Label>
-                            <TransportationLabel />
+                            <FoodChoiceLabel />
                         </Form.Label>
                         <Form.Control
-                            name="needBus"
+                            name="foodChoice"
                             as="select"
-                            value={values.needBus}
+                            value={values.foodChoice}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={touched.needBus && errors.needBus}
+                            isInvalid={touched.foodChoice && errors.foodChoice}
                         >
-                            <option label={yesLabel} value={YES}>
-                                {yesLabel}
+                            <option label={chickenLabel} value={CHICKEN}>
+                                {chickenLabel}
                             </option>
-                            <option label={noLabel} value={NO}>
-                                {noLabel}
+                            <option label={veggieLabel} value={VEGETARIAN}>
+                                {veggieLabel}
                             </option>
                         </Form.Control>
                         <Form.Text className="text-muted">
-                            <TransportationHelp />
+                            <FoodChoiceHelp />
                         </Form.Text>
                     </Form.Group>
-                    {values.needBus === YES && (
+                    {/* {values.foodChoice === YES && (
                         <Form.Group controlId="controlIdOrigin">
                             <Form.Label>
                                 <OriginLabel />
@@ -234,22 +233,22 @@ function RSVPForm() {
                                 <OriginHelp />
                             </Form.Text>
                         </Form.Group>
-                    )}
-                    <Form.Group controlId="controlIdWeddingSongs">
+                    )} */}
+                    <Form.Group controlId="controlIdWeddingDietRestrictions">
                         <Form.Label>
-                            <SongsLabel />
+                            <DietRestrictionsLabel />
                         </Form.Label>
                         <Form.Control
-                            name="songs"
+                            name="dietRestrictions"
                             as="textarea"
                             rows="3"
-                            value={values.songs}
+                            value={values.dietRestrictions}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={touched.songs && errors.songs}
+                            isInvalid={touched.dietRestrictions && errors.dietRestrictions}
                         />
                         <Form.Text className="text-muted">
-                            <SongsHelp />
+                            <DietRestrictionsHelp />
                         </Form.Text>
                     </Form.Group>
                     {/* <div className="text-center mt-5">

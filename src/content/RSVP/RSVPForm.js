@@ -9,8 +9,8 @@ export default {
                 Whoops, it looks like we don't have your email address. Email us
                 at{" "}
                 <strong>
-                    <a href="mailto:elizabethrenee.livingston@gmail.com">
-                    elizabethrenee.livingston@gmail.com
+                    <a href="mailto:lizandchristian2022@gmail.com">
+                    lizandchristian2022@gmail.com
                     </a>
                 </strong>{" "}
                 so we can update our records.
@@ -20,6 +20,8 @@ export default {
         updateButtonText: "Update RSVP",
         yesLabel: "Yes",
         noLabel: "No",
+        chickenLabel: "Chicken",
+        veggieLabel: "Vegetarian",
         lampollaLabel: "L'Ampolla",
         tortosaLabel: "Tortosa",
         otherLabel: "Other",
@@ -33,13 +35,12 @@ export default {
                 will be in attendance.
             </>
         ),
-        TransportationLabel: () => (
-            <>Would you like bus transportation to/from the venue?</>
+        FoodChoiceLabel: () => (
+            <>Which food option would you like?</>
         ),
-        TransportationHelp: () => (
+        FoodChoiceHelp: () => (
             <>
-                We'll be providing bus transportation to/from the venue. Let us
-                know if you want to reserve spots for your group!
+                Let us know which option you prefer, any dietary restrictions will be accomodated.
             </>
         ),
         OriginLabel: () => <>Where is your origin?</>,
@@ -50,9 +51,9 @@ export default {
                 from other locations.
             </>
         ),
-        SongsLabel: () => <>Song requests</>,
-        SongsHelp: () => (
-            <>Let us know which songs will keep you partying all night!</>
+        DietRestrictionsLabel: () => <>Dietary Restrictions</>,
+        DietRestrictionsHelp: () => (
+            <>Do you have any dietary restrictions? (i.e. vegetarian, vegan, Kosher, gluten free, etc.)</>
         ),
         // DinnerFormHeader: () => <>Welcome &ldquo;Pica-pica&ldquo;</>,
         // DinnerGuestsLabel: () => <>Number of guests attending</>,
@@ -69,8 +70,8 @@ export default {
             <>
                 Uups, sembla que no tenim el vostre email. Envieu-nos un email a{" "}
                 <strong>
-                    <a href="mailto:elizabethrenee.livingston@gmail.com">
-                    elizabethrenee.livingston@gmail.com
+                    <a href="mailto:lizandchristian2022@gmail.com">
+                    lizandchristian2022@gmail.com
                     </a>
                 </strong>{" "}
                 i actualitzarem el nostre registre.
@@ -80,6 +81,8 @@ export default {
         updateButtonText: "Actualitza RSUP",
         yesLabel: "Sí",
         noLabel: "No",
+        chickenLabel: "Frango",
+        veggieLabel: "Vegetariana",
         lampollaLabel: "L'Ampolla",
         tortosaLabel: "Tortosa",
         otherLabel: "Altres",
@@ -90,13 +93,12 @@ export default {
         NumberOfGuestsHelp: () => (
             <>Número de convidats (incloen-te a tu) que vindran.</>
         ),
-        TransportationLabel: () => (
-            <>Necessiteu transport a/de el lloc del casament?</>
+        FoodChoiceLabel: () => (
+            <>Qual opção de comida você gostaria?</>
         ),
-        TransportationHelp: () => (
+        FoodChoiceHelp: () => (
             <>
-                Hi haurà autobús a/de el lloc del casament. Digueu-nos si
-                nececessiteu reservar seients per al vostre grup!
+                Deixe-nos saber qual opção você prefere, quaisquer restrições alimentares serão acomodadas.
             </>
         ),
         OriginLabel: () => <>Des d'on?</>,
@@ -106,10 +108,10 @@ export default {
                 si necessiteu ajuda trobant transport.
             </>
         ),
-        SongsLabel: () => <>Voleu demanar una cançó?</>,
-        SongsHelp: () => (
+        DietRestrictionsLabel: () => <>Restrições alimentares?</>,
+        DietRestrictionsHelp: () => (
             <>
-                Feu-nos saber quines cançons us mantindran de festa tota la nit!
+                Você tem alguma restrição alimentar? (ou seja, vegetariano, vegano, Kosher, sem glúten, etc.)
             </>
         ),
         // DinnerFormHeader: () => <>Pica-pica de Benvinguda</>,
