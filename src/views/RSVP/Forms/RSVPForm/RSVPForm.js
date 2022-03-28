@@ -44,7 +44,7 @@ function RSVPForm() {
 
     const {
         app: {
-            user: { email },
+            user: { name, email },
             rsvp: { allowed, confirmed, weddingData },
         },
     } = state
@@ -194,7 +194,7 @@ function RSVPForm() {
                     </Form.Group> */}
                     <Form.Group controlId="controlIdAttending">
                         <Form.Label>
-                            <AttendingLabel />
+                            <AttendingLabel name={name} email={email} />
                         </Form.Label>
                         <Form.Check
                             name="isAttending"

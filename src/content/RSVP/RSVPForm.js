@@ -1,6 +1,7 @@
 import React from "react"
 
 import { LANGUAGE } from "actions/constants"
+import userEvent from "@testing-library/user-event"
 
 export default {
     [LANGUAGE.EN]: {
@@ -35,8 +36,8 @@ export default {
                 will be in attendance.
             </>
         ),
-        AttendingLabel: () => (
-            <>Will you be attending the wedding?</>
+        AttendingLabel: ({ name , email}) => (
+            <>Will <strong>{name} ({email})</strong> be attending the wedding?</>
         ),
         AttendingHelp: () => (
             <>
@@ -105,8 +106,8 @@ export default {
         NumberOfGuestsHelp: () => (
             <>Número de convidats (incloen-te a tu) que vindran.</>
         ),
-        AttendingLabel: () => (
-            <>Will you be attending the wedding?</>
+        AttendingLabel: ({ name , email}) => (
+            <>Will <strong>{name} ({email})</strong> be attending the wedding?</>
         ),
         AttendingHelp: () => (
             <>
