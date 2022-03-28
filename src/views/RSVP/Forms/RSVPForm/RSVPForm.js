@@ -92,7 +92,7 @@ function RSVPForm() {
         )
     }
 
-    if (isNull(allowed)) {
+    if (!allowed) {
         return (
             <Container>
                 <Col className={styles.intro}>

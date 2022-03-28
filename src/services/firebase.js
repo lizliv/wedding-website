@@ -114,7 +114,7 @@ const fetchUserName = async (user) => {
 // }
 
 const fetchUserRSVPallowed = async (email) => {
-  let rsvpAllowed, rsvpConfirmed
+  let allowed, confirmed
 
   if (email){
     try {
@@ -122,8 +122,8 @@ const fetchUserRSVPallowed = async (email) => {
       const doc = await getDocs(q);
       const rsvpData = doc.docs[0].data();
 
-      rsvpAllowed = rsvpData.allowed
-      rsvpConfirmed = rsvpData.confirmed
+      allowed = rsvpData.allowed
+      confirmed = rsvpData.confirmed
 
     } catch (err) {
       console.error(err);
@@ -131,21 +131,7 @@ const fetchUserRSVPallowed = async (email) => {
     } 
   }
 
-  return {rsvpAllowed,rsvpConfirmed}
-};
-
-const putRSVPDataToDB = async ({Email,Data}) => {
-  try {
-    const q = query(collection(db, "rsvp"), where("email", "==", Email));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data())
-      setDoc(doc.ref, Data, { merge: true })
-    });
-  } catch (err) {
-      console.error(err)
-      alert(err.message)
-  }
+  return {allowed,confirmed}
 };
 
 const fetchUserRSVPdata = async (email) => {
@@ -165,7 +151,22 @@ const fetchUserRSVPdata = async (email) => {
     } 
   }
   
-  return {weddingData}
+  return weddingData
+};
+
+
+const putRSVPDataToDB = async ({Email,Data}) => {
+  try {
+    const q = query(collection(db, "rsvp"), where("email", "==", Email));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // console.log(doc.id, " => ", doc.data())
+      setDoc(doc.ref, Data, { merge: true })
+    });
+  } catch (err) {
+      console.error(err)
+      alert(err.message)
+  }
 };
 
 export {
@@ -177,7 +178,7 @@ export {
     sendPasswordReset,
     logout,
     fetchUserRSVPallowed,
-    putRSVPDataToDB,
     fetchUserRSVPdata,
+    putRSVPDataToDB,
     // currentAuthenticatedUser,
 };

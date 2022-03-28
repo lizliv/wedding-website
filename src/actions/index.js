@@ -140,10 +140,13 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
 
         // const allowed = get(Item, ["Data"], null)
         // const confirmed = get(ConfirmationItem, ["Data"], null)
-        
-        const {allowed,confirmed} = await fetchUserRSVPallowed(email.toLowerCase())
-        const {weddingData} = await fetchUserRSVPdata(email.toLowerCase())
         // let confirmed
+
+        let weddingData
+        const {allowed,confirmed} = await fetchUserRSVPallowed(email.toLowerCase())
+        if(allowed){
+            weddingData = await fetchUserRSVPdata(email.toLowerCase())
+        }
 
         dispatch({
             type: APP.SET.RSVP,
