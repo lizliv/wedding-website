@@ -20,22 +20,17 @@ import { rsvpForm } from "content/RSVP"
 import styles from "../Forms.module.scss"
 
 const schema = object({
-    // weddingGuests: number().required(),
-    // rehearsalGuests: number().required(),
     isAttending: string().required(),
     foodChoice: string(),
     dietRestrictions: string(),
     guestNote: string(),
-    // origin: string(),
 })
-
 
 const YES = "yes"
 const NO = "no"
 
 const CHICKEN = "Chicken"
 const VEGETARIAN = "Vegetarian"
-// const OTHER = "Other"
 
 function RSVPForm() {
     const { state, dispatch } = useContext(Store)
@@ -58,27 +53,17 @@ function RSVPForm() {
         noLabel,
         chickenLabel,
         veggieLabel,
-        // lampollaLabel,
-        // tortosaLabel,
-        // otherLabel,
         otherLabelExtra,
         WeddingFormHeader,
         zeroLabel,
-        NumberOfGuestsLabel,
-        NumberOfGuestsHelp,
         AttendingLabel,
         AttendingHelp,
         FoodChoiceLabel,
         FoodChoiceHelp,
-        OriginLabel,
-        OriginHelp,
         DietRestrictionsLabel,
         DietRestrictionsHelp,
         WeddingNoteLabel,
         WeddingNoteHelp,
-        // DinnerFormHeader,
-        // DinnerGuestsLabel,
-        // DinnerGuestsHelp,
         AlertRSVPUpdated,
     } = rsvpForm[selectLanguage(cookies)]
 
@@ -111,24 +96,14 @@ function RSVPForm() {
         )
     }
 
-    // wedding values
-    // const weddingMaxGuests = get(weddingData, "MaxGuests")
     const weddingIsAttending        = get(weddingData, "IsAttending")
     const weddingFoodChoice         = get(weddingData, "FoodChoice")
     const weddingDietRestrictions   = get(weddingData, "DietRestrictions")
     const weddingNote               = get(weddingData, "Note")
-    // const weddingOrigin = get(confirmed, ["Wedding", "Origin"])
     console.log(weddingData)
 
     console.log('Party Guests:', partyGuests)
     console.log('Party Guest 1:', partyGuests[0])
-
-    // // rehearsal values
-    // const rehearsalMaxGuests = get(allowed, ["Rehearsal", "MaxGuests"])
-    // const rehearsalConfirmedGuests = get(confirmed, [
-    //     "Rehearsal",
-    //     "ConfirmedGuests",
-    // ])
 
     const buttonText = isUndefined(weddingIsAttending)
         ? submitButtonText
@@ -138,13 +113,10 @@ function RSVPForm() {
         <Formik
             validationSchema={schema}
             initialValues={{
-                // weddingGuests: weddingConfirmedGuests || 0,
-                // rehearsalGuests: rehearsalConfirmedGuests || 0,
                 isAttending: weddingIsAttending || "",
                 foodChoice: weddingFoodChoice || "",
                 dietRestrictions: weddingDietRestrictions || "",
                 guestNote: weddingNote || "",
-                // origin: weddingOrigin || TORTOSA,
             }}
             onSubmit={submitForm}
         >
@@ -168,34 +140,6 @@ function RSVPForm() {
                             <WeddingFormHeader />
                         </h5>
                     </div>
-                    {/* <Form.Group controlId="controlIdWeddingGuests">
-                        <Form.Label>
-                            <NumberOfGuestsLabel />
-                        </Form.Label>
-                        <Form.Control
-                            name="weddingGuests"
-                            as="select"
-                            value={values.weddingGuests}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={
-                                touched.weddingGuests && errors.weddingGuests
-                            }
-                        >
-                            {range(0, weddingMaxGuests + 1).map(idx => (
-                                <option
-                                    label={idx === 0 ? zeroLabel : idx}
-                                    value={idx}
-                                    key={idx}
-                                >
-                                    {idx === 0 ? zeroLabel : idx}
-                                </option>
-                            ))}
-                        </Form.Control>
-                        <Form.Text className="text-muted">
-                            <NumberOfGuestsHelp />
-                        </Form.Text>
-                    </Form.Group> */}
                     <Form.Group controlId="controlIdAttending">
                         <Form.Label>
                             <AttendingLabel name={name} email={email} />
@@ -297,68 +241,7 @@ function RSVPForm() {
                             <WeddingNoteHelp />
                         </Form.Text>
                     </Form.Group>
-                    {/* {values.foodChoice === YES && (
-                        <Form.Group controlId="controlIdOrigin">
-                            <Form.Label>
-                                <OriginLabel />
-                            </Form.Label>
-                            <Form.Control
-                                name="origin"
-                                as="select"
-                                value={values.origin}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                isInvalid={touched.origin && errors.origin}
-                            >
-                                <option label={tortosaLabel} value={TORTOSA}>
-                                    {tortosaLabel}
-                                </option>
-                                <option label={lampollaLabel} value={LAMPOLLA}>
-                                    {lampollaLabel}
-                                </option>
-                                <option
-                                    label={`${otherLabel} - ${otherLabelExtra}`}
-                                    value={OTHER}
-                                >{`${otherLabel} - ${otherLabelExtra}`}</option>
-                            </Form.Control>
-                            <Form.Text className="text-muted">
-                                <OriginHelp />
-                            </Form.Text>
-                        </Form.Group>
-                    )} */}
-                    {/* <div className="text-center mt-5">
-                        <h5 className="text-muted">
-                            <DinnerFormHeader />
-                        </h5>
-                    </div> */}
-                    {/* <Form.Group controlId="controlIdRehearsalGuests">
-                        <Form.Label>
-                            <DinnerGuestsLabel />
-                        </Form.Label>
-                        <Form.Control
-                            name="rehearsalGuests"
-                            as="select"
-                            value={values.rehearsalGuests}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={
-                                touched.rehearsalGuests &&
-                                errors.rehearsalGuests
-                            }
-                        >
-                            {range(0, rehearsalMaxGuests + 1).map(idx => (
-                                <option
-                                    label={idx === 0 ? `0 - ${zeroLabel}` : idx}
-                                    value={idx}
-                                >
-                                    {idx === 0 ? `0 - ${zeroLabel}` : idx}
-                                </option>
-                            ))}
-                        </Form.Control>
-                        <Form.Text className="text-muted">
-                            <DinnerGuestsHelp />
-                        </Form.Text>
-                    </Form.Group> */}
+
                     <Button
                         className="mt-5"
                         variant="primary"
