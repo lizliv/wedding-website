@@ -6,11 +6,12 @@ import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
-import { Formik } from "formik"
+import { Formik, FieldArray } from "formik"
 import isUndefined from "lodash/isUndefined"
 import isNull from "lodash/isNull"
 import get from "lodash/get"
 import range from "lodash/range"
+import * as Yup from 'yup';
 
 import { selectLanguage } from "utilities/cookies"
 import { Store } from "store"
@@ -19,11 +20,17 @@ import { rsvpForm } from "content/RSVP"
 
 import styles from "../Forms.module.scss"
 
-const schema = object({
-    isAttending: string().required(),
-    foodChoice: string(),
-    dietRestrictions: string(),
-    guestNote: string(),
+const schema = Yup.object().shape({
+    guestData: Yup.array().of(
+        Yup.object().shape({
+            name: Yup.string().required(),
+            email: Yup.string().required(),
+            isAttending: Yup.string().required(),
+            foodChoice: Yup.string(),
+            dietRestrictions: Yup.string(),
+            guestNote: Yup.string(),
+        })
+    )
 })
 
 const YES = "yes"
@@ -100,10 +107,17 @@ function RSVPForm() {
     const weddingFoodChoice         = get(weddingData, "FoodChoice")
     const weddingDietRestrictions   = get(weddingData, "DietRestrictions")
     const weddingNote               = get(weddingData, "Note")
-    console.log(weddingData)
 
-    console.log('Party Guests:', partyGuests)
-    console.log('Party Guest 1:', partyGuests[0])
+    const initialValues = {
+        guestData: [{
+            name: name || "",
+            email: email || "",
+            isAttending: weddingIsAttending || "",
+            foodChoice: weddingFoodChoice || "",
+            dietRestrictions: weddingDietRestrictions || "",
+            guestNote: weddingNote || "",
+        }]
+    };
 
     const buttonText = isUndefined(weddingIsAttending)
         ? submitButtonText
@@ -112,12 +126,7 @@ function RSVPForm() {
     return (
         <Formik
             validationSchema={schema}
-            initialValues={{
-                isAttending: weddingIsAttending || "",
-                foodChoice: weddingFoodChoice || "",
-                dietRestrictions: weddingDietRestrictions || "",
-                guestNote: weddingNote || "",
-            }}
+            initialValues={initialValues}
             onSubmit={submitForm}
         >
             {({
@@ -140,84 +149,93 @@ function RSVPForm() {
                             <WeddingFormHeader />
                         </h5>
                     </div>
+                    <FieldArray name="guestData">
+                        {() => (values.guestData.map((thisGuestData, guestIdx) => {
+                            const guestDataErrors = errors.guestData?.length && errors.guestData[guestIdx] || {};
+                            const guestDataTouched = touched.guestData?.length && touched.guestData[guestIdx] || {};
+                            // console.log('Guest data:', values.guestData)
+                            // console.log('This guest is attending:', values.guestData[0].isAttending)
+                            return (
+                                
+                    <div key={guestIdx}>
                     <Form.Group controlId="controlIdAttending">
                         <Form.Label>
                             <AttendingLabel name={name} email={email} />
                         </Form.Label>
                         <Form.Check
-                            name="isAttending"
+                            name={`guestData.${guestIdx}.isAttending`}
                             aria-label="Radio 1"
                             type="radio"
                             value={YES}
                             label={yesLabel} 
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={touched.isAttending && errors.isAttending}
-                            checked={values.isAttending===YES}
+                            isInvalid={guestDataTouched.isAttending && guestDataErrors.isAttending}
+                            checked={values.guestData[guestIdx].isAttending===YES}
                         >
                         </Form.Check>
                         <Form.Check
-                            name="isAttending"
+                            name={`guestData.${guestIdx}.isAttending`}
                             aria-label="Radio 2"
                             type="radio"
                             value={NO}
                             label={noLabel} 
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={touched.isAttending && errors.isAttending}
-                            checked={values.isAttending===NO}
+                            isInvalid={guestDataTouched.isAttending && guestDataErrors.isAttending}
+                            checked={values.guestData[guestIdx].isAttending===NO}
                         >
                         </Form.Check>
                         <Form.Text className="text-muted">
                             <AttendingHelp />
                         </Form.Text>
                     </Form.Group>
-                    {values.isAttending === YES && (
+                    {values.guestData[guestIdx].isAttending === YES && (
                     <Form.Group controlId="controlIdFoodChoice">
                         <Form.Label>
                             <FoodChoiceLabel />
                         </Form.Label>
                         <Form.Check
-                            name="foodChoice"
+                            name={`guestData.${guestIdx}.foodChoice`}
                             aria-label="Radio 1"
                             type="radio"
                             value={CHICKEN}
                             label={chickenLabel} 
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={touched.foodChoice && errors.foodChoice}
-                            checked={values.foodChoice===CHICKEN}
+                            isInvalid={guestDataTouched.foodChoice && guestDataErrors.foodChoice}
+                            checked={values.guestData[guestIdx].foodChoice===CHICKEN}
                         >
                         </Form.Check>
                         <Form.Check
-                            name="foodChoice"
+                            name={`guestData.${guestIdx}.foodChoice`}
                             aria-label="Radio 2"
                             type="radio"
                             value={VEGETARIAN}
                             label={veggieLabel} 
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={touched.foodChoice && errors.foodChoice}
-                            checked={values.foodChoice===VEGETARIAN}
+                            isInvalid={guestDataTouched.foodChoice && guestDataErrors.foodChoice}
+                            checked={values.guestData[guestIdx].foodChoice===VEGETARIAN}
                         ></Form.Check>
                         <Form.Text className="text-muted">
                             <FoodChoiceHelp />
                         </Form.Text>
                     </Form.Group> 
                     )}
-                    {values.isAttending === YES && (
+                    {values.guestData[guestIdx].isAttending === YES && (
                     <Form.Group controlId="controlIdWeddingDietRestrictions">
                         <Form.Label>
                             <DietRestrictionsLabel />
                         </Form.Label>
                         <Form.Control
-                            name="dietRestrictions"
+                            name={`guestData.${guestIdx}.dietRestrictions`}
                             as="textarea"
                             rows="1"
-                            value={values.dietRestrictions}
+                            value={values.guestData[guestIdx].dietRestrictions}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={touched.dietRestrictions && errors.dietRestrictions}
+                            isInvalid={guestDataTouched.dietRestrictions && guestDataErrors.dietRestrictions}
                         />
                         <Form.Text className="text-muted">
                             <DietRestrictionsHelp />
@@ -229,19 +247,22 @@ function RSVPForm() {
                             <WeddingNoteLabel />
                         </Form.Label>
                         <Form.Control
-                            name="guestNote"
+                            name={`guestData.${guestIdx}.guestNote`}
                             as="textarea"
                             rows="3"
-                            value={values.guestNote}
+                            value={values.guestData[guestIdx].guestNote}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={touched.guestNote && errors.guestNote}
+                            isInvalid={guestDataTouched.guestNote && guestDataErrors.guestNote}
                         />
                         <Form.Text className="text-muted">
                             <WeddingNoteHelp />
                         </Form.Text>
                     </Form.Group>
-
+                    </div>
+                    );
+                    }))}
+                    </FieldArray>
                     <Button
                         className="mt-5"
                         variant="primary"

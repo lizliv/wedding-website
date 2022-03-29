@@ -130,25 +130,29 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
 }
 
 export const putUserRSVPInformation = async (
-    { email, isAttending, foodChoice, dietRestrictions, guestNote},
+    // { email, isAttending, foodChoice, dietRestrictions, guestNote},
+    { email, guestData},
     setSubmitting,
     setStatus,
     setShowConfirmation,
     dispatch
 ) => {
     try {
-        await putRSVPDataToDB({
-            Email: email.toLowerCase(),
-            Data: {
-                Wedding: {
-                    IsAttending: isAttending,
-                    ...(foodChoice ? { FoodChoice: foodChoice } : {}),
-                    DietRestrictions: dietRestrictions,
-                    Note: guestNote,
+        // console.log('This users data is:', guestData)
+        guestData.forEach(function (guest, index) { 
+            putRSVPDataToDB({
+                Email: guest.email.toLowerCase(),
+                Data: {
+                    Wedding: {
+                        IsAttending: guest.isAttending,
+                        ...(guest.foodChoice ? { FoodChoice: guest.foodChoice } : {}),
+                        DietRestrictions: guest.dietRestrictions,
+                        Note: guest.guestNote,
+                    },
+                    confirmed: guest.isAttending,
                 },
-                confirmed: isAttending,
-            },
-        })
+            })
+        });
         await fetchUserRSVPInformation(email, dispatch)
 
         setShowConfirmation(true)
