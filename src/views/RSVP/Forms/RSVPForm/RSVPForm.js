@@ -28,9 +28,9 @@ const schema = Yup.object().shape({
             isAttending: Yup.string().required(),
             foodChoice: Yup.string(),
             dietRestrictions: Yup.string(),
-            guestNote: Yup.string(),
         })
-    )
+    ),
+    partyNote: Yup.string(),
 })
 
 const YES = "yes"
@@ -106,24 +106,29 @@ function RSVPForm() {
 
 
     const initialValues = {
-        guestData: []
+        guestData: [],
+        partyNote: ""
     }
     // let weddingIsAttending, weddingFoodChoice, weddingDietRestrictions, weddingNote
 
     for (let i = 0; i < weddingData.length; i++) {
-        // weddingIsAttending        = get(weddingData[i], "IsAttending"),
-    //     weddingFoodChoice         = get(weddingData[i], "FoodChoice"),
-    //     weddingDietRestrictions   = get(weddingData[i], "DietRestrictions"),
-    //     weddingNote               = get(weddingData[i], "Note"),
+        const weddingIsAttending        = get(weddingData[i], "IsAttending")
+        const weddingFoodChoice         = get(weddingData[i], "FoodChoice")
+        const weddingDietRestrictions   = get(weddingData[i], "DietRestrictions")
+        const weddingNote               = get(weddingData[i], "Note")
 
         initialValues.guestData.push({
             name: partyGuests.names[i] || "",
             email: partyGuests.emails[i] || "",
-            isAttending: weddingData[i].IsAttending || "",
-            foodChoice: weddingData[i].FoodChoice || "",
-            dietRestrictions: weddingData[i].DietRestrictions || "",
-            guestNote: weddingData[i].Note || "",
+            // isAttending: weddingData[i].IsAttending || "",
+            // foodChoice: weddingData[i].FoodChoice || "",
+            // dietRestrictions: weddingData[i].DietRestrictions || "",
+            // guestNote: weddingData[i].Note || "",
+            isAttending: weddingIsAttending || "",
+            foodChoice: weddingFoodChoice || "",
+            dietRestrictions: weddingDietRestrictions || ""
         })
+        initialValues.partyNote = weddingNote || ""
     }; 
 
     const buttonText = isUndefined(weddingData[0].weddingIsAttending)
@@ -249,27 +254,27 @@ function RSVPForm() {
                         </Form.Text>
                     </Form.Group>
                     )}
+                    <hr /></div>
+                    );
+                    }))}
+                    </FieldArray>
                     <Form.Group controlId="controlIdWeddingNote">
                         <Form.Label>
                             <WeddingNoteLabel />
                         </Form.Label>
                         <Form.Control
-                            name={`guestData.${guestIdx}.guestNote`}
+                            name="partyNote"
                             as="textarea"
                             rows="3"
-                            value={values.guestData[guestIdx].guestNote}
+                            value={values.partyNote}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={guestDataTouched.guestNote && guestDataErrors.guestNote}
+                            isInvalid={touched.partyNote && errors.partyNote}
                         />
                         <Form.Text className="text-muted">
                             <WeddingNoteHelp />
                         </Form.Text>
                     </Form.Group>
-                    </div>
-                    );
-                    }))}
-                    </FieldArray>
                     <Button
                         className="mt-5"
                         variant="primary"
