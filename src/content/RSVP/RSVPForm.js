@@ -19,8 +19,8 @@ export default {
         ),
         submitButtonText: "Submit RSVP",
         updateButtonText: "Update RSVP",
-        yesLabel: "Yes",
-        noLabel: "No",
+        yesLabel: "Attending",
+        noLabel: "Not Attending",
         chickenLabel: "Chicken",
         veggieLabel: "Vegetarian",
         lampollaLabel: "L'Ampolla",
@@ -28,6 +28,7 @@ export default {
         otherLabel: "Other",
         otherLabelExtra: "Reach out if you need help arranging transportation",
         WeddingFormHeader: () => <>Wedding</>,
+        WeddingFormSubHeader: () => <>The ceremony is at 5:30 pm on Sunday, June 12th, 2022. Reception to Follow</>,
         NumberOfGuestsLabel: () => <>Number of guests attending</>,
         zeroLabel: "Can't Attend",
         NumberOfGuestsHelp: () => (
@@ -37,12 +38,7 @@ export default {
             </>
         ),
         AttendingLabel: ({ name , email}) => (
-            <>Will <strong>{name} ({email})</strong> be attending the wedding?</>
-        ),
-        AttendingHelp: () => (
-            <>
-                The ceremony is at 5:30 pm on Sunday, June 12th, 2022.
-            </>
+            <><strong>{name} ({email})</strong></>
         ),
         FoodChoiceLabel: () => (
             <>Which food option would you like?</>
@@ -92,8 +88,8 @@ export default {
         ),
         submitButtonText: "Envia RSUP",
         updateButtonText: "Actualitza RSUP",
-        yesLabel: "Sí",
-        noLabel: "No",
+        yesLabel: "Attending",
+        noLabel: "Not Attending",
         chickenLabel: "Frango",
         veggieLabel: "Vegetariana",
         lampollaLabel: "L'Ampolla",
@@ -101,18 +97,14 @@ export default {
         otherLabel: "Altres",
         otherLabelExtra: "Feu-nos saber si necessiteu ajuda trobant transport.",
         WeddingFormHeader: () => <>Casament</>,
+        WeddingFormSubHeader: () => <>The ceremony is at 5:30 pm on Sunday, June 12th, 2022. Reception to Follow</>,
         NumberOfGuestsLabel: () => <>Número de convidats</>,
         zeroLabel: "No podem venir",
         NumberOfGuestsHelp: () => (
             <>Número de convidats (incloen-te a tu) que vindran.</>
         ),
         AttendingLabel: ({ name , email}) => (
-            <>Will <strong>{name} ({email})</strong> be attending the wedding?</>
-        ),
-        AttendingHelp: () => (
-            <>
-                The ceremony is at 5:30 on Sunday, June 12th, 2022.
-            </>
+            <><strong>{name} ({email})</strong></>
         ),
         FoodChoiceLabel: () => (
             <>Qual opção de comida você gostaria?</>

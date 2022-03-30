@@ -62,9 +62,9 @@ function RSVPForm() {
         veggieLabel,
         otherLabelExtra,
         WeddingFormHeader,
+        WeddingFormSubHeader,
         zeroLabel,
         AttendingLabel,
-        AttendingHelp,
         FoodChoiceLabel,
         FoodChoiceHelp,
         DietRestrictionsLabel,
@@ -160,6 +160,8 @@ function RSVPForm() {
                         <h5 className="text-muted">
                             <WeddingFormHeader />
                         </h5>
+                            <WeddingFormSubHeader />
+                        <hr className={styles.hrclass1}/>
                     </div>
                     <FieldArray name="guestData">
                         {() => (values.guestData.map((thisGuestData, guestIdx) => {
@@ -198,9 +200,6 @@ function RSVPForm() {
                             checked={values.guestData[guestIdx].isAttending===NO}
                         >
                         </Form.Check>
-                        <Form.Text className="text-muted">
-                            <AttendingHelp />
-                        </Form.Text>
                     </Form.Group>
                     {values.guestData[guestIdx].isAttending === YES && (
                     <Form.Group controlId="controlIdFoodChoice">
@@ -254,7 +253,7 @@ function RSVPForm() {
                         </Form.Text>
                     </Form.Group>
                     )}
-                    <hr /></div>
+                    <hr className={styles.hrclass2}/></div>
                     );
                     }))}
                     </FieldArray>
