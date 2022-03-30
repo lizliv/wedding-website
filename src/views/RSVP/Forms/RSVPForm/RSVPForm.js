@@ -117,8 +117,8 @@ function RSVPForm() {
     //     weddingNote               = get(weddingData[i], "Note"),
 
         initialValues.guestData.push({
-            // name: name || "",
-            email: partyGuests[i] || "",
+            name: partyGuests.names[i] || "",
+            email: partyGuests.emails[i] || "",
             isAttending: weddingData[i].IsAttending || "",
             foodChoice: weddingData[i].FoodChoice || "",
             dietRestrictions: weddingData[i].DietRestrictions || "",
@@ -167,7 +167,7 @@ function RSVPForm() {
                     <div key={guestIdx}>
                     <Form.Group controlId="controlIdAttending">
                         <Form.Label>
-                            <AttendingLabel name={name} email={values.guestData[guestIdx].email} />
+                            <AttendingLabel name={values.guestData[guestIdx].name} email={values.guestData[guestIdx].email} />
                         </Form.Label>
                         <Form.Check
                             name={`guestData.${guestIdx}.isAttending`}

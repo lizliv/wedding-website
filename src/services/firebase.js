@@ -170,19 +170,28 @@ const putRSVPDataToDB = async ({Email,Data}) => {
 };
 
 const fetchPartyUsers = async(email) => {
-  let partyGuests
+  let partyGuests, partyGuestEmails
+  const partyGuestNames = []
   try{
     const q = query(collection(db, "parties"), where("guests", "array-contains", email));
     const doc = await getDocs(q);
     const partyData = doc.docs[0].data();
 
-    partyGuests = partyData.guests
+    partyGuestEmails = partyData.guests
+    
+    for (let i = 0; i < partyGuestEmails.length; i++) {
+      const q = query(collection(db, "users"), where("email", "==", partyGuestEmails[i]));
+      const doc = await getDocs(q);
+      const nameData = doc.docs[0].data();
 
+      partyGuestNames[i] = nameData.name
+    }
+    
   } catch (err){
     console.error(err)
     alert(err.message)
   }
-  return partyGuests
+  return partyGuests = {names: partyGuestNames, emails: partyGuestEmails}
 }
 
 export {
