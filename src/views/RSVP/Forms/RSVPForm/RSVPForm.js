@@ -21,13 +21,17 @@ import { rsvpForm } from "content/RSVP"
 import styles from "../Forms.module.scss"
 
 const schema = Yup.object().shape({
+    userEmail: Yup.string().required(),
     guestData: Yup.array().of(
         Yup.object().shape({
             // name: Yup.string().required(),
-            email: Yup.string().required(),
+            email: Yup.string(),
             isAttending: Yup.string().required(),
             foodChoice: Yup.string(),
             dietRestrictions: Yup.string(),
+            plusOneAllowed: Yup.boolean(),
+            plusOneAdded: Yup.boolean(),
+            isAPlusOne: Yup.boolean()
         })
     ),
     partyNote: Yup.string(),
@@ -58,13 +62,20 @@ function RSVPForm() {
         updateButtonText,
         yesLabel,
         noLabel,
+        attendingLabel,
+        notAttendingLabel,
         chickenLabel,
         veggieLabel,
         otherLabelExtra,
         WeddingFormHeader,
         WeddingFormSubHeader,
         zeroLabel,
-        AttendingLabel,
+        PlusOneLabel,
+        EditPlusOneLabel,
+        AttendingTextLabel,
+        GuestNameLabel,
+        GuestNameHelp,
+        GuestEmailLabel,
         FoodChoiceLabel,
         FoodChoiceHelp,
         DietRestrictionsLabel,
@@ -106,6 +117,7 @@ function RSVPForm() {
 
 
     const initialValues = {
+        userEmail: email,
         guestData: [],
         partyNote: ""
     }
@@ -116,6 +128,7 @@ function RSVPForm() {
         const weddingFoodChoice         = get(weddingData[i], "FoodChoice")
         const weddingDietRestrictions   = get(weddingData[i], "DietRestrictions")
         const weddingNote               = get(weddingData[i], "Note")
+        const weddingIsAPlusOne         = get(weddingData[i], "IsAPlusOne")
 
         initialValues.guestData.push({
             name: partyGuests.names[i] || "",
@@ -126,10 +139,26 @@ function RSVPForm() {
             // guestNote: weddingData[i].Note || "",
             isAttending: weddingIsAttending || "",
             foodChoice: weddingFoodChoice || "",
-            dietRestrictions: weddingDietRestrictions || ""
+            dietRestrictions: weddingDietRestrictions || "",
+            plusOneAllowed: false,
+            plusOneAdded: partyGuests.plusOneAdded,
+            isAPlusOne: weddingIsAPlusOne || false
         })
         initialValues.partyNote = weddingNote || ""
     }; 
+
+    if (partyGuests.hasPlusOne === true){
+        initialValues.guestData.push({
+            name: "",
+            email: "",
+            isAttending: NO,
+            foodChoice: "",
+            dietRestrictions: "",
+            plusOneAllowed: true,
+            plusOneAdded: partyGuests.plusOneAdded,
+            isAPlusOne: true
+        })
+    }
 
     const buttonText = isUndefined(weddingData[0].weddingIsAttending)
         ? submitButtonText
@@ -172,16 +201,79 @@ function RSVPForm() {
                             return (
                                 
                     <div key={guestIdx}>
+                    {(partyGuests.hasPlusOne  === true & values.guestData[guestIdx].isAPlusOne === true) ? 
+                        <Form.Group controlId="controlIdAddPlusOne">
+                            <Form.Label>
+                                <PlusOneLabel />
+                            </Form.Label>
+                            <Form.Control
+                                name={`guestData.${guestIdx}.isAttending`}
+                                as="select"
+                                value={values.guestData[guestIdx].isAttending}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                isInvalid={guestDataTouched.isAttending && guestDataErrors.isAttending}
+                            >
+                                <option label={yesLabel} value={YES}>
+                                    {yesLabel}
+                                </option>
+                                <option label={noLabel} value={NO}>
+                                    {noLabel}
+                                </option>
+                            </Form.Control>
+                        </Form.Group> : null 
+                    }
+                    {partyGuests.plusOneAdded  === true & values.guestData[guestIdx].isAPlusOne === true ?
+                        <h6 className="text-muted">
+                                <EditPlusOneLabel />
+                            </h6> : null
+                    }
+                    {values.guestData[guestIdx].isAPlusOne === true & values.guestData[guestIdx].isAttending === YES ? 
+                        <Form.Group controlId="controlIdGuestName">
+                            <Form.Label>
+                                <GuestNameLabel />
+                            </Form.Label>
+                            <Form.Control
+                                name={`guestData.${guestIdx}.name`}
+                                as="textarea"
+                                rows="1"
+                                value={values.guestData[guestIdx].name}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                isInvalid={guestDataTouched.name && guestDataErrors.name}
+                            />
+                            <Form.Text className="text-muted">
+                                <GuestNameHelp />
+                            </Form.Text>
+                        </Form.Group> : null
+                    }
+                    {values.guestData[guestIdx].isAPlusOne === true & values.guestData[guestIdx].isAttending === YES ? 
+                        <Form.Group controlId="controlIdGuestEmail">
+                            <Form.Label>
+                                <GuestEmailLabel />
+                            </Form.Label>
+                            <Form.Control
+                                name={`guestData.${guestIdx}.email`}
+                                as="textarea"
+                                rows="1"
+                                value={values.guestData[guestIdx].email}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                isInvalid={guestDataTouched.email && guestDataErrors.email}
+                            />
+                        </Form.Group> : null
+                    }
+                    {values.guestData[guestIdx].isAPlusOne === false ? 
                     <Form.Group controlId="controlIdAttending">
                         <Form.Label>
-                            <AttendingLabel name={values.guestData[guestIdx].name} email={values.guestData[guestIdx].email} />
+                            <AttendingTextLabel name={values.guestData[guestIdx].name} email={values.guestData[guestIdx].email} />
                         </Form.Label>
                         <Form.Check
                             name={`guestData.${guestIdx}.isAttending`}
                             aria-label="Radio 1"
                             type="radio"
                             value={YES}
-                            label={yesLabel} 
+                            label={attendingLabel} 
                             onChange={handleChange}
                             onBlur={handleBlur}
                             isInvalid={guestDataTouched.isAttending && guestDataErrors.isAttending}
@@ -193,15 +285,16 @@ function RSVPForm() {
                             aria-label="Radio 2"
                             type="radio"
                             value={NO}
-                            label={noLabel} 
+                            label={notAttendingLabel} 
                             onChange={handleChange}
                             onBlur={handleBlur}
                             isInvalid={guestDataTouched.isAttending && guestDataErrors.isAttending}
                             checked={values.guestData[guestIdx].isAttending===NO}
                         >
                         </Form.Check>
-                    </Form.Group>
-                    {values.guestData[guestIdx].isAttending === YES && (
+                    </Form.Group> : null
+                    }
+                    {values.guestData[guestIdx].isAttending === YES ?
                     <Form.Group controlId="controlIdFoodChoice">
                         <Form.Label>
                             <FoodChoiceLabel />
@@ -232,9 +325,9 @@ function RSVPForm() {
                         <Form.Text className="text-muted">
                             <FoodChoiceHelp />
                         </Form.Text>
-                    </Form.Group> 
-                    )}
-                    {values.guestData[guestIdx].isAttending === YES && (
+                    </Form.Group> : null
+                    }
+                    {values.guestData[guestIdx].isAttending === YES ?
                     <Form.Group controlId="controlIdWeddingDietRestrictions">
                         <Form.Label>
                             <DietRestrictionsLabel />
@@ -251,12 +344,13 @@ function RSVPForm() {
                         <Form.Text className="text-muted">
                             <DietRestrictionsHelp />
                         </Form.Text>
-                    </Form.Group>
-                    )}
+                    </Form.Group> : null
+                    }
                     <hr className={styles.hrclass2}/></div>
                     );
                     }))}
                     </FieldArray>
+
                     <Form.Group controlId="controlIdWeddingNote">
                         <Form.Label>
                             <WeddingNoteLabel />
@@ -274,6 +368,7 @@ function RSVPForm() {
                             <WeddingNoteHelp />
                         </Form.Text>
                     </Form.Group>
+
                     <Button
                         className="mt-5"
                         variant="primary"

@@ -137,7 +137,6 @@ const fetchUserRSVPallowed = async (email) => {
 const fetchUserRSVPdata = async (email) => {
   let weddingData
 
-  if (email){
     try {
       const q = query(collection(db, "rsvp"), where("email", "==", email));
       const doc = await getDocs(q);
@@ -149,20 +148,69 @@ const fetchUserRSVPdata = async (email) => {
       console.error(err);
       alert("An error occured while fetching user data");
     } 
-  }
   
   return weddingData
 };
 
 
-const putRSVPDataToDB = async ({Email,Data}) => {
+const putRSVPDataToDB = async ({UserEmail,Name,Email,Data,HasPlusOne,PlusOneAdded}) => {
   try {
-    const q = query(collection(db, "rsvp"), where("email", "==", Email));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data())
-      setDoc(doc.ref, Data, { merge: true })
-    });
+    console.log('Data', Data.Wedding)
+    console.log('Plus one already added', PlusOneAdded)
+    // For all guests, update the rsvp information
+    if (Data.Wedding.IsAPlusOne === false){
+      // console.log('Updating RSVP information')
+      const q = query(collection(db, "rsvp"), where("email", "==", Email));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        setDoc(doc.ref, {email: Email, Wedding: Data.Wedding}, { merge: true })
+      });
+    }
+    // If the guest data is for a plus one, update the user and party information in case of name/email change
+    if(Data.Wedding.IsAPlusOne === true & PlusOneAdded === true){
+      // console.log('Updating Plus One information')
+      const qparty = query(collection(db, "parties"), where("guests", "array-contains", UserEmail));
+      const partySnapshot = await getDocs(qparty);
+      const partyData = partySnapshot.docs[0].data();
+      const guests = partyData.guests
+      const lastEmail = guests.pop()
+      guests.push(Email)
+      partySnapshot.forEach((doc) => {
+        setDoc(doc.ref, {guests: guests, plusOneAdded: true, hasPlusOne: false}, { merge: true })
+      });
+      const qusers = query(collection(db, "users"), where("email", "==", lastEmail));
+      const userSnapshot = await getDocs(qusers);
+      userSnapshot.forEach((doc) => {
+        setDoc(doc.ref, {name: Name, email: Email}, { merge: true })
+      });
+      const qrsvp = query(collection(db, "rsvp"), where("email", "==", lastEmail));
+      const rsvpSnapshot = await getDocs(qrsvp);
+      rsvpSnapshot.forEach((doc) => {
+        setDoc(doc.ref, {email: Email, Wedding: Data.Wedding}, { merge: true })
+      });
+    }
+    // If a plus one that has not been added, create a user profile, rsvp info, and add to party list
+    else if(Data.Wedding.IsAPlusOne === true & PlusOneAdded === false & Email != ""){
+      // console.log('Adding a new Plus One')
+      await addDoc(collection(db, "users"), {
+          authProvider: "local",
+          name: Name,
+          email: Email,
+      })
+      await addDoc(collection(db, "rsvp"), {
+          allowed: true,
+          confirmed: "yes",
+          email: Email,
+          Wedding: Data.Wedding
+      })
+      const q = query(collection(db, "parties"), where("guests", "array-contains", UserEmail));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const guests = doc.data().guests
+        guests.push(Email)
+        setDoc(doc.ref, {guests: guests, plusOneAdded: true, hasPlusOne: false}, { merge: true })
+      });
+    }
   } catch (err) {
       console.error(err)
       alert(err.message)
@@ -170,7 +218,7 @@ const putRSVPDataToDB = async ({Email,Data}) => {
 };
 
 const fetchPartyUsers = async(email) => {
-  let partyGuests, partyGuestEmails
+  let partyGuests, partyGuestEmails, partyPlusOne, partyPlusOneAdded
   const partyGuestNames = []
   try{
     const q = query(collection(db, "parties"), where("guests", "array-contains", email));
@@ -178,20 +226,27 @@ const fetchPartyUsers = async(email) => {
     const partyData = doc.docs[0].data();
 
     partyGuestEmails = partyData.guests
+    partyPlusOne = partyData.hasPlusOne
+    partyPlusOneAdded = partyData.plusOneAdded
     
     for (let i = 0; i < partyGuestEmails.length; i++) {
-      const q = query(collection(db, "users"), where("email", "==", partyGuestEmails[i]));
-      const doc = await getDocs(q);
-      const nameData = doc.docs[0].data();
+      // if (partyGuestEmails[i] == "plus_one"){
+      //   partyGuestNames[i] = "Plus One"
+      // }
+      // else{
+        const q = query(collection(db, "users"), where("email", "==", partyGuestEmails[i]));
+        const doc = await getDocs(q);
+        const nameData = doc.docs[0].data();
 
-      partyGuestNames[i] = nameData.name
-    }
-    
+        partyGuestNames[i] = nameData.name
+      }
+    // }
+
   } catch (err){
     console.error(err)
     alert(err.message)
   }
-  return partyGuests = {names: partyGuestNames, emails: partyGuestEmails}
+  return partyGuests = {names: partyGuestNames, emails: partyGuestEmails, hasPlusOne: partyPlusOne, plusOneAdded: partyPlusOneAdded}
 }
 
 export {

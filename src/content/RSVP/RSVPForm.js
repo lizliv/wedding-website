@@ -19,8 +19,10 @@ export default {
         ),
         submitButtonText: "Submit RSVP",
         updateButtonText: "Update RSVP",
-        yesLabel: "Attending",
-        noLabel: "Not Attending",
+        yesLabel: "Yes",
+        noLabel: "No",
+        attendingLabel: "Attending",
+        notAttendingLabel: "Not Attending",
         chickenLabel: "Chicken",
         veggieLabel: "Vegetarian",
         lampollaLabel: "L'Ampolla",
@@ -37,8 +39,23 @@ export default {
                 will be in attendance.
             </>
         ),
-        AttendingLabel: ({ name , email}) => (
+        PlusOneLabel: () => (
+            <>Will you be bringing a guest?</>
+        ),
+        EditPlusOneLabel: () => (
+            <>Edit your guests information.</>
+        ),
+        AttendingTextLabel: ({ name , email}) => (
             <><strong>{name} ({email})</strong></>
+        ),
+        GuestNameLabel: () => (
+            <>What is the name of your guest?</>
+        ),
+        GuestNameHelp: () => (
+            <>Please enter the first and last name</>
+        ),
+        GuestEmailLabel: () => (
+            <>What is the email of your guest?</>
         ),
         FoodChoiceLabel: () => (
             <>Which food option would you like?</>
@@ -88,8 +105,10 @@ export default {
         ),
         submitButtonText: "Envia RSUP",
         updateButtonText: "Actualitza RSUP",
-        yesLabel: "Attending",
-        noLabel: "Not Attending",
+        yesLabel: "Yes",
+        noLabel: "No",
+        attendingLabel: "Attending",
+        notAttendingLabel: "Not Attending",
         chickenLabel: "Frango",
         veggieLabel: "Vegetariana",
         lampollaLabel: "L'Ampolla",
@@ -103,8 +122,23 @@ export default {
         NumberOfGuestsHelp: () => (
             <>Número de convidats (incloen-te a tu) que vindran.</>
         ),
-        AttendingLabel: ({ name , email}) => (
+        PlusOneLabel: () => (
+            <>Will you be bringing a guest?</>
+        ),
+        EditPlusOneLabel: () => (
+            <>Edit your guests information.</>
+        ),
+        AttendingTextLabel: ({ name , email}) => (
             <><strong>{name} ({email})</strong></>
+        ),
+        GuestNameLabel: () => (
+            <>What is the name of your guest?</>
+        ),
+        GuestNameHelp: () => (
+            <>Please enter the first and last name</>
+        ),
+        GuestEmailLabel: () => (
+            <>What is the email of your guest?</>
         ),
         FoodChoiceLabel: () => (
             <>Qual opção de comida você gostaria?</>

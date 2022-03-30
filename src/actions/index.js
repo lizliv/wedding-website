@@ -134,15 +134,17 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
 
 export const putUserRSVPInformation = async (
     // { email, isAttending, foodChoice, dietRestrictions, guestNote},
-    { email, guestData, partyNote},
+    { email, userEmail, guestData, partyNote},
     setSubmitting,
     setStatus,
     setShowConfirmation,
     dispatch
 ) => {
     try {
-        guestData.forEach(function (guest, index) { 
-            putRSVPDataToDB({
+        await Promise.all(guestData.map(function (guest, index) {
+            return putRSVPDataToDB({
+                UserEmail: userEmail,
+                Name: guest.name,
                 Email: guest.email.toLowerCase(),
                 Data: {
                     Wedding: {
@@ -150,11 +152,36 @@ export const putUserRSVPInformation = async (
                         ...(guest.foodChoice ? { FoodChoice: guest.foodChoice } : {}),
                         DietRestrictions: guest.dietRestrictions,
                         Note: partyNote,
+                        IsAPlusOne: guest.isAPlusOne
                     },
                     confirmed: guest.isAttending,
                 },
+                HasPlusOne: guest.plusOneAllowed,
+                PlusOneAdded: guest.plusOneAdded
             })
-        });
+          }));
+
+        // guestData.forEach(function (guest, index) { 
+        //     putRSVPDataToDB({
+        //         UserEmail: userEmail,
+        //         Name: guest.name,
+        //         Email: guest.email.toLowerCase(),
+        //         Data: {
+        //             Wedding: {
+        //                 IsAttending: guest.isAttending,
+        //                 ...(guest.foodChoice ? { FoodChoice: guest.foodChoice } : {}),
+        //                 DietRestrictions: guest.dietRestrictions,
+        //                 Note: partyNote,
+        //                 IsAPlusOne: guest.isAPlusOne
+        //             },
+        //             confirmed: guest.isAttending,
+        //         },
+        //         HasPlusOne: guest.plusOneAllowed,
+        //         PlusOneAdded: guest.plusOneAdded
+        //     })
+        // });
+
+        // Problem here. Need to wait for put to be done before doing this operation
         await fetchUserRSVPInformation(email, dispatch)
 
         setShowConfirmation(true)
