@@ -33,7 +33,7 @@ function Authentication({ location }) {
         >
             <div>
                 <div className="text-center">
-                    <h1 className={classNames("mb-4")}>S & L</h1>
+                    <h1 className={classNames("mb-4")}>C & L</h1>
                 </div>
                 <Switch>
                     <Route exact path={"/auth"} component={SignInForm} />
