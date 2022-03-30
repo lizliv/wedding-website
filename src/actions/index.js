@@ -106,15 +106,19 @@ export const signOut = async dispatch => {
     }
 }
 
+
 export const fetchUserRSVPInformation = async (email, dispatch) => {
     try {
         let weddingData, partyGuests
         const {allowed,confirmed} = await fetchUserRSVPallowed(email.toLowerCase())
         if(allowed){
-            weddingData = await fetchUserRSVPdata(email.toLowerCase())
             partyGuests = await fetchPartyUsers(email)
+            // weddingData = await fetchUserRSVPdata(email.toLowerCase())
+            weddingData = await Promise.all(partyGuests.map(function (guest, index) {
+                return fetchUserRSVPdata(guest)
+              }));
         }
-
+        console.log(weddingData)
         dispatch({
             type: APP.SET.RSVP,
             payload: {
@@ -138,7 +142,6 @@ export const putUserRSVPInformation = async (
     dispatch
 ) => {
     try {
-        // console.log('This users data is:', guestData)
         guestData.forEach(function (guest, index) { 
             putRSVPDataToDB({
                 Email: guest.email.toLowerCase(),

@@ -23,7 +23,7 @@ import styles from "../Forms.module.scss"
 const schema = Yup.object().shape({
     guestData: Yup.array().of(
         Yup.object().shape({
-            name: Yup.string().required(),
+            // name: Yup.string().required(),
             email: Yup.string().required(),
             isAttending: Yup.string().required(),
             foodChoice: Yup.string(),
@@ -77,8 +77,9 @@ function RSVPForm() {
     useEffect(() => {
         if (email) {
             fetchUserRSVPInformation(email, dispatch)
+            // partyGuestData = fetchPartyRSVPInformation(partyGuests)
         }
-    }, [email, dispatch])
+    }, [email, dispatch])   
 
     const submitForm = (values, actions) => {
         const { setSubmitting, setStatus } = actions
@@ -103,23 +104,29 @@ function RSVPForm() {
         )
     }
 
-    const weddingIsAttending        = get(weddingData, "IsAttending")
-    const weddingFoodChoice         = get(weddingData, "FoodChoice")
-    const weddingDietRestrictions   = get(weddingData, "DietRestrictions")
-    const weddingNote               = get(weddingData, "Note")
 
     const initialValues = {
-        guestData: [{
-            name: name || "",
-            email: email || "",
-            isAttending: weddingIsAttending || "",
-            foodChoice: weddingFoodChoice || "",
-            dietRestrictions: weddingDietRestrictions || "",
-            guestNote: weddingNote || "",
-        }]
-    };
+        guestData: []
+    }
+    // let weddingIsAttending, weddingFoodChoice, weddingDietRestrictions, weddingNote
 
-    const buttonText = isUndefined(weddingIsAttending)
+    for (let i = 0; i < weddingData.length; i++) {
+        // weddingIsAttending        = get(weddingData[i], "IsAttending"),
+    //     weddingFoodChoice         = get(weddingData[i], "FoodChoice"),
+    //     weddingDietRestrictions   = get(weddingData[i], "DietRestrictions"),
+    //     weddingNote               = get(weddingData[i], "Note"),
+
+        initialValues.guestData.push({
+            // name: name || "",
+            email: partyGuests[i] || "",
+            isAttending: weddingData[i].IsAttending || "",
+            foodChoice: weddingData[i].FoodChoice || "",
+            dietRestrictions: weddingData[i].DietRestrictions || "",
+            guestNote: weddingData[i].Note || "",
+        })
+    }; 
+
+    const buttonText = isUndefined(weddingData[0].weddingIsAttending)
         ? submitButtonText
         : updateButtonText
 
@@ -160,7 +167,7 @@ function RSVPForm() {
                     <div key={guestIdx}>
                     <Form.Group controlId="controlIdAttending">
                         <Form.Label>
-                            <AttendingLabel name={name} email={email} />
+                            <AttendingLabel name={name} email={values.guestData[guestIdx].email} />
                         </Form.Label>
                         <Form.Check
                             name={`guestData.${guestIdx}.isAttending`}
