@@ -19,7 +19,7 @@ class AppLayout extends Component {
     constructor (){
         super();
         this.state = {
-        show: true
+        show: false
         };
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
