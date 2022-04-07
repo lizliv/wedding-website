@@ -190,7 +190,8 @@ const putRSVPDataToDB = async ({UserEmail,Name,Email,Data,HasPlusOne,PlusOneAdde
       });
     }
     // If a plus one that has not been added, create a user profile, rsvp info, and add to party list
-    else if(Data.Wedding.IsAPlusOne === true & PlusOneAdded === false & Email != ""){
+    else if(Data.Wedding.IsAPlusOne === true & PlusOneAdded === false & Email !== ""){
+      // FIX: Need to run a check to make sure the plus one's email is not already in the user list
       // console.log('Adding a new Plus One')
       await addDoc(collection(db, "users"), {
           authProvider: "local",
