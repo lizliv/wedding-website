@@ -40,12 +40,19 @@ const logInWithEmailAndPassword = async (email, password) => {
 const registerWithEmailAndPassword = async ({ name, email, password }) => {
       const res = await createUserWithEmailAndPassword(auth, email, password)
       const user = res.user
-      await addDoc(collection(db, "users"), {
-          uid: user.uid,
-          name,
-          authProvider: "local",
-          email,
-      })
+      
+      const qusers = query(collection(db, "users"), where("email", "==", email));
+      const userSnapshot = await getDocs(qusers);
+      userSnapshot.forEach((doc) => {
+        setDoc(doc.ref, {name: name, email: email, uid: user.uid}, { merge: true })
+      });
+
+      // await addDoc(collection(db, "users"), {
+      //     uid: user.uid,
+      //     name,
+      //     authProvider: "local",
+      //     email,
+      // })
 };
 
 const sendPasswordReset = async (email) => {
