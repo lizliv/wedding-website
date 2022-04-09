@@ -160,7 +160,8 @@ function RSVPForm() {
         })
     }
 
-    const buttonText = isUndefined(weddingData[0].weddingIsAttending)
+    // If IsAttending for main party guest is not defined, show submit button. Otherwise, show update button
+    const buttonText = isUndefined(weddingData[0].IsAttending)
         ? submitButtonText
         : updateButtonText
 
@@ -196,12 +197,13 @@ function RSVPForm() {
                         {() => (values.guestData.map((thisGuestData, guestIdx) => {
                             const guestDataErrors = errors.guestData?.length && errors.guestData[guestIdx] || {};
                             const guestDataTouched = touched.guestData?.length && touched.guestData[guestIdx] || {};
-                            // console.log('Guest data:', values.guestData)
-                            // console.log('This guest is attending:', values.guestData[0].isAttending)
+                            // If the main guest is not attending, they cannot bring a guest. 
+                            if (values.guestData[guestIdx].isAPlusOne === true & values.guestData[0].isAttending === NO)
+                            {values.guestData[guestIdx].isAttending = NO}  
                             return (
                                 
                     <div key={guestIdx}>
-                    {(partyGuests.hasPlusOne  === true & values.guestData[guestIdx].isAPlusOne === true) ? 
+                    {( values.guestData[guestIdx].isAPlusOne === true) ? 
                         <Form.Group controlId="controlIdAddPlusOne">
                             <Form.Label>
                                 <PlusOneLabel />
@@ -223,7 +225,7 @@ function RSVPForm() {
                             </Form.Control>
                         </Form.Group> : null 
                     }
-                    {partyGuests.plusOneAdded  === true & values.guestData[guestIdx].isAPlusOne === true ?
+                    {values.guestData[guestIdx].isAPlusOne === true & values.guestData[guestIdx].isAttending === YES ?
                         <h6 className="text-muted">
                                 <EditPlusOneLabel />
                             </h6> : null
