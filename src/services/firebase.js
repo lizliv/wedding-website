@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import isUndefined from "lodash/isUndefined"
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -12,6 +13,7 @@ import {
   getDocs,
   collection,
   where,
+  doc,
   addDoc,
   setDoc,
 } from "firebase/firestore";
@@ -25,7 +27,7 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID 
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
@@ -33,40 +35,40 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const logInWithEmailAndPassword = async (email, password) => {
-    await signInWithEmailAndPassword(auth, email, password);
-    return auth.currentUser
+  await signInWithEmailAndPassword(auth, email, password);
+  return auth.currentUser
 };
 
 const registerWithEmailAndPassword = async ({ name, email, password }) => {
-      const res = await createUserWithEmailAndPassword(auth, email, password)
-      const user = res.user
-      
-      const qusers = query(collection(db, "users"), where("email", "==", email));
-      const userSnapshot = await getDocs(qusers);
-      userSnapshot.forEach((doc) => {
-        setDoc(doc.ref, {name: name, email: email, uid: user.uid}, { merge: true })
-      });
+  const res = await createUserWithEmailAndPassword(auth, email, password)
+  const user = res.user
 
-      // await addDoc(collection(db, "users"), {
-      //     uid: user.uid,
-      //     name,
-      //     authProvider: "local",
-      //     email,
-      // })
+  const qusers = query(collection(db, "users"), where("email", "==", email));
+  const userSnapshot = await getDocs(qusers);
+  // User document added with the reference (name) of the user without spaces
+  if (isUndefined(userSnapshot.docs[0])) {
+    await setDoc(doc(db, 'users', name.replace(/\s+/g, '')), { name: name, email: email, uid: user.uid }, { merge: true })
+  }
+  // User document update with the name as entered by the user (based on email)
+  else {
+    userSnapshot.forEach((doc) => {
+      setDoc(doc.ref, { name: name, email: email, uid: user.uid }, { merge: true })
+    });
+  }
 };
 
 const sendPasswordReset = async (email) => {
-    try {
-      await sendPasswordResetEmail(auth, email);
-      alert("Password reset link sent!");
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
+  try {
+    await sendPasswordResetEmail(auth, email);
+    alert("Password reset link sent!");
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
 };
 
 const logout = () => {
-    signOut(auth);
+  signOut(auth);
 };
 
 
@@ -74,7 +76,7 @@ const fetchUserName = async (user) => {
   // let userData
   let name, email
 
-  if (user){
+  if (user) {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
@@ -87,10 +89,10 @@ const fetchUserName = async (user) => {
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
-    } 
+    }
   }
 
-  return {name,email}
+  return { name, email }
   // return userData
 };
 
@@ -111,7 +113,7 @@ const fetchUserName = async (user) => {
 const fetchUserRSVPallowed = async (email) => {
   let allowed, confirmed
 
-  if (email){
+  if (email) {
     try {
       const q = query(collection(db, "rsvp"), where("email", "==", email));
       const doc = await getDocs(q);
@@ -123,46 +125,46 @@ const fetchUserRSVPallowed = async (email) => {
     } catch (err) {
       console.error(err);
       alert("An error occured while fetching user data");
-    } 
+    }
   }
 
-  return {allowed,confirmed}
+  return { allowed, confirmed }
 };
 
 const fetchUserRSVPdata = async (email) => {
   let weddingData
 
-    try {
-      const q = query(collection(db, "rsvp"), where("email", "==", email));
-      const doc = await getDocs(q);
-      const rsvpData = doc.docs[0].data();
+  try {
+    const q = query(collection(db, "rsvp"), where("email", "==", email));
+    const doc = await getDocs(q);
+    const rsvpData = doc.docs[0].data();
 
-      weddingData = rsvpData.Wedding
+    weddingData = rsvpData.Wedding
 
-    } catch (err) {
-      console.error(err);
-      alert("An error occured while fetching user data");
-    } 
-  
+  } catch (err) {
+    console.error(err);
+    alert("An error occured while fetching user data");
+  }
+
   return weddingData
 };
 
 
-const putRSVPDataToDB = async ({UserEmail,Name,Email,Data,HasPlusOne,PlusOneAdded}) => {
+const putRSVPDataToDB = async ({ UserEmail, Name, Email, Data, HasPlusOne, PlusOneAdded }) => {
   try {
     console.log('Data', Data.Wedding)
     console.log('Plus one already added', PlusOneAdded)
     // For all guests, update the rsvp information
-    if (Data.Wedding.IsAPlusOne === false){
+    if (Data.Wedding.IsAPlusOne === false) {
       // console.log('Updating RSVP information')
       const q = query(collection(db, "rsvp"), where("email", "==", Email));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
-        setDoc(doc.ref, {email: Email, Wedding: Data.Wedding}, { merge: true })
+        setDoc(doc.ref, { email: Email, Wedding: Data.Wedding }, { merge: true })
       });
     }
     // If the guest data is for a plus one, update the user and party information in case of name/email change
-    if(Data.Wedding.IsAPlusOne === true & PlusOneAdded === true){
+    if (Data.Wedding.IsAPlusOne === true & PlusOneAdded === true) {
       // console.log('Updating Plus One information')
       const qparty = query(collection(db, "parties"), where("guests", "array-contains", UserEmail));
       const partySnapshot = await getDocs(qparty);
@@ -171,52 +173,52 @@ const putRSVPDataToDB = async ({UserEmail,Name,Email,Data,HasPlusOne,PlusOneAdde
       const lastEmail = guests.pop()
       guests.push(Email)
       partySnapshot.forEach((doc) => {
-        setDoc(doc.ref, {guests: guests, plusOneAdded: true, hasPlusOne: false}, { merge: true })
+        setDoc(doc.ref, { guests: guests, plusOneAdded: true, hasPlusOne: false }, { merge: true })
       });
       const qusers = query(collection(db, "users"), where("email", "==", lastEmail));
       const userSnapshot = await getDocs(qusers);
       userSnapshot.forEach((doc) => {
-        setDoc(doc.ref, {name: Name, email: Email}, { merge: true })
+        setDoc(doc.ref, { name: Name, email: Email }, { merge: true })
       });
       const qrsvp = query(collection(db, "rsvp"), where("email", "==", lastEmail));
       const rsvpSnapshot = await getDocs(qrsvp);
       rsvpSnapshot.forEach((doc) => {
-        setDoc(doc.ref, {email: Email, Wedding: Data.Wedding}, { merge: true })
+        setDoc(doc.ref, { email: Email, Wedding: Data.Wedding }, { merge: true })
       });
     }
     // If a plus one that has not been added, create a user profile, rsvp info, and add to party list
-    else if(Data.Wedding.IsAPlusOne === true & PlusOneAdded === false & Email !== ""){
+    else if (Data.Wedding.IsAPlusOne === true & PlusOneAdded === false & Email !== "") {
       // FIX: Need to run a check to make sure the plus one's email is not already in the user list
       // console.log('Adding a new Plus One')
       await addDoc(collection(db, "users"), {
-          authProvider: "local",
-          name: Name,
-          email: Email,
+        authProvider: "local",
+        name: Name,
+        email: Email,
       })
       await addDoc(collection(db, "rsvp"), {
-          allowed: true,
-          confirmed: "yes",
-          email: Email,
-          Wedding: Data.Wedding
+        allowed: true,
+        confirmed: "yes",
+        email: Email,
+        Wedding: Data.Wedding
       })
       const q = query(collection(db, "parties"), where("guests", "array-contains", UserEmail));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         const guests = doc.data().guests
         guests.push(Email)
-        setDoc(doc.ref, {guests: guests, plusOneAdded: true, hasPlusOne: false}, { merge: true })
+        setDoc(doc.ref, { guests: guests, plusOneAdded: true, hasPlusOne: false }, { merge: true })
       });
     }
   } catch (err) {
-      console.error(err)
-      alert(err.message)
+    console.error(err)
+    alert(err.message)
   }
 };
 
-const fetchPartyUsers = async(email) => {
+const fetchPartyUsers = async (email) => {
   let partyGuests, partyGuestEmails, partyPlusOne, partyPlusOneAdded
   const partyGuestNames = []
-  try{
+  try {
     const q = query(collection(db, "parties"), where("guests", "array-contains", email));
     const doc = await getDocs(q);
     const partyData = doc.docs[0].data();
@@ -224,38 +226,38 @@ const fetchPartyUsers = async(email) => {
     partyGuestEmails = partyData.guests
     partyPlusOne = partyData.hasPlusOne
     partyPlusOneAdded = partyData.plusOneAdded
-    
+
     for (let i = 0; i < partyGuestEmails.length; i++) {
       // if (partyGuestEmails[i] == "plus_one"){
       //   partyGuestNames[i] = "Plus One"
       // }
       // else{
-        const q = query(collection(db, "users"), where("email", "==", partyGuestEmails[i]));
-        const doc = await getDocs(q);
-        const nameData = doc.docs[0].data();
+      const q = query(collection(db, "users"), where("email", "==", partyGuestEmails[i]));
+      const doc = await getDocs(q);
+      const nameData = doc.docs[0].data();
 
-        partyGuestNames[i] = nameData.name
-      }
+      partyGuestNames[i] = nameData.name
+    }
     // }
 
-  } catch (err){
+  } catch (err) {
     console.error(err)
     alert(err.message)
   }
-  return partyGuests = {names: partyGuestNames, emails: partyGuestEmails, hasPlusOne: partyPlusOne, plusOneAdded: partyPlusOneAdded}
+  return partyGuests = { names: partyGuestNames, emails: partyGuestEmails, hasPlusOne: partyPlusOne, plusOneAdded: partyPlusOneAdded }
 }
 
 export {
-    auth,
-    db,
-    fetchUserName,
-    logInWithEmailAndPassword,
-    registerWithEmailAndPassword,
-    sendPasswordReset,
-    logout,
-    fetchUserRSVPallowed,
-    fetchUserRSVPdata,
-    putRSVPDataToDB,
-    fetchPartyUsers,
-    // currentAuthenticatedUser,
+  auth,
+  db,
+  fetchUserName,
+  logInWithEmailAndPassword,
+  registerWithEmailAndPassword,
+  sendPasswordReset,
+  logout,
+  fetchUserRSVPallowed,
+  fetchUserRSVPdata,
+  putRSVPDataToDB,
+  fetchPartyUsers,
+  // currentAuthenticatedUser,
 };
