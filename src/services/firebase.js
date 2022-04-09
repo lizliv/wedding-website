@@ -190,17 +190,18 @@ const putRSVPDataToDB = async ({ UserEmail, Name, Email, Data, HasPlusOne, PlusO
     else if (Data.Wedding.IsAPlusOne === true & PlusOneAdded === false & Email !== "") {
       // FIX: Need to run a check to make sure the plus one's email is not already in the user list
       // console.log('Adding a new Plus One')
-      await addDoc(collection(db, "users"), {
-        authProvider: "local",
+      await setDoc(doc(db, 'users', Name.replace(/\s+/g, '')), {
+        // addDoc(collection(db, "users"), {
         name: Name,
         email: Email,
-      })
-      await addDoc(collection(db, "rsvp"), {
+      }, { merge: true })
+      await setDoc(doc(db, 'rsvp', Name.replace(/\s+/g, '')), {
+        // addDoc(collection(db, "rsvp"), {
         allowed: true,
         confirmed: "yes",
         email: Email,
         Wedding: Data.Wedding
-      })
+      }, { merge: true })
       const q = query(collection(db, "parties"), where("guests", "array-contains", UserEmail));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
