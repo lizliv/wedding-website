@@ -11,6 +11,7 @@ import { ThingsToDo } from "views/ThingsToDo"
 import { FAQ } from "views/FAQ"
 import { Registry } from "views/Registry"
 import { RSVP } from "views/RSVP"
+import { ManageGuests } from "views/ManageGuests"
 
 import {Modal} from "components/CovidBanner"
 
@@ -47,6 +48,7 @@ class AppLayout extends Component {
                 <Route exact path={"/faq"} component={FAQ} />
                 <Route exact path={"/registry"} component={Registry} />
                 <Route exact path={"/rsvp"} component={RSVP} />
+                <Route exact path={"/manage-guests"} component={ManageGuests} />
             </Switch>
             <Modal show={this.state.show} handleClose={this.hideModal}></Modal>
         </main>

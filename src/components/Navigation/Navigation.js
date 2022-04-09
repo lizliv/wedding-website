@@ -44,6 +44,7 @@ function Navigation({ history }) {
         faq: FAQNavText,
         registry: RegistryNavText,
         rsvp: RSVPNavText,
+        manageGuest: ManageGuestText,
         signOut: SignOutText,
         signIn: SignInText,
         manageRsvp: ManageRSVPText,
@@ -102,6 +103,13 @@ function Navigation({ history }) {
                         role="button"
                     >
                         <RSVPNavText />
+                    </RouterNavLink>
+                    <RouterNavLink
+                        to="/manage-guests"
+                        className="nav-link"
+                        role="button"
+                    >
+                        <ManageGuestText />
                     </RouterNavLink>
                 </Nav>
                 <Nav className="ml-auto">
