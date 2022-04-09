@@ -11,16 +11,15 @@ import {
     putRSVPDataToDB,
     fetchUserRSVPdata,
     fetchPartyUsers,
-  } from "services";
+} from "services";
 
 import { APP } from "./constants"
 
-export const initializeApp = async (dispatch,user) => {
+export const initializeApp = async (dispatch, user) => {
 
-    const {name,email} = await fetchUserName(user)
+    const { name, email } = await fetchUserName(user)
 
     if (name) {
-
         dispatch({
             type: APP.SET.INITIALIZE_USER,
             payload: {
@@ -54,7 +53,9 @@ export const signUp = async (
             },
         })
     } catch (error) {
+        alert(error.message)
         const { message } = error
+        // FIX: Potentially change error messages to a more user friendly description?
         setStatus(message)
         dispatch({
             type: APP.SET.USER_ERROR,
@@ -71,8 +72,8 @@ export const signIn = async (
     dispatch
 ) => {
     try {
-        const myUser = await logInWithEmailAndPassword(providedEmail, password)        
-        const {name,email} = await fetchUserName(myUser)
+        const myUser = await logInWithEmailAndPassword(providedEmail, password)
+        const { name, email } = await fetchUserName(myUser)
 
         dispatch({
             type: APP.SET.USER_SIGN_IN,
@@ -110,13 +111,14 @@ export const signOut = async dispatch => {
 export const fetchUserRSVPInformation = async (email, dispatch) => {
     try {
         let weddingData, partyGuests
-        const {allowed,confirmed} = await fetchUserRSVPallowed(email.toLowerCase())
-        if(allowed){
+        const { allowed, confirmed } = await fetchUserRSVPallowed(email.toLowerCase())
+        if (allowed) {
             partyGuests = await fetchPartyUsers(email)
             // weddingData = await fetchUserRSVPdata(email.toLowerCase())
             weddingData = await Promise.all(partyGuests.emails.map(function (guestEmails, index) {
                 return fetchUserRSVPdata(guestEmails)
-              }));
+            })
+            );
         }
         dispatch({
             type: APP.SET.RSVP,
@@ -134,7 +136,7 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
 
 export const putUserRSVPInformation = async (
     // { email, isAttending, foodChoice, dietRestrictions, guestNote},
-    { email, userEmail, guestData, partyNote},
+    { email, userEmail, guestData, partyNote },
     setSubmitting,
     setStatus,
     setShowConfirmation,
@@ -159,7 +161,7 @@ export const putUserRSVPInformation = async (
                 HasPlusOne: guest.plusOneAllowed,
                 PlusOneAdded: guest.plusOneAdded
             })
-          }));
+        }));
 
         // guestData.forEach(function (guest, index) { 
         //     putRSVPDataToDB({

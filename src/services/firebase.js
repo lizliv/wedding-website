@@ -33,31 +33,19 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const logInWithEmailAndPassword = async (email, password) => {
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
+    await signInWithEmailAndPassword(auth, email, password);
     return auth.currentUser
 };
 
 const registerWithEmailAndPassword = async ({ name, email, password }) => {
-  try {
       const res = await createUserWithEmailAndPassword(auth, email, password)
       const user = res.user
-      console.log('Registering with name:',name)
-      console.log('For the email:', email)
       await addDoc(collection(db, "users"), {
           uid: user.uid,
           name,
           authProvider: "local",
           email,
       })
-  } catch (err) {
-      console.error(err)
-      alert(err.message)
-  }
 };
 
 const sendPasswordReset = async (email) => {
