@@ -25,20 +25,10 @@ export default {
         notAttendingLabel: "Not Attending",
         chickenLabel: "Chicken",
         veggieLabel: "Vegetarian",
-        lampollaLabel: "L'Ampolla",
-        tortosaLabel: "Tortosa",
         otherLabel: "Other",
-        otherLabelExtra: "Reach out if you need help arranging transportation",
         WeddingFormHeader: () => <>Wedding</>,
         WeddingFormSubHeader: () => <>The ceremony is at 5:30 pm on Sunday, June 12th, 2022. Reception to Follow</>,
-        NumberOfGuestsLabel: () => <>Number of guests attending</>,
         zeroLabel: "Can't Attend",
-        NumberOfGuestsHelp: () => (
-            <>
-                The number of guests in your party (including yourself) that
-                will be in attendance.
-            </>
-        ),
         PlusOneLabel: () => (
             <>Will you be bringing a guest?</>
         ),
@@ -65,14 +55,6 @@ export default {
                 Let us know which option you prefer, any dietary restrictions will be accomodated.
             </>
         ),
-        OriginLabel: () => <>Where is your origin?</>,
-        OriginHelp: () => (
-            <>
-                We're only planning on having bus transportation from L'Ampolla
-                and Tortosa. Reach out if you need help arranging transportation
-                from other locations.
-            </>
-        ),
         DietRestrictionsLabel: () => <>Dietary Restrictions</>,
         DietRestrictionsHelp: () => (
             <>Do you have any dietary restrictions? (i.e. vegetarian, vegan, Kosher, gluten free, etc.)</>
@@ -94,51 +76,44 @@ export default {
     [LANGUAGE.PT]: {
         AlertNoEmail: () => (
             <>
-                Uups, sembla que no tenim el vostre email. Envieu-nos un email a{" "}
+                Uups, parece que nao temos seu endereco de e-mail. E-nos em e-mail a {" "}
                 <strong>
                     <a href="mailto:lizandchristian2022@gmail.com">
                     lizandchristian2022@gmail.com
                     </a>
                 </strong>{" "}
-                i actualitzarem el nostre registre.
+                para que possamos atualizar nossos registros.
             </>
         ),
-        submitButtonText: "Envia RSUP",
-        updateButtonText: "Actualitza RSUP",
-        yesLabel: "Yes",
-        noLabel: "No",
-        attendingLabel: "Attending",
-        notAttendingLabel: "Not Attending",
+        submitButtonText: "Enviar RSVP",
+        updateButtonText: "Actualizar RSVP",
+        yesLabel: "Sim",
+        noLabel: <>N&atilde;o</>,
+        attendingLabel: "Participando",
+        notAttendingLabel: <>N&atilde;o Participando</>,
         chickenLabel: "Frango",
-        veggieLabel: "Vegetariana",
-        lampollaLabel: "L'Ampolla",
-        tortosaLabel: "Tortosa",
-        otherLabel: "Altres",
-        otherLabelExtra: "Feu-nos saber si necessiteu ajuda trobant transport.",
-        WeddingFormHeader: () => <>Casament</>,
-        WeddingFormSubHeader: () => <>The ceremony is at 5:30 pm on Sunday, June 12th, 2022. Reception to Follow</>,
-        NumberOfGuestsLabel: () => <>Número de convidats</>,
-        zeroLabel: "No podem venir",
-        NumberOfGuestsHelp: () => (
-            <>Número de convidats (incloen-te a tu) que vindran.</>
-        ),
+        veggieLabel: "Vegetariano",
+        otherLabel: "De outros",
+        WeddingFormHeader: () => <>Cassamento</>,
+        WeddingFormSubHeader: () => <>A ceremonia e em 17:30 no domingo, 12 de Junho, 2022. Recepcao a seguir.</>,
+        zeroLabel: "Nao podemos ir",
         PlusOneLabel: () => (
-            <>Will you be bringing a guest?</>
+            <>Voce vai estar trazendo um convidado?</>
         ),
         EditPlusOneLabel: () => (
-            <>Edit your guests information.</>
+            <>Edite informa&ccedil;oes dos seus convidados.</>
         ),
         AttendingTextLabel: ({ name , email}) => (
             <><strong>{name} ({email})</strong></>
         ),
         GuestNameLabel: () => (
-            <>What is the name of your guest?</>
+            <>Qual e o nome do seu convidado?</>
         ),
         GuestNameHelp: () => (
-            <>Please enter the first and last name</>
+            <>Por favor, insira o primeiro e ultimo nome</>
         ),
         GuestEmailLabel: () => (
-            <>What is the email of your guest?</>
+            <>Qual e o email do seu convidado?</>
         ),
         FoodChoiceLabel: () => (
             <>Qual opção de comida você gostaria?</>
@@ -146,13 +121,6 @@ export default {
         FoodChoiceHelp: () => (
             <>
                 Deixe-nos saber qual opção você prefere, quaisquer restrições alimentares serão acomodadas.
-            </>
-        ),
-        OriginLabel: () => <>Des d'on?</>,
-        OriginHelp: () => (
-            <>
-                Només hi haurà autobús des de L'Ampolla i Tortosa. Feu-nos saber
-                si necessiteu ajuda trobant transport.
             </>
         ),
         DietRestrictionsLabel: () => <>Restrições alimentares?</>,
@@ -163,13 +131,13 @@ export default {
         ),
         WeddingNoteLabel: () => <>Message</>,
         WeddingNoteHelp: () => (
-            <>Want to leave a message for the bride and groom?</>
+            <>Quer deixar uma mensagem para a noiva e noivo?</>
         ),
         // DinnerFormHeader: () => <>Pica-pica de Benvinguda</>,
         // DinnerGuestsLabel: () => <>Número de convidats</>,
         // DinnerGuestsHelp: () => (
         //     <>Número de convidats (incloen-te a tu) que vindran.</>
         // ),
-        AlertRSVPUpdated: () => <>Gràcies pel vostre RSUP!</>,
+        AlertRSVPUpdated: () => <>Obrigado pelo seu RSVP!</>,
     },
 }
