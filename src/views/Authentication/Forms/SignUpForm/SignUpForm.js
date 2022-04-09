@@ -36,6 +36,7 @@ function SignUpForm({ history }) {
     const {
         Header,
         namePlaceholder,
+        NameHelp,
         emailPlaceholder,
         EmailHelp,
         passwordPlaceholder,
@@ -83,6 +84,9 @@ function SignUpForm({ history }) {
                             onBlur={handleBlur}
                             isInvalid={touched.name && errors.name}
                         />
+                        <Form.Text className="text-muted">
+                            <NameHelp />
+                        </Form.Text>
                         <Form.Control.Feedback type="invalid">
                             {errors.name}
                         </Form.Control.Feedback>

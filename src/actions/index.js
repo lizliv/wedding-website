@@ -53,7 +53,6 @@ export const signUp = async (
             },
         })
     } catch (error) {
-        alert(error.message)
         const { message } = error
         // FIX: Potentially change error messages to a more user friendly description?
         setStatus(message)
