@@ -2,6 +2,10 @@ import React from "react"
 
 import { LANGUAGE } from "actions/constants"
 
+import ceremonyImg from "photos/scheduleImages/honeycomb.jpg"
+import receptionImg from "photos/scheduleImages/cafebrauer.jpg"
+import brazilImg from "photos/scheduleImages/brazil.jpg"
+
 export default {
     [LANGUAGE.EN]: [
         // {
@@ -23,7 +27,8 @@ export default {
         //     ),
         // },
         {
-            Title: () => <>Ceremony</>,
+            LocationImage: ceremonyImg,
+            Title: () => <>Wedding Ceremony</>,
             Date: () => <>Sunday, June 12th, 2022</>,
             Time: () => <>5:30 pm-6 pm</>,
             Location: () => <>Honeycomb</>,
@@ -45,6 +50,7 @@ export default {
             ),
         },
         {
+            LocationImage: receptionImg,
             Title: () => <>Cocktail Hour and Reception</>,
             Date: () => <>Sunday, June 12th, 2022</>,
             Time: () => <>6 pm-11 pm</>,
@@ -67,6 +73,7 @@ export default {
             ),
         },
         {
+            LocationImage: brazilImg,
             Title: () => <>Brazilian Reception</>,
             Date: () => <>Saturday, December 17th, 2022</>,
             // Time: () => <>6 pm-11 pm</>,
@@ -110,7 +117,8 @@ export default {
         //     ),
         // },
         {
-            Title: () => <>Casamento</>,
+            LocationImage: ceremonyImg,
+            Title: () => <>Ceremonia do Casamento</>,
             Date: () => <>June 12th, 2022</>,
             Time: () => <>18:00-00:00 </>,
             Location: () => <>Cafe Brauer</>,

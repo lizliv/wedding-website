@@ -14,6 +14,8 @@ function Schedule() {
     const { Heading, SubHeading } = title[selectLanguage(cookies)]
     const scheduleItems = schedule[cookies.language]
 
+    // console.log( `url("${schedImg1}")`)
+    // console.log( schedImg1)
     return (
         <>
             <Header
@@ -25,6 +27,7 @@ function Schedule() {
                 {scheduleItems.map(
                     (
                         {
+                            LocationImage,
                             Title,
                             Date,
                             Time,
@@ -38,6 +41,7 @@ function Schedule() {
                     ) => (
                         <Item
                             key={idx}
+                            LeftImage={LocationImage}
                             LeftMainTitle={Title}
                             LeftFirstSubTitle={Date}
                             LeftSecondSubTitle={Time}
