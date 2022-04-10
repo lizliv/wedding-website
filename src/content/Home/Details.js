@@ -7,6 +7,9 @@ const hashtag = "LIVINGlikeaREI"
 export default {
     [LANGUAGE.EN]: {
         Title: () => <span>Christian and Liz are getting married!</span>,
+        RSVPText: () => <>RSVP Here</>,
+        RSVPTextHelpPre: () => <>Please&nbsp;</>,
+        RSVPTextHelpPost: () => <>&nbsp;&nbsp;by May 6th</>,
         Date: () => (
             <div className="d-flex flex-column">
                 <div>June 12th, 2022</div>
@@ -18,6 +21,9 @@ export default {
     },
     [LANGUAGE.PT]: {
         Title: () => <span>Christian e Liz v&atilde;o casar!</span>,
+        RSVPText: () => <>RSVP Aqui</>,
+        RSVPTextHelpPre: () => <>Por favor&nbsp;</>,
+        RSVPTextHelpPost: () => <>&nbsp;&nbsp;pelo de 6 do Maio</>,
         Date: () => (
             <div className="d-flex flex-column">
                 <div>12 de Junho, 2022</div>

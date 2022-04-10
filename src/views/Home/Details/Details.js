@@ -1,4 +1,5 @@
 import React from "react"
+import {Link } from "react-router-dom";
 import { useCookies } from "react-cookie"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
@@ -12,7 +13,7 @@ import styles from "./Details.module.scss"
 function Details() {
     const [cookies] = useCookies(["language"])
 
-    const { Title, Date, Location, hashtag, locationLink } = details[
+    const { Title, RSVPText, RSVPTextHelpPre, RSVPTextHelpPost, Date, Location, hashtag, locationLink } = details[
         selectLanguage(cookies)
     ]
     return (
@@ -23,6 +24,15 @@ function Details() {
                         <h1 className={styles.announcement}>
                             <Title />
                         </h1>
+                        <br/>
+                        <h5>
+                            <RSVPTextHelpPre/>
+                        <Link to="/rsvp"><button className={styles.rsvp}>
+                            <RSVPText />
+                        </button>
+                        </Link>
+                            <RSVPTextHelpPost/>
+                        </h5>
                         <h1 className={styles.date}>
                             <Date />
                         </h1>

@@ -27,7 +27,8 @@ export default {
         veggieLabel: "Vegetarian",
         otherLabel: "Other",
         WeddingFormHeader: () => <>Wedding</>,
-        WeddingFormSubHeader: () => <>The ceremony is at 5:30 pm on Sunday, June 12th, 2022. Reception to Follow</>,
+        WeddingFormSubHeader: () => <><p>Please RSVP by May 6th</p>
+        <p>The ceremony is at 5:30 pm on Sunday, June 12th, 2022. Reception to Follow</p></>,
         zeroLabel: "Can't Attend",
         PlusOneLabel: () => (
             <>Will you be bringing a guest?</>
@@ -95,7 +96,8 @@ export default {
         veggieLabel: "Vegetariano",
         otherLabel: "De outros",
         WeddingFormHeader: () => <>Cassamento</>,
-        WeddingFormSubHeader: () => <>A ceremonia e em 17:30 no domingo, 12 de Junho, 2022. Recepcao a seguir.</>,
+        WeddingFormSubHeader: () => <><p>Por favor, RSVP antes de 6 do Maio</p>
+        <p>A ceremonia e em 17:30 no domingo, 12 de Junho, 2022. Recepcao a seguir.</p></>,
         zeroLabel: "Nao podemos ir",
         PlusOneLabel: () => (
             <>Voce vai estar trazendo um convidado?</>

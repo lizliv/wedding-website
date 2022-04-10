@@ -67,7 +67,7 @@ function Navigation({ history }) {
             </RouterNavLink>
             <Navbar.Toggle onClick={() => setExpanded(expanded ? false : "expanded")} aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto">
+                <Nav className="ml-left">
                     <RouterNavLink
                         to="/schedule"
                         className="nav-link"
