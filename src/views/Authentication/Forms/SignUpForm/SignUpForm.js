@@ -60,6 +60,7 @@ function SignUpForm({ history }) {
                 name: "",
                 email: "",
                 password: "",
+                confirmPassword: ""
             }}
             onSubmit={submitForm}
         >

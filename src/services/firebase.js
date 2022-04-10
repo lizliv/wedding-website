@@ -45,9 +45,11 @@ const registerWithEmailAndPassword = async ({ name, email, password }) => {
 
   const qusers = query(collection(db, "users"), where("email", "==", email));
   const userSnapshot = await getDocs(qusers);
+
   // User document added with the reference (name) of the user without spaces
   if (isUndefined(userSnapshot.docs[0])) {
     await setDoc(doc(db, 'users', name.replace(/\s+/g, '')), { name: name, email: email, uid: user.uid }, { merge: true })
+    // .catch((e) => {  console.log(e); })
   }
   // User document update with the name as entered by the user (based on email)
   else {
@@ -109,7 +111,7 @@ const fetchUserName = async (user) => {
 
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      // alert("An error occured while fetching user data");
     }
   }
 
@@ -145,7 +147,7 @@ const fetchUserRSVPallowed = async (email) => {
 
     } catch (err) {
       console.error(err);
-      alert("An error occured while fetching user data");
+      // alert("An error occured while fetching user data");
     }
   }
 
@@ -164,7 +166,7 @@ const fetchUserRSVPdata = async (email) => {
 
   } catch (err) {
     console.error(err);
-    alert("An error occured while fetching user data");
+    // alert("An error occured while fetching user data");
   }
 
   return weddingData

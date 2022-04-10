@@ -33,7 +33,7 @@ const App = () => {
         if (isNull(language)) {
             setCookie("language", LANGUAGE.EN, { path: "/" })
         }
-    }, [user, dispatch, setCookie, language])
+    }, [dispatch, setCookie, language])
 
     return (
         <HashRouter>

@@ -17,7 +17,7 @@ import {
 import { APP } from "./constants"
 
 export const initializeApp = async (dispatch, user) => {
-
+    
     const { name, email } = await fetchUserName(user)
 
     if (name) {
@@ -44,8 +44,8 @@ export const signUp = async (
             password,
         })
 
+        // await signIn(email,password)
         await logInWithEmailAndPassword(email, password)
-
         dispatch({
             type: APP.SET.USER_SIGN_IN,
             payload: {
@@ -55,6 +55,7 @@ export const signUp = async (
         })
     } catch (error) {
         const { message } = error
+        console.log('The actions/signup is throwing an error')
         // FIX: Potentially change error messages to a more user friendly description?
         setStatus(message)
         dispatch({
