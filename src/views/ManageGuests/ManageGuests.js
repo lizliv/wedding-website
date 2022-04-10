@@ -78,20 +78,21 @@ function ManageGuests() {
 
             initializeUserAndRSVPDB(guestList)
 
-            let partyIdx = 0
+            let partyIdx = guestList[0].partyID
+            console.log(partyIdx)
             let partyList = []
             let partyHasPlusOne = false
             guestList.map((thisGuestData, guestIdx) => {
                 if (guestList[guestIdx].partyID !== partyIdx) {
-                    initializePartyDB(partyIdx, partyList, partyHasPlusOne)
+                    initializePartyDB(guestList[guestIdx-1].partyID, partyList, partyHasPlusOne)
                     partyList = []
                     partyIdx += 1
                 }
                 partyList.push(guestList[guestIdx].email)
                 partyHasPlusOne = guestList[guestIdx].hasPlusOne
             })
+            initializePartyDB(guestList[guestList.length-1].partyID, partyList, partyHasPlusOne)
             console.log('Parties have been added')
-
         };
         reader.readAsText(input);
 
