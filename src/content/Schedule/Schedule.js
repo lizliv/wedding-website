@@ -23,10 +23,10 @@ export default {
         //     ),
         // },
         {
-            Title: () => <>Wedding</>,
-            Date: () => <>June 12th, 2022</>,
-            Time: () => <>6 pm-12 am</>,
-            Location: () => <>Cafe Brauer</>,
+            Title: () => <>Ceremony</>,
+            Date: () => <>Sunday, June 12th, 2022</>,
+            Time: () => <>5:30 pm-6 pm</>,
+            Location: () => <>Honeycomb</>,
             locationLink: "https://www.lpzoo.org/venue/cafe-brauer/",
             Address: () => (
                 <>
@@ -39,7 +39,52 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        The ceremony, dinner and party will take place at Cafe Brauer in the Lincoln Park Zoo.
+                        The ceremony will take place at the Honeycomb (a.k.a. Education Pavilion). A brief 5-10 min walk from Caf&eacute; Brauer across the nature boardwalk.
+                    </p>
+                </>
+            ),
+        },
+        {
+            Title: () => <>Cocktail Hour and Reception</>,
+            Date: () => <>Sunday, June 12th, 2022</>,
+            Time: () => <>6 pm-11 pm</>,
+            Location: () => <>Caf&eacute; Brauer</>,
+            locationLink: "https://www.lpzoo.org/venue/cafe-brauer/",
+            Address: () => (
+                <>
+                    <p>2021 N Stockton Dr.</p>
+                    <p>Chicago, IL, 60614</p>
+                </>
+            ),
+            mapLink:
+                "https://goo.gl/maps/873t96s6cGxU1FoQ9",
+            Details: () => (
+                <>
+                    <p>
+                        The cocktail hour, dinner, and party will take place at Caf&eacute; Brauer in the Lincoln Park Zoo.
+                    </p>
+                </>
+            ),
+        },
+        {
+            Title: () => <>Brazilian Reception</>,
+            Date: () => <>Saturday, December 17th, 2022</>,
+            // Time: () => <>6 pm-11 pm</>,
+            Location: () => <>Marco Luigi Winery</>,
+            locationLink: "https://marcoluigi.com.br/",
+            Address: () => (
+                <>
+                    <p>Via Trento, s/nº - Vale dos Vinhedos</p>
+                    <p>Bento Gonçalves - RS</p>
+                    <p>95711-000, Brazil</p> 
+                </>
+            ),
+            mapLink:
+                "https://g.page/vinicola-marcoluigi?share",
+            Details: () => (
+                <>
+                    <p>
+                        The party continues! To make sure Christian can celebrate this momentous occasion with his entire family, we will be holding a second reception in Rio Grande do Sul, Brazil!
                     </p>
                 </>
             ),

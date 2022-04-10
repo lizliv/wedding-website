@@ -9,14 +9,14 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        You can fly into either O'Hare International (ORD) or Midway (MDW). The "L" (Chicago's train system) runs directly from the airport to downtown. You can also rent a car from the airport if you prefer.
+                        You can fly into either O'Hare International (ORD) or Midway (MDW). The "L" (Chicago's train system) runs directly from both airports to downtown. You can also rent a car from the airport if you prefer.
                     </p>
                 </>
             ),
             link: null,
         },
         {
-            Type: () => <>Lodging for Wedding</>,
+            Type: () => <>Lodging - Main Block</>,
             Title: () => <>The Westin Michigan Ave</>,
             Address: null,
             Phone: null,
@@ -32,21 +32,24 @@ export default {
             link: "https://www.marriott.com/events/start.mi?id=1645112218819&key=GRP",
         },
         {
-            Type: () => <>Lodging for Wedding</>,
+            Type: () => <>Lodging - Option 2</>,
             Title: () => <>The Whitehall</>,
             Address: null,
             Phone: null,
             Details: () => (
                 <>
                     <p>
-                        You can get 15% off at the Whitehall hotel by using the Discount Code "Wedding Rate". This hotel is less expensive than the Westin, however, using the discount code may only be allowed for the night of June 12th.
+                        There is a code for 15% off at the Whitehall hotel. Note: as of April 10th, this option is more expensive (on average) than the main block at the Westin.
+                    </p>
+                    <p> 
+                        Use the link below and select "Add Code". Change the dropdown from "Corporate/Promotion Code" to "Discount Code" and then enter "Wedding Rate" in the box below.
                     </p>
                 </>
             ),
             link: "https://bookings.travelclick.com/106339?RatePlanId=5304175#/guestsandrooms",
         },
         {
-            Type: () => <>Lodging for Wedding</>,
+            Type: () => <>Lodging - Option 3</>,
             Title: () => <>The Four Seasons</>,
             Address: null,
             Phone: null,
@@ -91,7 +94,7 @@ export default {
             link: null,
         },
         {
-            Type: () => <>Hotel para o Casamento</>,
+            Type: () => <>Hotel - Primeiro Bloco</>,
             Title: () => <>The Westin Michigan Ave</>,
             Address: null,
             Phone: null,
@@ -107,7 +110,7 @@ export default {
             link: "https://www.marriott.com/events/start.mi?id=1645112218819&key=GRP",
         },
         {
-            Type: () => <>Hotel para o Casamento</>,
+            Type: () => <>Hotel - Op&ccedil;&atilde;o 2</>,
             Title: () => <>The Whitehall</>,
             Address: null,
             Phone: null,
@@ -121,7 +124,7 @@ export default {
             link: "https://bookings.travelclick.com/106339?RatePlanId=5304175#/guestsandrooms",
         },
         {
-            Type: () => <>Hotel para o Casamento</>,
+            Type: () => <>Hotel - Op&ccedil;&atilde;o 3</>,
             Title: () => <>The Four Seasons</>,
             Address: null,
             Phone: null,
