@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { useCookies } from "react-cookie"
 import { NavLink as RouterNavLink, withRouter } from "react-router-dom"
 import Navbar from "react-bootstrap/Navbar"
@@ -16,10 +16,12 @@ import { Store } from "store"
 import { navigation } from "content"
 
 import styles from "./Navigation.module.scss"
+// import { FALSE } from "node-sass"
 
 function Navigation({ history }) {
     const [cookies, setCookie] = useCookies(["language"])
     const { state, dispatch } = useContext(Store)
+    const [expanded, setExpanded] = useState(false);
 
     const {
         app: {
@@ -54,6 +56,7 @@ function Navigation({ history }) {
             variant="dark"
             expand="lg"
             sticky="top"
+            expanded={expanded}
             className={styles.navigation}
         >
             <RouterNavLink
@@ -62,13 +65,14 @@ function Navigation({ history }) {
             >
                 C & L
             </RouterNavLink>
-            <Navbar.Toggle />
-            <Navbar.Collapse>
-                <Nav>
+            <Navbar.Toggle onClick={() => setExpanded(expanded ? false : "expanded")} aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="ml-auto">
                     <RouterNavLink
                         to="/schedule"
                         className="nav-link"
                         role="button"
+                        onClick={() => setExpanded(false)}
                     >
                         <ScheduleNavText />
                     </RouterNavLink>
@@ -76,6 +80,7 @@ function Navigation({ history }) {
                         to="/travel"
                         className="nav-link"
                         role="button"
+                        onClick={() => setExpanded(false)}
                     >
                         <TravelNavText />
                     </RouterNavLink>
@@ -83,16 +88,23 @@ function Navigation({ history }) {
                         to="/things-to-do"
                         className="nav-link"
                         role="button"
+                        onClick={() => setExpanded(false)}
                     >
                         <ThingsToDoNavText />
                     </RouterNavLink>
-                    <RouterNavLink to="/faq" className="nav-link" role="button">
+                    <RouterNavLink
+                        to="/faq"
+                        className="nav-link"
+                        role="button"
+                        onClick={() => setExpanded(false)}
+                    >
                         <FAQNavText />
                     </RouterNavLink>
                     <RouterNavLink
                         to="/registry"
                         className="nav-link"
                         role="button"
+                        onClick={() => setExpanded(false)}
                     >
                         <RegistryNavText />
                     </RouterNavLink>
@@ -100,6 +112,7 @@ function Navigation({ history }) {
                         to="/rsvp"
                         className="nav-link"
                         role="button"
+                        onClick={() => setExpanded(false)}
                     >
                         <RSVPNavText />
                     </RouterNavLink>
