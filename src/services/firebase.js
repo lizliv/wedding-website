@@ -14,7 +14,7 @@ import {
   collection,
   where,
   doc,
-  addDoc,
+  // addDoc,
   setDoc,
 } from "firebase/firestore";
 
@@ -248,6 +248,15 @@ const fetchPartyUsers = async (email) => {
   return partyGuests = { names: partyGuestNames, emails: partyGuestEmails, hasPlusOne: partyPlusOne, plusOneAdded: partyPlusOneAdded }
 }
 
+
+const fetchAllGuestRSVPInformation = async () => {
+    const q = query(collection(db, "users"));
+    const doc = await getDocs(q);
+    // const userData = doc.docs[0].data();
+
+    console.log('All users:', doc.docs)
+}
+
 export {
   auth,
   db,
@@ -261,4 +270,5 @@ export {
   putRSVPDataToDB,
   fetchPartyUsers,
   // currentAuthenticatedUser,
+  fetchAllGuestRSVPInformation,
 };
