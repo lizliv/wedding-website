@@ -134,8 +134,7 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
 }
 
 export const putUserRSVPInformation = async (
-    // { email, isAttending, foodChoice, dietRestrictions, guestNote},
-    { email, userEmail, guestData, partyNote },
+    { email, userName, userEmail, guestData, partyNote },
     setSubmitting,
     setStatus,
     setShowConfirmation,
@@ -144,6 +143,7 @@ export const putUserRSVPInformation = async (
     try {
         await Promise.all(guestData.map(function (guest, index) {
             return putRSVPDataToDB({
+                UserName: userName,
                 UserEmail: userEmail,
                 Name: guest.name,
                 Email: guest.email.toLowerCase(),
@@ -161,26 +161,6 @@ export const putUserRSVPInformation = async (
                 PlusOneAdded: guest.plusOneAdded
             })
         }));
-
-        // guestData.forEach(function (guest, index) { 
-        //     putRSVPDataToDB({
-        //         UserEmail: userEmail,
-        //         Name: guest.name,
-        //         Email: guest.email.toLowerCase(),
-        //         Data: {
-        //             Wedding: {
-        //                 IsAttending: guest.isAttending,
-        //                 ...(guest.foodChoice ? { FoodChoice: guest.foodChoice } : {}),
-        //                 DietRestrictions: guest.dietRestrictions,
-        //                 Note: partyNote,
-        //                 IsAPlusOne: guest.isAPlusOne
-        //             },
-        //             confirmed: guest.isAttending,
-        //         },
-        //         HasPlusOne: guest.plusOneAllowed,
-        //         PlusOneAdded: guest.plusOneAdded
-        //     })
-        // });
 
         // Problem here. Need to wait for put to be done before doing this operation
         await fetchUserRSVPInformation(email, dispatch)

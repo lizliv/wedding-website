@@ -21,6 +21,7 @@ import { rsvpForm } from "content/RSVP"
 import styles from "../Forms.module.scss"
 
 const schema = Yup.object().shape({
+    userName: Yup.string(),
     userEmail: Yup.string().required(),
     guestData: Yup.array().of(
         Yup.object().shape({
@@ -88,7 +89,6 @@ function RSVPForm() {
     useEffect(() => {
         if (email) {
             fetchUserRSVPInformation(email, dispatch)
-            // partyGuestData = fetchPartyRSVPInformation(partyGuests)
         }
     }, [email, dispatch])   
 
@@ -117,6 +117,7 @@ function RSVPForm() {
 
 
     const initialValues = {
+        userName: name,
         userEmail: email,
         guestData: [],
         partyNote: ""
@@ -167,6 +168,7 @@ function RSVPForm() {
 
     return (
         <Formik
+            enableReinitialize // missing piece!!
             validationSchema={schema}
             initialValues={initialValues}
             onSubmit={submitForm}
