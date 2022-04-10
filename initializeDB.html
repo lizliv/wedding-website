@@ -84,6 +84,7 @@
       let myData
 
       reader.onload = function (e) {
+        console.log('target result',e.target.result)
         const text = e.target.result;
         // document.write(text);
         myData = processData(e.target.result);
@@ -118,16 +119,16 @@
         document.body.appendChild(f)
 
         // {() => (
-          guestList.map((thisGuestData, guestIdx) => {
-            // console.log('Guest data:', values.guestData)
-            // console.log('This guest is attending:', values.guestData[0].isAttending)
-            // return (
-              console.log(guestList[guestIdx])
-              // <div key={guestIdx}>
-              //   <p>Guest: {guestList[guestIdx].name}</p>
-              // </div>
-            // )
-          })
+          // guestList.map((thisGuestData, guestIdx) => {
+          //   // console.log('Guest data:', values.guestData)
+          //   // console.log('This guest is attending:', values.guestData[0].isAttending)
+          //   // return (
+          //     console.log(guestList[guestIdx])
+          //     // <div key={guestIdx}>
+          //     //   <p>Guest: {guestList[guestIdx].name}</p>
+          //     // </div>
+          //   // )
+          // })
         // );}
 
         // console.log(guestList)

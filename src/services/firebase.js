@@ -16,6 +16,7 @@ import {
   doc,
   // addDoc,
   setDoc,
+  connectFirestoreEmulator,
 } from "firebase/firestore";
 
 
@@ -250,11 +251,40 @@ const fetchPartyUsers = async (email) => {
 
 
 const fetchAllGuestRSVPInformation = async () => {
-    const q = query(collection(db, "users"));
-    const doc = await getDocs(q);
-    // const userData = doc.docs[0].data();
+  const q = query(collection(db, "users"));
+  const doc = await getDocs(q);
+  // const userData = doc.docs[0].data();
 
-    console.log('All users:', doc.docs)
+  console.log('All users:', doc.docs)
+}
+
+const initializeUserAndRSVPDB = async (guestList) => {
+
+  await Promise.all(guestList.map(function (thisGuestData, guestIdx) {
+    // return console.log(guestList[guestIdx].name)
+    if (guestList[guestIdx].email === "elizabethrenee.livingston@gmail.com" || guestList[guestIdx].email === "christian.f.reichert@gmail.com") {
+      return setDoc(doc(db, 'users', guestList[guestIdx].name.replace(/\s+/g, '')), { name: guestList[guestIdx].name, email: guestList[guestIdx].email, isAdmin: true }, { merge: true })
+    }
+    else {
+      return setDoc(doc(db, 'users', guestList[guestIdx].name.replace(/\s+/g, '')), { name: guestList[guestIdx].name, email: guestList[guestIdx].email, isAdmin: false }, { merge: true })
+    }
+  })
+  );
+
+  console.log('Users have been added')
+
+  await Promise.all(guestList.map(function (thisGuestData, guestIdx) {
+    // return console.log(guestList[guestIdx].name)
+    return setDoc(doc(db, 'rsvp', guestList[guestIdx].name.replace(/\s+/g, '')), { email: guestList[guestIdx].email, allowed: true, Wedding: {} }, { merge: true })
+  })
+  );
+
+  console.log('RSVPs have been added')
+
+}
+
+const initializePartyDB = async (partyIdx, partyList, partyHasPlusOne) => {
+  setDoc(doc(db, 'parties', 'party'+partyIdx), { guests: partyList, hasPlusOne: partyHasPlusOne, plusOneAdded: false }, { merge: true })
 }
 
 export {
@@ -271,4 +301,6 @@ export {
   fetchPartyUsers,
   // currentAuthenticatedUser,
   fetchAllGuestRSVPInformation,
+  initializeUserAndRSVPDB,
+  initializePartyDB,
 };
