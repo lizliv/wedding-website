@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useCookies } from "react-cookie"
-import { object, number, string, boolean } from "yup"
+// import { object, number, string, boolean } from "yup"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
@@ -8,9 +8,9 @@ import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
 import { Formik, FieldArray } from "formik"
 import isUndefined from "lodash/isUndefined"
-import isNull from "lodash/isNull"
+// import isNull from "lodash/isNull"
 import get from "lodash/get"
-import range from "lodash/range"
+// import range from "lodash/range"
 import * as Yup from 'yup';
 
 import { selectLanguage } from "utilities/cookies"
@@ -66,10 +66,10 @@ function RSVPForm() {
         notAttendingLabel,
         chickenLabel,
         veggieLabel,
-        otherLabelExtra,
+        // otherLabelExtra,
         WeddingFormHeader,
         WeddingFormSubHeader,
-        zeroLabel,
+        // zeroLabel,
         PlusOneLabel,
         EditPlusOneLabel,
         AttendingTextLabel,
@@ -195,8 +195,8 @@ function RSVPForm() {
                     </div>
                     <FieldArray name="guestData">
                         {() => (values.guestData.map((thisGuestData, guestIdx) => {
-                            const guestDataErrors = errors.guestData?.length && errors.guestData[guestIdx] || {};
-                            const guestDataTouched = touched.guestData?.length && touched.guestData[guestIdx] || {};
+                            const guestDataErrors = (errors.guestData?.length && errors.guestData[guestIdx]) || {};
+                            const guestDataTouched = (touched.guestData?.length && touched.guestData[guestIdx]) || {};
                             // If the main guest is not attending, they cannot bring a guest. 
                             if (values.guestData[guestIdx].isAPlusOne === true & values.guestData[0].isAttending === NO)
                             {values.guestData[guestIdx].isAttending = NO}  
