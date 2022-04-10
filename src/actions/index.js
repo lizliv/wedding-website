@@ -4,6 +4,7 @@ import {
     // auth,
     logInWithEmailAndPassword,
     registerWithEmailAndPassword,
+    sendPasswordReset,
     logout,
     // currentAuthenticatedUser,
     fetchUserName,
@@ -106,6 +107,28 @@ export const signOut = async dispatch => {
     }
 }
 
+export const passwordReset = async (
+    { email },
+    setSubmitting,
+    setStatus,
+    setShowConfirmation,
+    dispatch
+) => {
+    try {
+        await sendPasswordReset(email)
+
+        setShowConfirmation(true)
+        // dismiss alert
+        setTimeout(() => setShowConfirmation(false), 6000)
+    } catch (error) {
+        let { message } = error
+        if (message.includes("user-not-found")){
+            message = "Could not find an account with the provided email address."
+        }
+        setStatus(message)
+    }
+    setSubmitting(false)
+}
 
 export const fetchUserRSVPInformation = async (email, dispatch) => {
     try {

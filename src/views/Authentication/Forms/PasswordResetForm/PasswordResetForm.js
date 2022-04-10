@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useCookies } from "react-cookie"
 import { object, string } from "yup"
 import { Formik } from "formik"
@@ -8,8 +8,8 @@ import Alert from "react-bootstrap/Alert"
 
 import { selectLanguage } from "utilities/cookies"
 import { Store } from "store"
-import { signIn } from "actions"
-import { signInForm } from "content/Authentication"
+import { passwordReset } from "actions"
+import { passwordResetForm } from "content/Authentication"
 
 import styles from "../Forms.module.scss"
 
@@ -17,41 +17,42 @@ const schema = object({
     email: string()
         .email()
         .required(),
-    password: string().required(),
 })
 
-function SignInForm({ history }) {
+function PasswordResetForm({ history }) {
     const { state, dispatch } = useContext(Store)
     const [cookies] = useCookies(["language"])
 
-    const {
-        app: {
-            user: { email },
-        },
-    } = state
+    const [showConfirmation, setShowConfirmation] = useState(false)
 
     const {
         Header,
         SubmitButton,
         SubmitButtonLoading,
-        NoAccountPrompt,
-        ForgotPasswordPrompt,
+        EmailLabel,
         emailPlaceholder,
-        passwordPlaceholder,
-    } = signInForm[selectLanguage(cookies)]
+        EmailHelp,
+        NoAccountPrompt,
+        AlertEmailSent,
+    } = passwordResetForm[selectLanguage(cookies)]
 
     const submitForm = (values, actions) => {
         const { setSubmitting, setStatus } = actions
-        signIn(values, setStatus, history, dispatch)
-        setSubmitting(false)
+        passwordReset(
+            { ...values },
+            setSubmitting,
+            setStatus,
+            setShowConfirmation,
+            dispatch
+        )
     }
 
     return (
         <Formik
+            enableReinitialize
             validationSchema={schema}
             initialValues={{
-                email: email || "",
-                password: "",
+                email: ""
             }}
             onSubmit={submitForm}
         >
@@ -76,6 +77,9 @@ function SignInForm({ history }) {
                         </h4>
                     </div>
                     <Form.Group controlId="controlIdEmail">
+                        <Form.Label>
+                            <EmailLabel />
+                        </Form.Label>
                         <Form.Control
                             name="email"
                             type="email"
@@ -88,20 +92,9 @@ function SignInForm({ history }) {
                         <Form.Control.Feedback type="invalid">
                             {errors.email}
                         </Form.Control.Feedback>
-                    </Form.Group>
-                    <Form.Group controlId="controlIdPassword">
-                        <Form.Control
-                            name="password"
-                            type="password"
-                            placeholder={passwordPlaceholder}
-                            value={values.password}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={touched.password && errors.password}
-                        />
-                        <Form.Control.Feedback type="invalid">
-                            {errors.password}
-                        </Form.Control.Feedback>
+                        <Form.Text className="text-muted">
+                            <EmailHelp />
+                        </Form.Text>
                     </Form.Group>
                     <Button
                         variant="primary"
@@ -121,18 +114,23 @@ function SignInForm({ history }) {
                             {status}
                         </Alert>
                     )}
-                    <div className={styles.links}>
+                    <Alert
+                        variant="success"
+                        className="mt-4"
+                        onClose={() => setShowConfirmation(false)}
+                        show={showConfirmation}
+                    >
+                        <AlertEmailSent />
+                    </Alert>
+                    {/* <div className={styles.links}>
                         <p>
                             <NoAccountPrompt />
                         </p>
-                        <p>
-                            <ForgotPasswordPrompt />
-                        </p>
-                    </div>
+                    </div> */}
                 </Form>
             )}
         </Formik>
     )
 }
 
-export default SignInForm
+export default PasswordResetForm

@@ -14,6 +14,12 @@ export default {
                 <Link to="/auth/signup">Sign up here.</Link>
             </>
         ),
+        ForgotPasswordPrompt: () => (
+            <>
+                Forgot your password?{" "}
+                <Link to="/auth/passwordreset">Reset Password.</Link>
+            </>
+        ),
         emailPlaceholder: "Email",
         passwordPlaceholder: "Password",
     },
@@ -25,6 +31,12 @@ export default {
             <>
                 No teniu compte?{" "}
                 <Link to="/auth/signup">Registreu-vos aquí.</Link>
+            </>
+        ),
+        ForgotPasswordPrompt: () => (
+            <>
+                Forgot your password?{" "}
+                <Link to="/auth/passwordreset">Reset Password.</Link>
             </>
         ),
         emailPlaceholder: "Email",
