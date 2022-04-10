@@ -78,7 +78,7 @@ function RSVPForm() {
         GuestNameHelp,
         GuestEmailLabel,
         FoodChoiceLabel,
-        FoodChoiceHelp,
+        // FoodChoiceHelp,
         DietRestrictionsLabel,
         DietRestrictionsHelp,
         WeddingNoteLabel,
@@ -322,9 +322,9 @@ function RSVPForm() {
                             isInvalid={guestDataTouched.foodChoice && guestDataErrors.foodChoice}
                             checked={values.guestData[guestIdx].foodChoice===VEGETARIAN}
                         ></Form.Check>
-                        <Form.Text className="text-muted">
+                        {/* <Form.Text className="text-muted">
                             <FoodChoiceHelp />
-                        </Form.Text>
+                        </Form.Text> */}
                     </Form.Group> : null
                     }
                     {values.guestData[guestIdx].isAttending === YES ?

@@ -48,7 +48,7 @@ export default {
             <>What is the email of your guest?</>
         ),
         FoodChoiceLabel: () => (
-            <>Which food option would you like?</>
+            <>Choose an entr&eacute;e:</>
         ),
         FoodChoiceHelp: () => (
             <>
@@ -116,7 +116,7 @@ export default {
             <>Qual e o email do seu convidado?</>
         ),
         FoodChoiceLabel: () => (
-            <>Qual opção de comida você gostaria?</>
+            <>Choose an entr&eacute;e:</>
         ),
         FoodChoiceHelp: () => (
             <>
