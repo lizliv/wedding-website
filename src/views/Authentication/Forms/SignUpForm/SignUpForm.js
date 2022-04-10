@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { useCookies } from "react-cookie"
-import { object, string } from "yup"
+import { object, string, ref } from "yup"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
@@ -21,6 +21,13 @@ const schema = object({
     password: string()
         .min(6)
         .required(),
+    confirmPassword: string().when("password", {
+        is: val => (val && val.length > 0 ? true : false),
+        then: string().oneOf(
+            [ref("password")],
+            "Both password need to be the same"
+        )
+    })
 })
 
 function SignUpForm({ history }) {
@@ -40,6 +47,7 @@ function SignUpForm({ history }) {
         emailPlaceholder,
         EmailHelp,
         passwordPlaceholder,
+        confirmPasswordPlaceholder,
         SubmitButton,
         SubmitButtonLoading,
         HaveAccountPrompt,
@@ -120,6 +128,20 @@ function SignUpForm({ history }) {
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.password}
+                        </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group controlId="controlIdConfirmPassword">
+                        <Form.Control
+                            name="confirmPassword"
+                            type="password"
+                            placeholder={confirmPasswordPlaceholder}
+                            value={values.confirmPassword}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={touched.confirmPassword && errors.confirmPassword}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.confirmPassword}
                         </Form.Control.Feedback>
                     </Form.Group>
                     <Button

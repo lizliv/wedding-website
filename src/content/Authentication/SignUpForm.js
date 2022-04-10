@@ -17,6 +17,7 @@ export default {
             </>
         ),
         passwordPlaceholder: "Password",
+        confirmPasswordPlaceholder: "Confirm Password",
         SubmitButton: () => <>Sign Up</>,
         SubmitButtonLoading: () => <>Signing Up...</>,
         HaveAccountPrompt: () => (
@@ -36,6 +37,7 @@ export default {
             <>Registreu-vos amb el mateix email on heu rebut la reserve a data.</>
         ),
         passwordPlaceholder: "Contrasenya",
+        confirmPasswordPlaceholder: "Confirm Password",
         SubmitButton: () => <>Registreu-vos</>,
         SubmitButtonLoading: () => <>Registrant-vos...</>,
         HaveAccountPrompt: () => (
