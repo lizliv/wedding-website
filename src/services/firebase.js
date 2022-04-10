@@ -77,7 +77,19 @@ const logout = () => {
 const checkEmailInUse = async (username, email) => {
   const allusers = query(collection(db, "users"), where("email", "==", email));
   const userDocs = await getDocs(allusers);
-  return isUndefined(userDocs.docs[0])
+
+  let emailIsInUse = !isUndefined(userDocs.docs[0])
+  // console.log('email is in use?', emailIsInUse)
+  if (emailIsInUse === true){
+    const foundDocumentID = userDocs.docs[0].ref.id
+    // console.log('ID of found document',foundDocumentID)
+    // console.log('Current user:',username.replace(/\s+/g, ''))
+    if (foundDocumentID.includes(username.replace(/\s+/g, ''))){
+      emailIsInUse = false
+    }
+  }
+
+  return emailIsInUse
 }
 
 
@@ -175,7 +187,7 @@ const putRSVPDataToDB = async ({ UserName, UserEmail, Name, Email, Data, HasPlus
       // INITIAL CHECK
       //Don't let someone add a plus one that is already invited to the wedding
       const emailExists = await checkEmailInUse(UserName, Email)
-      if (emailExists === false) {
+      if (emailExists === true) {
         throw new Error('The email you entered is already in use by another guest!');
       }
       // PLUS ONE UPDATE
