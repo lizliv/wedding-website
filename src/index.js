@@ -22,7 +22,8 @@ import * as serviceWorker from "./serviceWorker"
 
 const App = () => {
     const { dispatch } = useContext(Store)
-    const [user, loading, error] = useAuthState(auth);
+    // const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
 
     const [cookies, setCookie] = useCookies(["language"])
     const language = get(cookies, ["language"], null)
@@ -32,7 +33,7 @@ const App = () => {
         if (isNull(language)) {
             setCookie("language", LANGUAGE.EN, { path: "/" })
         }
-    }, [dispatch, setCookie, language])
+    }, [user, dispatch, setCookie, language])
 
     return (
         <HashRouter>

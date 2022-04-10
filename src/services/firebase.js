@@ -14,7 +14,7 @@ import {
   collection,
   where,
   doc,
-  addDoc,
+  // addDoc,
   setDoc,
 } from "firebase/firestore";
 
@@ -244,23 +244,25 @@ const fetchPartyUsers = async (email) => {
     partyPlusOneAdded = partyData.plusOneAdded
 
     for (let i = 0; i < partyGuestEmails.length; i++) {
-      // if (partyGuestEmails[i] == "plus_one"){
-      //   partyGuestNames[i] = "Plus One"
-      // }
-      // else{
       const q = query(collection(db, "users"), where("email", "==", partyGuestEmails[i]));
       const doc = await getDocs(q);
       const nameData = doc.docs[0].data();
 
       partyGuestNames[i] = nameData.name
     }
-    // }
+
+    partyGuests = { 
+      names: partyGuestNames, 
+      emails: partyGuestEmails, 
+      hasPlusOne: partyPlusOne, 
+      plusOneAdded: partyPlusOneAdded 
+    }
 
   } catch (err) {
     console.error(err)
     alert(err.message)
   }
-  return partyGuests = { names: partyGuestNames, emails: partyGuestEmails, hasPlusOne: partyPlusOne, plusOneAdded: partyPlusOneAdded }
+  return partyGuests
 }
 
 export {

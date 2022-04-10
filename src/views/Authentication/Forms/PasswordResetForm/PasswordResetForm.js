@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
 import { useCookies } from "react-cookie"
 import { object, string } from "yup"
 import { Formik } from "formik"
@@ -20,7 +20,7 @@ const schema = object({
 })
 
 function PasswordResetForm({ history }) {
-    const { state, dispatch } = useContext(Store)
+    const { dispatch } = useContext(Store)
     const [cookies] = useCookies(["language"])
 
     const [showConfirmation, setShowConfirmation] = useState(false)
@@ -32,7 +32,7 @@ function PasswordResetForm({ history }) {
         EmailLabel,
         emailPlaceholder,
         EmailHelp,
-        NoAccountPrompt,
+        // NoAccountPrompt,
         AlertEmailSent,
     } = passwordResetForm[selectLanguage(cookies)]
 

@@ -1,7 +1,7 @@
 import React from "react"
 
 import { LANGUAGE } from "actions/constants"
-import userEvent from "@testing-library/user-event"
+// import userEvent from "@testing-library/user-event"
 
 export default {
     [LANGUAGE.EN]: {
