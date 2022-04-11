@@ -25,7 +25,7 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        One of our favorite museums in the city. Find your inner child while interacting with the displays or walk through exhibits designed for adults (boo!). Some exhibits we're re-visited are the U-505 submarine kept underground, the Coal Mine, and Take Flight. 
+                        One of our favorite museums in the city. Find your inner child while interacting with the displays or walk through exhibits designed for adults. Some exhibits we've re-visited are the U-505 submarine kept underground, the Coal Mine, and Take Flight. 
                     </p>
                 </>
             ),

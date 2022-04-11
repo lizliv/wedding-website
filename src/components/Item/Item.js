@@ -13,6 +13,8 @@ const Item = ({
     LeftMainTitle = null,
     LeftFirstSubTitle = null,
     LeftSecondSubTitle = null,
+    LeftFirstContact = null,
+    LeftSecondContact = null,
     RightMainTitle = null,
     RightFirstContact = null,
     RightSecondContact = null,
@@ -38,13 +40,23 @@ const Item = ({
                     </h1>
                 )}
                 {LeftFirstSubTitle && (
-                    <h4 className="text-muted">
+                    <h3 className="text-muted">
                         <LeftFirstSubTitle />
-                    </h4>
+                    </h3>
                 )}
                 {LeftSecondSubTitle && (
                     <h4 className="text-muted">
                         <LeftSecondSubTitle />
+                    </h4>
+                )}
+                {LeftFirstContact && (
+                    <h4 className={classNames(styles.contact, "text-muted")}>
+                        <LeftFirstContact />
+                    </h4>
+                )}
+                {LeftSecondContact && (
+                    <h4 className={classNames(styles.contact, "text-muted")}>
+                        <LeftSecondContact />
                     </h4>
                 )}
             </Col>

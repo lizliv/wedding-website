@@ -77,6 +77,48 @@ export default {
         //     ),
         //     link: null,
         // },
+        {
+            Type: () => <>Salon Services - 1</>,
+            Title: () => <>Blowout Junkie - Huron St</>,
+            Address: () => <>445 W Huron St, Chicago, IL 60654</>,
+            Phone: () => <>+1(312)-929-2291</>,
+            Details: () => (
+                <>
+                    <p>Open on Sundays and should have availability on our wedding day. The Huron location is about 1.5 miles away from the recommended hotels.</p>
+                    <p>Full hair styling: $35-65</p>
+                    <p>Full makeup: $80-100</p>
+                </>
+            ),
+            link: "http://www.blowoutjunkie.com/",
+        },
+        {
+            Type: () => <>Salon Services - 2</>,
+            Title: () => <>Gold Plaited River North</>,
+            Address: () => <>161 W Illinois St, Chicago, IL 60657</>,
+            Phone: () => <>+1(312)-877-2380</>,
+            Details: () => (
+                <>
+                    <p>Another location that is open on Sundays and should have availability on our wedding day. The River North location is also about 1.5 miles away from the recommended hotels.</p>
+                    <p>Full hair styling: $65-80</p>
+                    <p>Full makeup: $90-110</p>
+                </>
+            ),
+            link: "http://www.goldplaited.com/",
+        },
+        {
+            Type: () => <>Salon Services - 3</>,
+            Title: () => <>Blowtique</>,
+            Address: () => <>1 E Huron St, Chicago, IL 60611</>,
+            Phone: () => <>+1(312)-280-2400</>,
+            Details: () => (
+                <>
+                    <p>Another location that is open on Sundays and should have availability on our wedding day. This salong is closer, only about 0.5 miles away from the recommended hotels.</p>
+                    <p>Full hair styling: $40-70</p>
+                    <p>Full makeup: $75</p>
+                </>
+            ),
+            link: "http://www.blowtique.com/",
+        },
     ],
     [LANGUAGE.PT]: [
         {
@@ -155,5 +197,47 @@ export default {
         //     ),
         //     link: null,
         // },
+        {
+            Type: () => <>Salon Services - 1</>,
+            Title: () => <>Blowout Junkie - Huron St</>,
+            Address: () => <>445 W Huron St, Chicago, IL 60654</>,
+            Phone: () => <>+1(312)-929-2291</>,
+            Details: () => (
+                <>
+                    <p>Open on Sundays and should have availability on our wedding day. The Huron location is about 1.5 miles away from the recommended hotels.</p>
+                    <p>Full hair styling: $35-65</p>
+                    <p>Full makeup: $80-100</p>
+                </>
+            ),
+            link: "http://www.blowoutjunkie.com/",
+        },
+        {
+            Type: () => <>Salon Services - 2</>,
+            Title: () => <>Gold Plaited River North</>,
+            Address: () => <>161 W Illinois St, Chicago, IL 60657</>,
+            Phone: () => <>+1(312)-877-2380</>,
+            Details: () => (
+                <>
+                    <p>Another location that is open on Sundays and should have availability on our wedding day. The River North location is also about 1.5 miles away from the recommended hotels.</p>
+                    <p>Full hair styling: $65-80</p>
+                    <p>Full makeup: $90-110</p>
+                </>
+            ),
+            link: "http://www.goldplaited.com/",
+        },
+        {
+            Type: () => <>Salon Services - 3</>,
+            Title: () => <>Blowtique</>,
+            Address: () => <>1 E Huron St, Chicago, IL 60611</>,
+            Phone: () => <>+1(312)-280-2400</>,
+            Details: () => (
+                <>
+                    <p>Another location that is open on Sundays and should have availability on our wedding day. This salong is closer, only about 0.5 miles away from the recommended hotels.</p>
+                    <p>Full hair styling: $40-70</p>
+                    <p>Full makeup: $75</p>
+                </>
+            ),
+            link: "http://www.blowtique.com/",
+        },
     ],
 }

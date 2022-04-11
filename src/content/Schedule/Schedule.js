@@ -132,8 +132,7 @@ export default {
                     <p>Chicago, IL, 60614</p>
                 </>
             ),
-            mapLink:
-                "https://goo.gl/maps/873t96s6cGxU1FoQ9",
+            mapLink: "https://goo.gl/maps/873t96s6cGxU1FoQ9",
             Details: () => (
                 <>
                     <p>

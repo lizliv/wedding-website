@@ -6,9 +6,20 @@
 
 .item {
     h1,
-    h2,
-    h3 {
+    h2 {
         font-family: $primary-cursive-font-family;
+        font-weight: 600;
+        a:link,
+        a:visited,
+        a:hover,
+        a:link {
+            color: black;
+        }
+    }
+
+    h3 {
+        font-size: 20px;
+        font-family: $primary-font-family;
         font-weight: 600;
         a:link,
         a:visited,
