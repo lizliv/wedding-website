@@ -25,7 +25,7 @@ export default {
         RSVPText: () => <>RSVP Aqui</>,
         RSVPTextHelpPre: () => <>Por favor&nbsp;</>,
         RSVPTextHelpPost: () => <>&nbsp;&nbsp;até 6 de maio</>,
-        COVIDText: () => <><p>Please check the <a href="#FAQ">FAQ</a> page for our COVID policy.</p></>,
+        COVIDText: () => <><p>Por favor, verifique a página FAQ <a href="#FAQ">FAQ</a> para nossa política de COVID.</p></>,
         Date: () => (
             <div className="d-flex flex-column">
                 <div>12 de Junho, 2022</div>

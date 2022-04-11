@@ -66,11 +66,11 @@ export default {
     ],
     [LANGUAGE.PT]: [
         {
-            Question: () => <>Informações COVID?</>,
+            Question: () => <>Que precauções serão tomadas para a COVID?</>,
             Answer: () => (
                 <>
                     <p>Seguiremos todas as orientações locais em relação à pandemia do COVID 19.</p>
-                    <p>We also ask that all of our guests are fully vaccinated.</p> 
+                    <p>Também pedimos que todos os nossos hóspedes sejam totalmente vacinados.</p> 
                 </>
             ),
         },

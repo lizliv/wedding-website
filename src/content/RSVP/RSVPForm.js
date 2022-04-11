@@ -99,7 +99,7 @@ export default {
         WeddingFormHeader: () => <>Casamento</>,
         WeddingFormSubHeader: () => <><p>Por favor, finalize o RSVP antes de 6 de Maio</p>
         <p>A ceremonia ser&aacute; as 17:30 no domingo, 12 de Junho, 2022. Recep&ccedil;&atilde;o a seguir.</p>
-        <p>Please check the <a href="#FAQ">FAQ</a> page for our COVID policy.</p></>,
+        <p>Por favor, verifique a página FAQ <a href="#FAQ">FAQ</a> para nossa política de COVID.</p></>,
         zeroLabel: "Nao poderemos ir",
         PlusOneLabel: () => (
             <>Voce vai trazer um convidado?</>
