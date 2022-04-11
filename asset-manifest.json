@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.eec754db.chunk.css",
-    "main.js": "/static/js/main.62a852ce.chunk.js",
-    "main.js.map": "/static/js/main.62a852ce.chunk.js.map",
+    "main.css": "/static/css/main.95d511c7.chunk.css",
+    "main.js": "/static/js/main.f4fe62d3.chunk.js",
+    "main.js.map": "/static/js/main.f4fe62d3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a4c40521.js",
     "runtime-main.js.map": "/static/js/runtime-main.a4c40521.js.map",
     "static/css/2.3661fc73.chunk.css": "/static/css/2.3661fc73.chunk.css",
-    "static/js/2.19c9ae5b.chunk.js": "/static/js/2.19c9ae5b.chunk.js",
-    "static/js/2.19c9ae5b.chunk.js.map": "/static/js/2.19c9ae5b.chunk.js.map",
+    "static/js/2.1da9c5a5.chunk.js": "/static/js/2.1da9c5a5.chunk.js",
+    "static/js/2.1da9c5a5.chunk.js.map": "/static/js/2.1da9c5a5.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.c8b5e16de826a3da269aed19b62cc7d7.js": "/precache-manifest.c8b5e16de826a3da269aed19b62cc7d7.js",
+    "precache-manifest.31a35da580159f10c756af0eab57b71e.js": "/precache-manifest.31a35da580159f10c756af0eab57b71e.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.3661fc73.chunk.css.map": "/static/css/2.3661fc73.chunk.css.map",
-    "static/css/main.eec754db.chunk.css.map": "/static/css/main.eec754db.chunk.css.map",
-    "static/js/2.19c9ae5b.chunk.js.LICENSE.txt": "/static/js/2.19c9ae5b.chunk.js.LICENSE.txt",
+    "static/css/main.95d511c7.chunk.css.map": "/static/css/main.95d511c7.chunk.css.map",
+    "static/js/2.1da9c5a5.chunk.js.LICENSE.txt": "/static/js/2.1da9c5a5.chunk.js.LICENSE.txt",
     "static/media/airplane.jpg": "/static/media/airplane.38ba9080.jpg",
+    "static/media/cafebrauer.jpg": "/static/media/cafebrauer.9ff1a03e.jpg",
     "static/media/faq.jpg": "/static/media/faq.8766bc37.jpg",
     "static/media/Header.module.scss": "/static/media/header_small.a3081ddf.jpg",
+    "static/media/honeycomb.jpg": "/static/media/honeycomb.c04e9bb9.jpg",
     "static/media/registry.jpg": "/static/media/registry.c6ff88b0.jpg",
     "static/media/rsvp.jpg": "/static/media/rsvp.5d3f2328.jpg",
     "static/media/schedule.jpg": "/static/media/schedule.b919db3f.jpg",
@@ -25,8 +27,8 @@
   "entrypoints": [
     "static/js/runtime-main.a4c40521.js",
     "static/css/2.3661fc73.chunk.css",
-    "static/js/2.19c9ae5b.chunk.js",
-    "static/css/main.eec754db.chunk.css",
-    "static/js/main.62a852ce.chunk.js"
+    "static/js/2.1da9c5a5.chunk.js",
+    "static/css/main.95d511c7.chunk.css",
+    "static/js/main.f4fe62d3.chunk.js"
   ]
 }
