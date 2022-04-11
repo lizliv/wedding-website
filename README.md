@@ -13,6 +13,9 @@ The website provides the following features:
 
 This build appears to work with Node v14.19.0. Testing with Node v16.14.0 resulted in errors with `gyp`.
 
+
+Follow [this](https://blog.logrocket.com/user-authentication-firebase-react-apps/) tutorial to get the Firebase databse/user authentication setup and then follow [these](https://www.learnhowtoprogram.com/react-part-time-react-track/react-with-nosql-part-1/adding-firebase-to-react) instructions to hide the API keys from the repository.
+
 ## Deploying the Site
 
 ### 1. Deploy CloudFormation Stack

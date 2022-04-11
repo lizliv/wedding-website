@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useCookies } from "react-cookie"
-import { object, number, string } from "yup"
+import { object, array, string, boolean } from "yup"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
-import { Formik } from "formik"
+import { Formik, FieldArray } from "formik"
 import isUndefined from "lodash/isUndefined"
-import isNull from "lodash/isNull"
+// import isNull from "lodash/isNull"
 import get from "lodash/get"
-import range from "lodash/range"
+// import range from "lodash/range"
+// import * as Yup from 'yup';
 
 import { selectLanguage } from "utilities/cookies"
 import { Store } from "store"
@@ -19,20 +20,29 @@ import { rsvpForm } from "content/RSVP"
 
 import styles from "../Forms.module.scss"
 
-const schema = object({
-    weddingGuests: number().required(),
-    rehearsalGuests: number().required(),
-    songs: string(),
-    needBus: string(),
-    origin: string(),
+const schema = object().shape({
+    userName: string(),
+    userEmail: string().required(),
+    guestData: array().of(
+        object().shape({
+            // name: Yup.string().required(),
+            email: string(),
+            isAttending: string().required(),
+            foodChoice: string(),
+            dietRestrictions: string(),
+            plusOneAllowed: boolean(),
+            plusOneAdded: boolean(),
+            isAPlusOne: boolean()
+        })
+    ),
+    partyNote: string(),
 })
 
-const YES = "Yes"
-const NO = "No"
+const YES = "yes"
+const NO = "no"
 
-const LAMPOLLA = "L'Ampolla"
-const TORTOSA = "Tortosa"
-const OTHER = "Other"
+const CHICKEN = "Chicken"
+const VEGETARIAN = "Vegetarian"
 
 function RSVPForm() {
     const { state, dispatch } = useContext(Store)
@@ -42,8 +52,8 @@ function RSVPForm() {
 
     const {
         app: {
-            user: { email },
-            rsvp: { allowed, confirmed },
+            user: { name, email },
+            rsvp: { allowed, weddingData, partyGuests},
         },
     } = state
 
@@ -53,23 +63,26 @@ function RSVPForm() {
         updateButtonText,
         yesLabel,
         noLabel,
-        lampollaLabel,
-        tortosaLabel,
-        otherLabel,
-        otherLabelExtra,
+        attendingLabel,
+        notAttendingLabel,
+        chickenLabel,
+        veggieLabel,
+        // otherLabelExtra,
         WeddingFormHeader,
-        NumberOfGuestsLabel,
-        zeroLabel,
-        NumberOfGuestsHelp,
-        TransportationLabel,
-        TransportationHelp,
-        OriginLabel,
-        OriginHelp,
-        SongsLabel,
-        SongsHelp,
-        DinnerFormHeader,
-        DinnerGuestsLabel,
-        DinnerGuestsHelp,
+        WeddingFormSubHeader,
+        // zeroLabel,
+        PlusOneLabel,
+        EditPlusOneLabel,
+        AttendingTextLabel,
+        GuestNameLabel,
+        GuestNameHelp,
+        GuestEmailLabel,
+        FoodChoiceLabel,
+        // FoodChoiceHelp,
+        DietRestrictionsLabel,
+        DietRestrictionsHelp,
+        WeddingNoteLabel,
+        WeddingNoteHelp,
         AlertRSVPUpdated,
     } = rsvpForm[selectLanguage(cookies)]
 
@@ -77,7 +90,7 @@ function RSVPForm() {
         if (email) {
             fetchUserRSVPInformation(email, dispatch)
         }
-    }, [email, dispatch])
+    }, [email, dispatch])   
 
     const submitForm = (values, actions) => {
         const { setSubmitting, setStatus } = actions
@@ -90,7 +103,7 @@ function RSVPForm() {
         )
     }
 
-    if (isNull(allowed)) {
+    if (!allowed) {
         return (
             <Container>
                 <Col className={styles.intro}>
@@ -102,37 +115,58 @@ function RSVPForm() {
         )
     }
 
-    // wedding values
-    const weddingMaxGuests = get(allowed, ["Wedding", "MaxGuests"])
-    const weddingConfirmedGuests = get(confirmed, [
-        "Wedding",
-        "ConfirmedGuests",
-    ])
-    const weddingSongs = get(confirmed, ["Wedding", "Songs"])
-    const weddingNeedBus = get(confirmed, ["Wedding", "NeedBus"])
-    const weddingOrigin = get(confirmed, ["Wedding", "Origin"])
 
-    // rehearsal values
-    const rehearsalMaxGuests = get(allowed, ["Rehearsal", "MaxGuests"])
-    const rehearsalConfirmedGuests = get(confirmed, [
-        "Rehearsal",
-        "ConfirmedGuests",
-    ])
+    const initialValues = {
+        userName: name,
+        userEmail: email,
+        guestData: [],
+        partyNote: ""
+    }
+    // let weddingIsAttending, weddingFoodChoice, weddingDietRestrictions, weddingNote
 
-    const buttonText = isUndefined(weddingConfirmedGuests)
+    for (let i = 0; i < weddingData.length; i++) {
+        const weddingIsAttending        = get(weddingData[i], "IsAttending")
+        const weddingFoodChoice         = get(weddingData[i], "FoodChoice")
+        const weddingDietRestrictions   = get(weddingData[i], "DietRestrictions")
+        const weddingNote               = get(weddingData[i], "Note")
+        const weddingIsAPlusOne         = get(weddingData[i], "IsAPlusOne")
+
+        initialValues.guestData.push({
+            name: partyGuests.names[i] || "",
+            email: partyGuests.emails[i] || "",
+            isAttending: weddingIsAttending || "",
+            foodChoice: weddingFoodChoice || "",
+            dietRestrictions: weddingDietRestrictions || "",
+            plusOneAllowed: false,
+            plusOneAdded: partyGuests.plusOneAdded,
+            isAPlusOne: weddingIsAPlusOne || false
+        })
+        initialValues.partyNote = weddingNote || ""
+    }; 
+
+    if (partyGuests.hasPlusOne === true){
+        initialValues.guestData.push({
+            name: "",
+            email: "",
+            isAttending: NO,
+            foodChoice: "",
+            dietRestrictions: "",
+            plusOneAllowed: true,
+            plusOneAdded: partyGuests.plusOneAdded,
+            isAPlusOne: true
+        })
+    }
+
+    // If IsAttending for main party guest is not defined, show submit button. Otherwise, show update button
+    const buttonText = isUndefined(weddingData[0].IsAttending)
         ? submitButtonText
         : updateButtonText
 
     return (
         <Formik
+            enableReinitialize // missing piece!!
             validationSchema={schema}
-            initialValues={{
-                weddingGuests: weddingConfirmedGuests || 0,
-                rehearsalGuests: rehearsalConfirmedGuests || 0,
-                needBus: weddingNeedBus || NO,
-                origin: weddingOrigin || TORTOSA,
-                songs: weddingSongs || "",
-            }}
+            initialValues={initialValues}
             onSubmit={submitForm}
         >
             {({
@@ -154,137 +188,190 @@ function RSVPForm() {
                         <h5 className="text-muted">
                             <WeddingFormHeader />
                         </h5>
+                            <WeddingFormSubHeader />
+                        <hr className={styles.hrclass1}/>
                     </div>
-                    <Form.Group controlId="controlIdWeddingGuests">
-                        <Form.Label>
-                            <NumberOfGuestsLabel />
-                        </Form.Label>
-                        <Form.Control
-                            name="weddingGuests"
-                            as="select"
-                            value={values.weddingGuests}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={
-                                touched.weddingGuests && errors.weddingGuests
-                            }
-                        >
-                            {range(0, weddingMaxGuests + 1).map(idx => (
-                                <option
-                                    label={idx === 0 ? zeroLabel : idx}
-                                    value={idx}
-                                    key={idx}
-                                >
-                                    {idx === 0 ? zeroLabel : idx}
-                                </option>
-                            ))}
-                        </Form.Control>
-                        <Form.Text className="text-muted">
-                            <NumberOfGuestsHelp />
-                        </Form.Text>
-                    </Form.Group>
-                    <Form.Group controlId="controlIdNeedBus">
-                        <Form.Label>
-                            <TransportationLabel />
-                        </Form.Label>
-                        <Form.Control
-                            name="needBus"
-                            as="select"
-                            value={values.needBus}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={touched.needBus && errors.needBus}
-                        >
-                            <option label={yesLabel} value={YES}>
-                                {yesLabel}
-                            </option>
-                            <option label={noLabel} value={NO}>
-                                {noLabel}
-                            </option>
-                        </Form.Control>
-                        <Form.Text className="text-muted">
-                            <TransportationHelp />
-                        </Form.Text>
-                    </Form.Group>
-                    {values.needBus === YES && (
-                        <Form.Group controlId="controlIdOrigin">
+                    <FieldArray name="guestData">
+                        {() => (values.guestData.map((thisGuestData, guestIdx) => {
+                            const guestDataErrors = (errors.guestData?.length && errors.guestData[guestIdx]) || {};
+                            const guestDataTouched = (touched.guestData?.length && touched.guestData[guestIdx]) || {};
+                            // If the main guest is not attending, they cannot bring a guest. 
+                            if (values.guestData[guestIdx].isAPlusOne === true & values.guestData[0].isAttending === NO)
+                            {values.guestData[guestIdx].isAttending = NO}  
+                            return (
+                                
+                    <div key={guestIdx}>
+                    {(values.guestData[guestIdx].isAPlusOne === true  & values.guestData[0].isAttending === YES) ? 
+                        <Form.Group controlId="controlIdAddPlusOne">
                             <Form.Label>
-                                <OriginLabel />
+                                <PlusOneLabel />
                             </Form.Label>
                             <Form.Control
-                                name="origin"
+                                name={`guestData.${guestIdx}.isAttending`}
                                 as="select"
-                                value={values.origin}
+                                value={values.guestData[guestIdx].isAttending}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                isInvalid={touched.origin && errors.origin}
+                                isInvalid={guestDataTouched.isAttending && guestDataErrors.isAttending}
                             >
-                                <option label={tortosaLabel} value={TORTOSA}>
-                                    {tortosaLabel}
+                                <option label={yesLabel} value={YES}>
+                                    {yesLabel}
                                 </option>
-                                <option label={lampollaLabel} value={LAMPOLLA}>
-                                    {lampollaLabel}
+                                <option label={noLabel} value={NO}>
+                                    {noLabel}
                                 </option>
-                                <option
-                                    label={`${otherLabel} - ${otherLabelExtra}`}
-                                    value={OTHER}
-                                >{`${otherLabel} - ${otherLabelExtra}`}</option>
                             </Form.Control>
+                        </Form.Group> : null 
+                    }
+                    {values.guestData[guestIdx].isAPlusOne === true & values.guestData[guestIdx].isAttending === YES ?
+                        <h6 className="text-muted">
+                                <EditPlusOneLabel />
+                            </h6> : null
+                    }
+                    {values.guestData[guestIdx].isAPlusOne === true & values.guestData[guestIdx].isAttending === YES ? 
+                        <Form.Group controlId="controlIdGuestName">
+                            <Form.Label>
+                                <GuestNameLabel />
+                            </Form.Label>
+                            <Form.Control
+                                name={`guestData.${guestIdx}.name`}
+                                as="textarea"
+                                rows="1"
+                                value={values.guestData[guestIdx].name}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                isInvalid={guestDataTouched.name && guestDataErrors.name}
+                            />
                             <Form.Text className="text-muted">
-                                <OriginHelp />
+                                <GuestNameHelp />
                             </Form.Text>
-                        </Form.Group>
-                    )}
-                    <Form.Group controlId="controlIdWeddingSongs">
+                        </Form.Group> : null
+                    }
+                    {values.guestData[guestIdx].isAPlusOne === true & values.guestData[guestIdx].isAttending === YES ? 
+                        <Form.Group controlId="controlIdGuestEmail">
+                            <Form.Label>
+                                <GuestEmailLabel />
+                            </Form.Label>
+                            <Form.Control
+                                name={`guestData.${guestIdx}.email`}
+                                as="textarea"
+                                rows="1"
+                                value={values.guestData[guestIdx].email}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                isInvalid={guestDataTouched.email && guestDataErrors.email}
+                            />
+                        </Form.Group> : null
+                    }
+                    {values.guestData[guestIdx].isAPlusOne === false ? 
+                    <Form.Group controlId="controlIdAttending">
                         <Form.Label>
-                            <SongsLabel />
+                            <AttendingTextLabel name={values.guestData[guestIdx].name} email={values.guestData[guestIdx].email} />
                         </Form.Label>
-                        <Form.Control
-                            name="songs"
-                            as="textarea"
-                            rows="3"
-                            value={values.songs}
+                        <Form.Check
+                            name={`guestData.${guestIdx}.isAttending`}
+                            aria-label="Radio 1"
+                            type="radio"
+                            value={YES}
+                            label={attendingLabel} 
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={touched.songs && errors.songs}
+                            isInvalid={guestDataTouched.isAttending && guestDataErrors.isAttending}
+                            checked={values.guestData[guestIdx].isAttending===YES}
+                        >
+                        </Form.Check>
+                        <Form.Check
+                            name={`guestData.${guestIdx}.isAttending`}
+                            aria-label="Radio 2"
+                            type="radio"
+                            value={NO}
+                            label={notAttendingLabel} 
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={guestDataTouched.isAttending && guestDataErrors.isAttending}
+                            checked={values.guestData[guestIdx].isAttending===NO}
+                        >
+                        </Form.Check>
+                    </Form.Group> : null
+                    }
+                    {values.guestData[guestIdx].isAttending === YES ?
+                    <Form.Group controlId="controlIdFoodChoice">
+                        <Form.Label>
+                            <FoodChoiceLabel />
+                        </Form.Label>
+                        <Form.Check
+                            name={`guestData.${guestIdx}.foodChoice`}
+                            aria-label="Radio 1"
+                            type="radio"
+                            value={CHICKEN}
+                            label={chickenLabel} 
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={guestDataTouched.foodChoice && guestDataErrors.foodChoice}
+                            checked={values.guestData[guestIdx].foodChoice===CHICKEN}
+                        >
+                        </Form.Check>
+                        <Form.Check
+                            name={`guestData.${guestIdx}.foodChoice`}
+                            aria-label="Radio 2"
+                            type="radio"
+                            value={VEGETARIAN}
+                            label={veggieLabel} 
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={guestDataTouched.foodChoice && guestDataErrors.foodChoice}
+                            checked={values.guestData[guestIdx].foodChoice===VEGETARIAN}
+                        ></Form.Check>
+                        {/* <Form.Text className="text-muted">
+                            <FoodChoiceHelp />
+                        </Form.Text> */}
+                    </Form.Group> : null
+                    }
+                    {values.guestData[guestIdx].isAttending === YES ?
+                    <Form.Group controlId="controlIdWeddingDietRestrictions">
+                        <Form.Label>
+                            <DietRestrictionsLabel />
+                        </Form.Label>
+                        <Form.Control
+                            name={`guestData.${guestIdx}.dietRestrictions`}
+                            as="textarea"
+                            rows="1"
+                            value={values.guestData[guestIdx].dietRestrictions}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={guestDataTouched.dietRestrictions && guestDataErrors.dietRestrictions}
                         />
                         <Form.Text className="text-muted">
-                            <SongsHelp />
+                            <DietRestrictionsHelp />
                         </Form.Text>
-                    </Form.Group>
-                    <div className="text-center mt-5">
-                        <h5 className="text-muted">
-                            <DinnerFormHeader />
-                        </h5>
+                    </Form.Group> : null
+                    }
+                    {(values.guestData[guestIdx].isAPlusOne === true  & values.guestData[0].isAttending === YES) || values.guestData[guestIdx].isAPlusOne === false ?
+                    <hr className={styles.hrclass2}/>
+                    : null}
                     </div>
-                    <Form.Group controlId="controlIdRehearsalGuests">
+                    );
+                    }))}
+                    </FieldArray>
+
+                    <Form.Group controlId="controlIdWeddingNote">
                         <Form.Label>
-                            <DinnerGuestsLabel />
+                            <WeddingNoteLabel />
                         </Form.Label>
                         <Form.Control
-                            name="rehearsalGuests"
-                            as="select"
-                            value={values.rehearsalGuests}
+                            name="partyNote"
+                            as="textarea"
+                            rows="3"
+                            value={values.partyNote}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            isInvalid={
-                                touched.rehearsalGuests &&
-                                errors.rehearsalGuests
-                            }
-                        >
-                            {range(0, rehearsalMaxGuests + 1).map(idx => (
-                                <option
-                                    label={idx === 0 ? `0 - ${zeroLabel}` : idx}
-                                    value={idx}
-                                >
-                                    {idx === 0 ? `0 - ${zeroLabel}` : idx}
-                                </option>
-                            ))}
-                        </Form.Control>
+                            isInvalid={touched.partyNote && errors.partyNote}
+                        />
                         <Form.Text className="text-muted">
-                            <DinnerGuestsHelp />
+                            <WeddingNoteHelp />
                         </Form.Text>
                     </Form.Group>
+
                     <Button
                         className="mt-5"
                         variant="primary"

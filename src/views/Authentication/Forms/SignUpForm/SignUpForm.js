@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { useCookies } from "react-cookie"
-import { object, string } from "yup"
+import { object, string, ref } from "yup"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
@@ -21,6 +21,13 @@ const schema = object({
     password: string()
         .min(6)
         .required(),
+    confirmPassword: string().when("password", {
+        is: val => (val && val.length > 0 ? true : false),
+        then: string().oneOf(
+            [ref("password")],
+            "Both password need to be the same"
+        )
+    })
 })
 
 function SignUpForm({ history }) {
@@ -29,15 +36,19 @@ function SignUpForm({ history }) {
 
     const submitForm = (values, actions) => {
         const { setSubmitting, setStatus } = actions
-        signUp(values, setSubmitting, setStatus, history, dispatch)
+        signUp(values, setStatus, history, dispatch)
+        setSubmitting(false)
     }
 
     const {
         Header,
         namePlaceholder,
+        NameHelp,
         emailPlaceholder,
         EmailHelp,
         passwordPlaceholder,
+        confirmPasswordPlaceholder,
+        PasswordHelp,
         SubmitButton,
         SubmitButtonLoading,
         HaveAccountPrompt,
@@ -50,6 +61,7 @@ function SignUpForm({ history }) {
                 name: "",
                 email: "",
                 password: "",
+                confirmPassword: ""
             }}
             onSubmit={submitForm}
         >
@@ -82,6 +94,9 @@ function SignUpForm({ history }) {
                             onBlur={handleBlur}
                             isInvalid={touched.name && errors.name}
                         />
+                        <Form.Text className="text-muted">
+                            <NameHelp />
+                        </Form.Text>
                         <Form.Control.Feedback type="invalid">
                             {errors.name}
                         </Form.Control.Feedback>
@@ -116,6 +131,23 @@ function SignUpForm({ history }) {
                         <Form.Control.Feedback type="invalid">
                             {errors.password}
                         </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group controlId="controlIdConfirmPassword">
+                        <Form.Control
+                            name="confirmPassword"
+                            type="password"
+                            placeholder={confirmPasswordPlaceholder}
+                            value={values.confirmPassword}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={touched.confirmPassword && errors.confirmPassword}
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.confirmPassword}
+                        </Form.Control.Feedback>
+                        <Form.Text className="text-muted">
+                            <PasswordHelp />
+                        </Form.Text>
                     </Form.Group>
                     <Button
                         variant="primary"

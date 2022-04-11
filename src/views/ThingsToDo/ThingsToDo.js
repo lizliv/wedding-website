@@ -12,7 +12,7 @@ function ThingsToDo() {
     const [cookies] = useCookies(["language"])
 
     const { Heading, SubHeading } = title[selectLanguage(cookies)]
-    const thingsToDoItems = thingsToDo[selectLanguage(cookies)]
+    const {mapLink,thingsToDoItems} = thingsToDo[selectLanguage(cookies)]
 
     return (
         <>
@@ -21,6 +21,16 @@ function ThingsToDo() {
                 Heading={Heading}
                 SubHeading={SubHeading}
             />
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <iframe
+                src={mapLink} 
+                width="700" 
+                height="300"
+                style={{ border: "0" }}
+                allowFullScreen=""
+                loading="lazy"
+                ></iframe>
+            </div>
             <Container fluid>
                 {thingsToDoItems.map(({ Title, Date, Time, Details, link }, idx) => (
                     <Item

@@ -1,6 +1,7 @@
 import React from "react"
 
 import { LANGUAGE } from "actions/constants"
+// import userEvent from "@testing-library/user-event"
 
 export default {
     [LANGUAGE.EN]: {
@@ -9,8 +10,8 @@ export default {
                 Whoops, it looks like we don't have your email address. Email us
                 at{" "}
                 <strong>
-                    <a href="mailto:elizabethrenee.livingston@gmail.com">
-                    elizabethrenee.livingston@gmail.com
+                    <a href="mailto:lizandchristian2022@gmail.com">
+                    lizandchristian2022@gmail.com
                     </a>
                 </strong>{" "}
                 so we can update our records.
@@ -20,103 +21,123 @@ export default {
         updateButtonText: "Update RSVP",
         yesLabel: "Yes",
         noLabel: "No",
-        lampollaLabel: "L'Ampolla",
-        tortosaLabel: "Tortosa",
+        attendingLabel: "Attending",
+        notAttendingLabel: "Not Attending",
+        chickenLabel: "Chicken",
+        veggieLabel: "Vegetarian",
         otherLabel: "Other",
-        otherLabelExtra: "Reach out if you need help arranging transportation",
         WeddingFormHeader: () => <>Wedding</>,
-        NumberOfGuestsLabel: () => <>Number of guests attending</>,
+        WeddingFormSubHeader: () => <><p>Please RSVP by May 6th</p>
+        <p>The ceremony is at 5:30 pm on Sunday, June 12th, 2022. Reception to Follow</p>
+        <p>Please check the <a href="#FAQ">FAQ</a> page for our COVID policy.</p></>,
         zeroLabel: "Can't Attend",
-        NumberOfGuestsHelp: () => (
+        PlusOneLabel: () => (
+            <>Will you be bringing a guest?</>
+        ),
+        EditPlusOneLabel: () => (
+            <>Edit your guests' information.</>
+        ),
+        AttendingTextLabel: ({ name , email}) => (
+            <><strong>{name} ({email})</strong></>
+        ),
+        GuestNameLabel: () => (
+            <>What is the name of your guest?</>
+        ),
+        GuestNameHelp: () => (
+            <>Please enter the first and last name</>
+        ),
+        GuestEmailLabel: () => (
+            <>What is the email of your guest?</>
+        ),
+        FoodChoiceLabel: () => (
+            <>Choose an entr&eacute;e:</>
+        ),
+        FoodChoiceHelp: () => (
             <>
-                The number of guests in your party (including yourself) that
-                will be in attendance.
+                Let us know which option you prefer, any dietary restrictions will be accomodated.
             </>
         ),
-        TransportationLabel: () => (
-            <>Would you like bus transportation to/from the venue?</>
+        DietRestrictionsLabel: () => <>Dietary Restrictions</>,
+        DietRestrictionsHelp: () => (
+            <>Do you have any dietary restrictions? (i.e. vegetarian, vegan, Kosher, gluten free, etc.)</>
         ),
-        TransportationHelp: () => (
-            <>
-                We'll be providing bus transportation to/from the venue. Let us
-                know if you want to reserve spots for your group!
-            </>
+        WeddingNoteLabel: () => <>Message</>,
+        WeddingNoteHelp: () => (
+            <>Want to leave a message for the bride and groom?</>
         ),
-        OriginLabel: () => <>Where is your origin?</>,
-        OriginHelp: () => (
-            <>
-                We're only planning on having bus transportation from L'Ampolla
-                and Tortosa. Reach out if you need help arranging transportation
-                from other locations.
-            </>
-        ),
-        SongsLabel: () => <>Song requests</>,
-        SongsHelp: () => (
-            <>Let us know which songs will keep you partying all night!</>
-        ),
-        DinnerFormHeader: () => <>Welcome &ldquo;Pica-pica&ldquo;</>,
-        DinnerGuestsLabel: () => <>Number of guests attending</>,
-        DinnerGuestsHelp: () => (
-            <>
-                The number of guests (including yourself) that will be in
-                attendance.
-            </>
-        ),
+        // DinnerFormHeader: () => <>Welcome &ldquo;Pica-pica&ldquo;</>,
+        // DinnerGuestsLabel: () => <>Number of guests attending</>,
+        // DinnerGuestsHelp: () => (
+        //     <>
+        //         The number of guests (including yourself) that will be in
+        //         attendance.
+        //     </>
+        // ),
         AlertRSVPUpdated: () => <>Thanks for your RSVP!</>,
     },
     [LANGUAGE.PT]: {
         AlertNoEmail: () => (
             <>
-                Uups, sembla que no tenim el vostre email. Envieu-nos un email a{" "}
+                Opa, parece que n&atilde;o temos teu endereco de e-mail. Entre em contato: {" "}
                 <strong>
-                    <a href="mailto:elizabethrenee.livingston@gmail.com">
-                    elizabethrenee.livingston@gmail.com
+                    <a href="mailto:lizandchristian2022@gmail.com">
+                    lizandchristian2022@gmail.com
                     </a>
                 </strong>{" "}
-                i actualitzarem el nostre registre.
+                para atualizar nosso registro.
             </>
         ),
-        submitButtonText: "Envia RSUP",
-        updateButtonText: "Actualitza RSUP",
-        yesLabel: "Sí",
-        noLabel: "No",
-        lampollaLabel: "L'Ampolla",
-        tortosaLabel: "Tortosa",
-        otherLabel: "Altres",
-        otherLabelExtra: "Feu-nos saber si necessiteu ajuda trobant transport.",
-        WeddingFormHeader: () => <>Casament</>,
-        NumberOfGuestsLabel: () => <>Número de convidats</>,
-        zeroLabel: "No podem venir",
-        NumberOfGuestsHelp: () => (
-            <>Número de convidats (incloen-te a tu) que vindran.</>
+        submitButtonText: "Enviar RSVP",
+        updateButtonText: "Actualizar RSVP",
+        yesLabel: "Sim",
+        noLabel: "Não",
+        attendingLabel: "Participando",
+        notAttendingLabel: <>N&atilde;o Participando</>,
+        chickenLabel: "Frango",
+        veggieLabel: "Vegetariano",
+        otherLabel: "Outros",
+        WeddingFormHeader: () => <>Casamento</>,
+        WeddingFormSubHeader: () => <><p>Por favor, finalize o RSVP antes de 6 de Maio</p>
+        <p>A ceremonia ser&aacute; as 17:30 no domingo, 12 de Junho, 2022. Recep&ccedil;&atilde;o a seguir.</p>
+        <p>Por favor, verifique a página FAQ <a href="#FAQ">FAQ</a> para nossa política de COVID.</p></>,
+        zeroLabel: "Nao poderemos ir",
+        PlusOneLabel: () => (
+            <>Voce vai trazer um convidado?</>
         ),
-        TransportationLabel: () => (
-            <>Necessiteu transport a/de el lloc del casament?</>
+        EditPlusOneLabel: () => (
+            <>Edite as informações de seus convidados.</>
         ),
-        TransportationHelp: () => (
-            <>
-                Hi haurà autobús a/de el lloc del casament. Digueu-nos si
-                nececessiteu reservar seients per al vostre grup!
-            </>
+        AttendingTextLabel: ({ name , email}) => (
+            <><strong>{name} ({email})</strong></>
         ),
-        OriginLabel: () => <>Des d'on?</>,
-        OriginHelp: () => (
-            <>
-                Només hi haurà autobús des de L'Ampolla i Tortosa. Feu-nos saber
-                si necessiteu ajuda trobant transport.
-            </>
+        GuestNameLabel: () => (
+            <>Qual &eacute; o nome da/o convidada/o?</>
         ),
-        SongsLabel: () => <>Voleu demanar una cançó?</>,
-        SongsHelp: () => (
-            <>
-                Feu-nos saber quines cançons us mantindran de festa tota la nit!
-            </>
+        GuestNameHelp: () => (
+            <>Por favor, insira o nome e sobrenome</>
         ),
-        DinnerFormHeader: () => <>Pica-pica de Benvinguda</>,
-        DinnerGuestsLabel: () => <>Número de convidats</>,
-        DinnerGuestsHelp: () => (
-            <>Número de convidats (incloen-te a tu) que vindran.</>
+        GuestEmailLabel: () => (
+            <>Qual &eacute; o email do seu convidado?</>
         ),
-        AlertRSVPUpdated: () => <>Gràcies pel vostre RSUP!</>,
+        FoodChoiceLabel: () => (
+            <>Escolha o prato principal:</>
+        ),
+        FoodChoiceHelp: () => (
+            <>Deixe-nos saber qual opção você prefere, quaisquer restrições alimentares serão acomodadas.</>
+        ),
+        DietRestrictionsLabel: () => <>Restrições alimentares?</>,
+        DietRestrictionsHelp: () => (
+            <>Você tem alguma restrição alimentar? (ou seja, vegetariano, vegano, Kosher, sem glúten, etc.)</>
+        ),
+        WeddingNoteLabel: () => <>Mensagem</>,
+        WeddingNoteHelp: () => (
+            <>Gostaria de deixar uma mensagem para a noiva e noivo?</>
+        ),
+        // DinnerFormHeader: () => <>Pica-pica de Benvinguda</>,
+        // DinnerGuestsLabel: () => <>Número de convidats</>,
+        // DinnerGuestsHelp: () => (
+        //     <>Número de convidats (incloen-te a tu) que vindran.</>
+        // ),
+        AlertRSVPUpdated: () => <>Obrigado pelo seu RSVP!</>,
     },
 }

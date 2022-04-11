@@ -14,20 +14,38 @@ export default {
                 <Link to="/auth/signup">Sign up here.</Link>
             </>
         ),
-        emailPlaceholder: "Email",
-        passwordPlaceholder: "Password",
-    },
-    [LANGUAGE.PT]: {
-        Header: () => <>Por favor, inicieu la sessió</>,
-        SubmitButton: () => <>Inicia sessió</>,
-        SubmitButtonLoading: () => <>Iniciant sessió...</>,
-        NoAccountPrompt: () => (
+        ForgotPasswordPrompt: () => (
             <>
-                No teniu compte?{" "}
-                <Link to="/auth/signup">Registreu-vos aquí.</Link>
+                Forgot your password?{" "}
+                <Link to="/auth/passwordreset">Reset Password.</Link>
             </>
         ),
         emailPlaceholder: "Email",
-        passwordPlaceholder: "Contrasenya",
+        passwordPlaceholder: "Password",
+        PasswordHelp: () => (
+            <>The recommended "default" password for this site was "chicago2022"</>
+        ),
+    },
+    [LANGUAGE.PT]: {
+        Header: () => <>Por favor, fa&ccedil;a o Login</>,
+        SubmitButton: () => <>Login</>,
+        SubmitButtonLoading: () => <>Iniciando a sess&atilde;o</>,
+        NoAccountPrompt: () => (
+            <>
+                N&atilde;o tem uma conta?{" "}
+                <Link to="/auth/signup">Registre-se aquí.</Link>
+            </>
+        ),
+        ForgotPasswordPrompt: () => (
+            <>
+                Esqueceu a senha?{" "}
+                <Link to="/auth/passwordreset">Redefinir Senha.</Link>
+            </>
+        ),
+        emailPlaceholder: "Email",
+        passwordPlaceholder: "Senha",
+        PasswordHelp: () => (
+            <>The recommended "default" password for this sitee was "chicago2022"</>
+        ),
     },
 }

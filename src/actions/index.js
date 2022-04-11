@@ -1,28 +1,29 @@
-import get from "lodash/get"
+// import get from "lodash/get"
 
 import {
-    signUpWithCognito,
-    signInWithCognito,
-    signOutWithCognito,
-    currentAuthenticatedUserWithCognito,
-    getItemFromDynamo,
-    putItemToDynamo,
-} from "services"
+    // auth,
+    logInWithEmailAndPassword,
+    registerWithEmailAndPassword,
+    sendPasswordReset,
+    logout,
+    // currentAuthenticatedUser,
+    fetchUserName,
+    fetchUserRSVPallowed,
+    putRSVPDataToDB,
+    fetchUserRSVPdata,
+    fetchPartyUsers,
+} from "services";
 
 import { APP } from "./constants"
 
-export const initializeApp = async dispatch => {
-    const CognitoUser = await currentAuthenticatedUserWithCognito()
+export const initializeApp = async (dispatch, user) => {
+    
+    const { name, email } = await fetchUserName(user)
 
-    if (CognitoUser) {
-        const {
-            attributes: { sub: username, name, email },
-        } = CognitoUser
-
+    if (name) {
         dispatch({
             type: APP.SET.INITIALIZE_USER,
             payload: {
-                username,
                 name,
                 email,
             },
@@ -32,33 +33,30 @@ export const initializeApp = async dispatch => {
 
 export const signUp = async (
     { name, email, password },
-    setSubmitting,
     setStatus,
     history,
     dispatch
 ) => {
     try {
-        const { userSub: username } = await signUpWithCognito({
-            username: email,
+        await registerWithEmailAndPassword({
+            name,
+            email,
             password,
-            attributes: {
-                email,
-                name,
-            },
         })
 
-        await signInWithCognito(username, password)
-
+        // await signIn(email,password)
+        await logInWithEmailAndPassword(email, password)
         dispatch({
             type: APP.SET.USER_SIGN_IN,
             payload: {
-                username,
                 name,
                 email,
             },
         })
     } catch (error) {
         const { message } = error
+        console.log('The actions/signup is throwing an error')
+        // FIX: Potentially change error messages to a more user friendly description?
         setStatus(message)
         dispatch({
             type: APP.SET.USER_ERROR,
@@ -66,46 +64,38 @@ export const signUp = async (
         })
     }
 
-    setSubmitting(false)
 }
 
 export const signIn = async (
     { email: providedEmail, password },
-    setSubmitting,
     setStatus,
     history,
     dispatch
 ) => {
     try {
-        const CognitoUser = await signInWithCognito(providedEmail, password)
-
-        const {
-            attributes: { sub: username, name, email },
-        } = CognitoUser
+        const myUser = await logInWithEmailAndPassword(providedEmail, password)
+        const { name, email } = await fetchUserName(myUser)
 
         dispatch({
             type: APP.SET.USER_SIGN_IN,
             payload: {
-                username,
                 name,
                 email,
             },
         })
     } catch (error) {
         let { message } = error
-
         setStatus(message)
         dispatch({
             type: APP.SET.USER_ERROR,
             payload: message,
         })
     }
-    setSubmitting(false)
 }
 
 export const signOut = async dispatch => {
     try {
-        await signOutWithCognito()
+        await logout()
         dispatch({
             type: APP.SET.USER_SIGN_OUT,
         })
@@ -118,26 +108,48 @@ export const signOut = async dispatch => {
     }
 }
 
+export const passwordReset = async (
+    { email },
+    setSubmitting,
+    setStatus,
+    setShowConfirmation,
+    dispatch
+) => {
+    try {
+        await sendPasswordReset(email)
+
+        setShowConfirmation(true)
+        // dismiss alert
+        setTimeout(() => setShowConfirmation(false), 6000)
+    } catch (error) {
+        let { message } = error
+        if (message.includes("user-not-found")){
+            message = "Could not find an account with the provided email address."
+        }
+        setStatus(message)
+    }
+    setSubmitting(false)
+}
+
 export const fetchUserRSVPInformation = async (email, dispatch) => {
     try {
-        const { Item } = await getItemFromDynamo({
-            Email: email.toLowerCase(),
-            Domain: "RSVP",
-        })
-
-        const { Item: ConfirmationItem } = await getItemFromDynamo({
-            Email: email.toLowerCase(),
-            Domain: "RSVP_CONFIRMATION",
-        })
-
-        const allowed = get(Item, ["Data"], null)
-        const confirmed = get(ConfirmationItem, ["Data"], null)
-
+        let weddingData, partyGuests
+        const { allowed, confirmed } = await fetchUserRSVPallowed(email.toLowerCase())
+        if (allowed) {
+            partyGuests = await fetchPartyUsers(email)
+            // weddingData = await fetchUserRSVPdata(email.toLowerCase())
+            weddingData = await Promise.all(partyGuests.emails.map(function (guestEmails, index) {
+                return fetchUserRSVPdata(guestEmails)
+            })
+            );
+        }
         dispatch({
             type: APP.SET.RSVP,
             payload: {
                 allowed,
                 confirmed,
+                weddingData,
+                partyGuests,
             },
         })
     } catch (error) {
@@ -146,28 +158,35 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
 }
 
 export const putUserRSVPInformation = async (
-    { email, weddingGuests, songs, rehearsalGuests, origin, needBus },
+    { email, userName, userEmail, guestData, partyNote },
     setSubmitting,
     setStatus,
     setShowConfirmation,
     dispatch
 ) => {
     try {
-        await putItemToDynamo({
-            Email: email.toLowerCase(),
-            Domain: "RSVP_CONFIRMATION",
-            Data: {
-                Rehearsal: {
-                    ConfirmedGuests: rehearsalGuests,
+        await Promise.all(guestData.map(function (guest, index) {
+            return putRSVPDataToDB({
+                UserName: userName,
+                UserEmail: userEmail,
+                Name: guest.name,
+                Email: guest.email.toLowerCase(),
+                Data: {
+                    Wedding: {
+                        IsAttending: guest.isAttending,
+                        ...(guest.foodChoice ? { FoodChoice: guest.foodChoice } : {}),
+                        DietRestrictions: guest.dietRestrictions,
+                        Note: partyNote,
+                        IsAPlusOne: guest.isAPlusOne
+                    },
+                    confirmed: guest.isAttending,
                 },
-                Wedding: {
-                    ConfirmedGuests: weddingGuests,
-                    ...(songs ? { Songs: songs } : {}),
-                    NeedBus: needBus,
-                    Origin: origin,
-                },
-            },
-        })
+                HasPlusOne: guest.plusOneAllowed,
+                PlusOneAdded: guest.plusOneAdded
+            })
+        }));
+
+        // Problem here. Need to wait for put to be done before doing this operation
         await fetchUserRSVPInformation(email, dispatch)
 
         setShowConfirmation(true)

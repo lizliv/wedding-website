@@ -28,8 +28,8 @@ function Travel() {
                             key={idx}
                             LeftMainTitle={Type}
                             LeftFirstSubTitle={Title}
-                            RightFirstContact={Address}
-                            RightSecondContact={Phone}
+                            LeftFirstContact={Address}
+                            LeftSecondContact={Phone}
                             RightDetails={Details}
                             infoLink={link}
                         />

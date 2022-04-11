@@ -6,10 +6,15 @@ import Button from "react-bootstrap/Button"
 
 import styles from "./Item.module.scss"
 
+let LEFTOFFSET = 1
+
 const Item = ({
+    LeftImage = null,
     LeftMainTitle = null,
     LeftFirstSubTitle = null,
     LeftSecondSubTitle = null,
+    LeftFirstContact = null,
+    LeftSecondContact = null,
     RightMainTitle = null,
     RightFirstContact = null,
     RightSecondContact = null,
@@ -17,10 +22,12 @@ const Item = ({
     infoLink = null,
 }) => {
     return (
+        (LeftImage === null) ? LEFTOFFSET = 2 : LEFTOFFSET = 1,
         <Row className={styles.item}>
+            {/* {(LeftImage === null) ? LEFTOFFSET = 2 : LEFTOFFSET = 1} */}
             <Col
                 sm={12}
-                md={{ span: 3, offset: 2 }}
+                md={{ span: 3, offset: LEFTOFFSET }}
                 className={classNames(
                     styles["item-col"],
                     styles["left"],
@@ -33,19 +40,43 @@ const Item = ({
                     </h1>
                 )}
                 {LeftFirstSubTitle && (
-                    <h4 className="text-muted">
+                    <h3 className="text-muted">
                         <LeftFirstSubTitle />
-                    </h4>
+                    </h3>
                 )}
                 {LeftSecondSubTitle && (
                     <h4 className="text-muted">
                         <LeftSecondSubTitle />
                     </h4>
                 )}
+                {LeftFirstContact && (
+                    <h4 className={classNames(styles.contact, "text-muted")}>
+                        <LeftFirstContact />
+                    </h4>
+                )}
+                {LeftSecondContact && (
+                    <h4 className={classNames(styles.contact, "text-muted")}>
+                        <LeftSecondContact />
+                    </h4>
+                )}
             </Col>
+            {(LeftImage === null) ? null :
+                <Col
+                    sm={12}
+                    md={{ span: 3, offset: -1 }}
+                    className={classNames(
+                        styles["item-col"],
+                        styles["center"],
+                        "my-auto"
+                    )}>
+                    {LeftImage && (
+                        <img src={LeftImage} alt="itemImage" className="img-fluid"></img>
+                    )}
+                </Col>
+            }
             <Col
                 sm={12}
-                md={5}
+                md={4}
                 className={classNames(
                     styles["item-col"],
                     styles["right"],
