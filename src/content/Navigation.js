@@ -23,6 +23,6 @@ export default {
         rsvp: () => <span>RSVP</span>,
         signOut: () => <span>Logout</span>,
         signIn: () => <span>Login</span>,
-        manageRsvp: () => <span>Gerir RSVP</span>,
+        manageRsvp: () => <span>Gerenciar RSVP</span>,
     },
 }

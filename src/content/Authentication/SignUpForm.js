@@ -27,23 +27,23 @@ export default {
         ),
     },
     [LANGUAGE.PT]: {
-        Header: () => <>Per favor, registreu-vos</>,
-        namePlaceholder: "Nom",
+        Header: () => <>Por favor, registre-se</>,
+        namePlaceholder: "Nome",
         NameHelp: () => (
-            <>Please enter your full name, this will appear on the table placecards.</>
+            <>Por favor use o nome completo, sera inscrito no cart&atilde;o.</>
         ),
         emailPlaceholder: "Email",
         EmailHelp: () => (
-            <>Registreu-vos amb el mateix email on heu rebut la reserve a data.</>
+            <>Registre-se usando o mesmo email que recebistes o "reserve a data"</>
         ),
-        passwordPlaceholder: "Contrasenya",
-        confirmPasswordPlaceholder: "Confirm Password",
-        SubmitButton: () => <>Registreu-vos</>,
-        SubmitButtonLoading: () => <>Registrant-vos...</>,
+        passwordPlaceholder: "Senha",
+        confirmPasswordPlaceholder: "Confirme a Senha",
+        SubmitButton: () => <>Registre-se</>,
+        SubmitButtonLoading: () => <>Registrantando...</>,
         HaveAccountPrompt: () => (
             <>
-                Ja teniu un compte?{" "}
-                <Link to="/auth">Inicieu la sessió aquí.</Link>
+                Ja tem uma conta?{" "}
+                <Link to="/auth">Fa&ccedil;a o Login aquí.</Link>
             </>
         ),
     },

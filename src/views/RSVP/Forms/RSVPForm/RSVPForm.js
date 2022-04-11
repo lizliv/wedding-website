@@ -201,7 +201,7 @@ function RSVPForm() {
                             return (
                                 
                     <div key={guestIdx}>
-                    {( values.guestData[guestIdx].isAPlusOne === true) ? 
+                    {(values.guestData[guestIdx].isAPlusOne === true  & values.guestData[0].isAttending === YES) ? 
                         <Form.Group controlId="controlIdAddPlusOne">
                             <Form.Label>
                                 <PlusOneLabel />
@@ -346,7 +346,10 @@ function RSVPForm() {
                         </Form.Text>
                     </Form.Group> : null
                     }
-                    <hr className={styles.hrclass2}/></div>
+                    {(values.guestData[guestIdx].isAPlusOne === true  & values.guestData[0].isAttending === YES) || values.guestData[guestIdx].isAPlusOne === false ?
+                    <hr className={styles.hrclass2}/>
+                    : null}
+                    </div>
                     );
                     }))}
                     </FieldArray>

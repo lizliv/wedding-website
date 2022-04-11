@@ -34,7 +34,7 @@ export default {
             <>Will you be bringing a guest?</>
         ),
         EditPlusOneLabel: () => (
-            <>Edit your guests information.</>
+            <>Edit your guests' information.</>
         ),
         AttendingTextLabel: ({ name , email}) => (
             <><strong>{name} ({email})</strong></>
@@ -77,63 +77,59 @@ export default {
     [LANGUAGE.PT]: {
         AlertNoEmail: () => (
             <>
-                Uups, parece que nao temos seu endereco de e-mail. E-nos em e-mail a {" "}
+                Opa, parece que n&atilde;o temos teu endereco de e-mail. Entre em contato: {" "}
                 <strong>
                     <a href="mailto:lizandchristian2022@gmail.com">
                     lizandchristian2022@gmail.com
                     </a>
                 </strong>{" "}
-                para que possamos atualizar nossos registros.
+                para atualizar nosso registro.
             </>
         ),
         submitButtonText: "Enviar RSVP",
         updateButtonText: "Actualizar RSVP",
         yesLabel: "Sim",
-        noLabel: <>N&atilde;o</>,
+        noLabel: "Não",
         attendingLabel: "Participando",
         notAttendingLabel: <>N&atilde;o Participando</>,
         chickenLabel: "Frango",
         veggieLabel: "Vegetariano",
-        otherLabel: "De outros",
-        WeddingFormHeader: () => <>Cassamento</>,
-        WeddingFormSubHeader: () => <><p>Por favor, RSVP antes de 6 do Maio</p>
-        <p>A ceremonia e em 17:30 no domingo, 12 de Junho, 2022. Recepcao a seguir.</p></>,
-        zeroLabel: "Nao podemos ir",
+        otherLabel: "Outros",
+        WeddingFormHeader: () => <>Casamento</>,
+        WeddingFormSubHeader: () => <><p>Por favor, finalize o RSVP antes de 6 de Maio</p>
+        <p>A ceremonia ser&aacute; as 17:30 no domingo, 12 de Junho, 2022. Recep&ccedil;&atilde;o a seguir.</p></>,
+        zeroLabel: "Nao poderemos ir",
         PlusOneLabel: () => (
-            <>Voce vai estar trazendo um convidado?</>
+            <>Voce vai trazer um convidado?</>
         ),
         EditPlusOneLabel: () => (
-            <>Edite informa&ccedil;oes dos seus convidados.</>
+            <>Edite as informações de seus convidados.</>
         ),
         AttendingTextLabel: ({ name , email}) => (
             <><strong>{name} ({email})</strong></>
         ),
         GuestNameLabel: () => (
-            <>Qual e o nome do seu convidado?</>
+            <>Qual &eacute; o nome da/o convidada/o?</>
         ),
         GuestNameHelp: () => (
-            <>Por favor, insira o primeiro e ultimo nome</>
+            <>Por favor, insira o nome e sobrenome</>
         ),
         GuestEmailLabel: () => (
-            <>Qual e o email do seu convidado?</>
+            <>Qual &eacute; o email do seu convidado?</>
         ),
         FoodChoiceLabel: () => (
-            <>Choose an entr&eacute;e:</>
+            <>Escolha o prato principal:</>
         ),
         FoodChoiceHelp: () => (
-            <>
-                Deixe-nos saber qual opção você prefere, quaisquer restrições alimentares serão acomodadas.
-            </>
+            <>Deixe-nos saber qual opção você prefere, quaisquer restrições alimentares serão acomodadas.</>
         ),
         DietRestrictionsLabel: () => <>Restrições alimentares?</>,
         DietRestrictionsHelp: () => (
-            <>
-                Você tem alguma restrição alimentar? (ou seja, vegetariano, vegano, Kosher, sem glúten, etc.)
-            </>
+            <>Você tem alguma restrição alimentar? (ou seja, vegetariano, vegano, Kosher, sem glúten, etc.)</>
         ),
-        WeddingNoteLabel: () => <>Message</>,
+        WeddingNoteLabel: () => <>Mensagem</>,
         WeddingNoteHelp: () => (
-            <>Quer deixar uma mensagem para a noiva e noivo?</>
+            <>Gostaria de deixar uma mensagem para a noiva e noivo?</>
         ),
         // DinnerFormHeader: () => <>Pica-pica de Benvinguda</>,
         // DinnerGuestsLabel: () => <>Número de convidats</>,

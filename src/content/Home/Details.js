@@ -23,7 +23,7 @@ export default {
         Title: () => <span>Christian e Liz v&atilde;o casar!</span>,
         RSVPText: () => <>RSVP Aqui</>,
         RSVPTextHelpPre: () => <>Por favor&nbsp;</>,
-        RSVPTextHelpPost: () => <>&nbsp;&nbsp;pelo de 6 do Maio</>,
+        RSVPTextHelpPost: () => <>&nbsp;&nbsp;até 6 de maio</>,
         Date: () => (
             <div className="d-flex flex-column">
                 <div>12 de Junho, 2022</div>

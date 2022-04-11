@@ -24,22 +24,22 @@ export default {
         passwordPlaceholder: "Password",
     },
     [LANGUAGE.PT]: {
-        Header: () => <>Por favor, inicieu la sessió</>,
-        SubmitButton: () => <>Inicia sessió</>,
-        SubmitButtonLoading: () => <>Iniciant sessió...</>,
+        Header: () => <>Por favor, fa&ccedil;a o Login</>,
+        SubmitButton: () => <>Login</>,
+        SubmitButtonLoading: () => <>Iniciando a sess&atilde;o</>,
         NoAccountPrompt: () => (
             <>
-                No teniu compte?{" "}
-                <Link to="/auth/signup">Registreu-vos aquí.</Link>
+                N&atilde;o tem uma conta?{" "}
+                <Link to="/auth/signup">Registre-se aquí.</Link>
             </>
         ),
         ForgotPasswordPrompt: () => (
             <>
-                Forgot your password?{" "}
-                <Link to="/auth/passwordreset">Reset Password.</Link>
+                Esqueceu a senha?{" "}
+                <Link to="/auth/passwordreset">Redefinir Senha.</Link>
             </>
         ),
         emailPlaceholder: "Email",
-        passwordPlaceholder: "Contrasenya",
+        passwordPlaceholder: "Senha",
     },
 }
