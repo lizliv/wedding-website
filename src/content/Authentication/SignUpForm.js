@@ -18,6 +18,10 @@ export default {
         ),
         passwordPlaceholder: "Password",
         confirmPasswordPlaceholder: "Confirm Password",
+        PasswordHelp: () => (
+            <><p>Don't want to make another password for our site? Use "chicago2022", we will remind you of this "default" password on the sign in page.</p>
+            <p>It would take too much time for me to change how the site works, sorry. - Liz</p></>
+        ),
         SubmitButton: () => <>Sign Up</>,
         SubmitButtonLoading: () => <>Signing Up...</>,
         HaveAccountPrompt: () => (
@@ -38,6 +42,10 @@ export default {
         ),
         passwordPlaceholder: "Senha",
         confirmPasswordPlaceholder: "Confirme a Senha",
+        PasswordHelp: () => (
+            <><p>Don't want to make another password for our site? Use "chicago2022", we will remind you of this "default" password on the sign in page.</p>
+            <p>It would take too much time for me to change how the site works, sorry. - Liz</p></>
+        ),
         SubmitButton: () => <>Registre-se</>,
         SubmitButtonLoading: () => <>Registrantando...</>,
         HaveAccountPrompt: () => (

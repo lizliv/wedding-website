@@ -38,6 +38,7 @@ function SignInForm({ history }) {
         ForgotPasswordPrompt,
         emailPlaceholder,
         passwordPlaceholder,
+        PasswordHelp,
     } = signInForm[selectLanguage(cookies)]
 
     const submitForm = (values, actions) => {
@@ -102,6 +103,9 @@ function SignInForm({ history }) {
                         <Form.Control.Feedback type="invalid">
                             {errors.password}
                         </Form.Control.Feedback>
+                        <Form.Text className="text-muted">
+                            <PasswordHelp />
+                        </Form.Text>
                     </Form.Group>
                     <Button
                         variant="primary"

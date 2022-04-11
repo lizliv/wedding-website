@@ -48,6 +48,7 @@ function SignUpForm({ history }) {
         EmailHelp,
         passwordPlaceholder,
         confirmPasswordPlaceholder,
+        PasswordHelp,
         SubmitButton,
         SubmitButtonLoading,
         HaveAccountPrompt,
@@ -144,6 +145,9 @@ function SignUpForm({ history }) {
                         <Form.Control.Feedback type="invalid">
                             {errors.confirmPassword}
                         </Form.Control.Feedback>
+                        <Form.Text className="text-muted">
+                            <PasswordHelp />
+                        </Form.Text>
                     </Form.Group>
                     <Button
                         variant="primary"

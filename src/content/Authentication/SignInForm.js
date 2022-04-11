@@ -22,6 +22,9 @@ export default {
         ),
         emailPlaceholder: "Email",
         passwordPlaceholder: "Password",
+        PasswordHelp: () => (
+            <>The recommended "default" password for this site was "chicago2022"</>
+        ),
     },
     [LANGUAGE.PT]: {
         Header: () => <>Por favor, fa&ccedil;a o Login</>,
@@ -41,5 +44,8 @@ export default {
         ),
         emailPlaceholder: "Email",
         passwordPlaceholder: "Senha",
+        PasswordHelp: () => (
+            <>The recommended "default" password for this sitee was "chicago2022"</>
+        ),
     },
 }
