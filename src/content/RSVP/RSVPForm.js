@@ -28,7 +28,8 @@ export default {
         otherLabel: "Other",
         WeddingFormHeader: () => <>Wedding</>,
         WeddingFormSubHeader: () => <><p>Please RSVP by May 6th</p>
-        <p>The ceremony is at 5:30 pm on Sunday, June 12th, 2022. Reception to Follow</p></>,
+        <p>The ceremony is at 5:30 pm on Sunday, June 12th, 2022. Reception to Follow</p>
+        <p>Please check the <a href="#FAQ">FAQ</a> page for our COVID policy.</p></>,
         zeroLabel: "Can't Attend",
         PlusOneLabel: () => (
             <>Will you be bringing a guest?</>
@@ -97,7 +98,8 @@ export default {
         otherLabel: "Outros",
         WeddingFormHeader: () => <>Casamento</>,
         WeddingFormSubHeader: () => <><p>Por favor, finalize o RSVP antes de 6 de Maio</p>
-        <p>A ceremonia ser&aacute; as 17:30 no domingo, 12 de Junho, 2022. Recep&ccedil;&atilde;o a seguir.</p></>,
+        <p>A ceremonia ser&aacute; as 17:30 no domingo, 12 de Junho, 2022. Recep&ccedil;&atilde;o a seguir.</p>
+        <p>Please check the <a href="#FAQ">FAQ</a> page for our COVID policy.</p></>,
         zeroLabel: "Nao poderemos ir",
         PlusOneLabel: () => (
             <>Voce vai trazer um convidado?</>

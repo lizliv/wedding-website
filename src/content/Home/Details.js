@@ -10,6 +10,7 @@ export default {
         RSVPText: () => <>RSVP Here</>,
         RSVPTextHelpPre: () => <>Please&nbsp;</>,
         RSVPTextHelpPost: () => <>&nbsp;&nbsp;by May 6th</>,
+        COVIDText: () => <><p>Please check the <a href="#FAQ">FAQ</a> page for our COVID policy.</p></>,
         Date: () => (
             <div className="d-flex flex-column">
                 <div>June 12th, 2022</div>
@@ -24,6 +25,7 @@ export default {
         RSVPText: () => <>RSVP Aqui</>,
         RSVPTextHelpPre: () => <>Por favor&nbsp;</>,
         RSVPTextHelpPost: () => <>&nbsp;&nbsp;até 6 de maio</>,
+        COVIDText: () => <><p>Please check the <a href="#FAQ">FAQ</a> page for our COVID policy.</p></>,
         Date: () => (
             <div className="d-flex flex-column">
                 <div>12 de Junho, 2022</div>

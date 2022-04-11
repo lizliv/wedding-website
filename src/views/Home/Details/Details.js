@@ -13,7 +13,7 @@ import styles from "./Details.module.scss"
 function Details() {
     const [cookies] = useCookies(["language"])
 
-    const { Title, RSVPText, RSVPTextHelpPre, RSVPTextHelpPost, Date, Location, hashtag, locationLink } = details[
+    const { Title, RSVPText, RSVPTextHelpPre, RSVPTextHelpPost, COVIDText, Date, Location, hashtag, locationLink } = details[
         selectLanguage(cookies)
     ]
     return (
@@ -33,6 +33,8 @@ function Details() {
                         </Link>
                             <RSVPTextHelpPost/>
                         </h5>
+                        <br/>
+                        <COVIDText />
                         <h1 className={styles.date}>
                             <Date />
                         </h1>

@@ -5,6 +5,15 @@ import { LANGUAGE } from "actions/constants"
 export default {
     [LANGUAGE.EN]: [
         {
+            Question: () => <>What precautions will be taken for COVID?</>,
+            Answer: () => (
+                <>
+                    <p>We will follow all local guidelines with respect to the COVID 19 pandemic.</p>
+                    <p>We also ask that all of our guests are fully vaccinated.</p> 
+                </>
+            ),
+        },
+        {
             Question: () => <>Is there a bus to and from the wedding site?</>,
             Answer: () => (
                 <>
@@ -56,6 +65,15 @@ export default {
         },
     ],
     [LANGUAGE.PT]: [
+        {
+            Question: () => <>Informações COVID?</>,
+            Answer: () => (
+                <>
+                    <p>Seguiremos todas as orientações locais em relação à pandemia do COVID 19.</p>
+                    <p>We also ask that all of our guests are fully vaccinated.</p> 
+                </>
+            ),
+        },
         {
             Question: () => (
                 <>
