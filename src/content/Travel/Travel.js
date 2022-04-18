@@ -112,7 +112,7 @@ export default {
             Phone: () => <>+1(312)-280-2400</>,
             Details: () => (
                 <>
-                    <p>Another location that is open on Sundays and should have availability on our wedding day. This salong is closer, only about 0.5 miles away from the recommended hotels.</p>
+                    <p>Another location that is open on Sundays and should have availability on our wedding day. This salon is closer, only about 0.5 miles away from the recommended hotels.</p>
                     <p>Full hair styling: $40-70</p>
                     <p>Full makeup: $75</p>
                 </>
@@ -232,7 +232,7 @@ export default {
             Phone: () => <>+1(312)-280-2400</>,
             Details: () => (
                 <>
-                    <p>Another location that is open on Sundays and should have availability on our wedding day. This salong is closer, only about 0.5 miles away from the recommended hotels.</p>
+                    <p>Another location that is open on Sundays and should have availability on our wedding day. This salon is closer, only about 0.5 miles away from the recommended hotels.</p>
                     <p>Full hair styling: $40-70</p>
                     <p>Full makeup: $75</p>
                 </>
