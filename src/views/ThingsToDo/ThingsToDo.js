@@ -25,7 +25,7 @@ function ThingsToDo() {
                 <iframe
                 src={mapLink} 
                 width="700" 
-                height="300"
+                height="350"
                 style={{ border: "0" }}
                 allowFullScreen=""
                 loading="lazy"

@@ -12,7 +12,7 @@ function Travel() {
     const [cookies] = useCookies(["language"])
 
     const { Heading, SubHeading } = title[selectLanguage(cookies)]
-    const travelItems = travel[selectLanguage(cookies)]
+    const {mapLink,travelItems} = travel[selectLanguage(cookies)]
 
     return (
         <>
@@ -21,6 +21,16 @@ function Travel() {
                 Heading={Heading}
                 SubHeading={SubHeading}
             />
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <iframe
+                src={mapLink} 
+                width="700" 
+                height="350"
+                style={{ border: "0" }}
+                allowFullScreen=""
+                loading="lazy"
+                ></iframe>
+            </div>
             <Container fluid>
                 {travelItems.map(
                     ({ Type, Title, Details, Address, Phone, link }, idx) => (

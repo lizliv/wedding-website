@@ -3,7 +3,9 @@ import React from "react"
 import { LANGUAGE } from "actions/constants"
 
 export default {
-    [LANGUAGE.EN]: [
+    [LANGUAGE.EN]: {
+        mapLink: "https://www.google.com/maps/d/u/2/embed?mid=17F7Ayiso5O3yhv2wBEziSXME6TAr8jwE&ehbc=2E312F",
+        travelItems: [
         {
             Type: () => <>Getting to Chicago</>,
             Details: () => (
@@ -120,7 +122,10 @@ export default {
             link: "http://www.blowtique.com/",
         },
     ],
-    [LANGUAGE.PT]: [
+},
+    [LANGUAGE.PT]: {
+        mapLink: "https://www.google.com/maps/d/u/2/embed?mid=17F7Ayiso5O3yhv2wBEziSXME6TAr8jwE&ehbc=2E312F",
+        travelItems: [
         {
             Type: () => <>Como Chegar em Chicago</>,
             Details: () => (
@@ -240,4 +245,5 @@ export default {
             link: "http://www.blowtique.com/",
         },
     ],
+},
 }
