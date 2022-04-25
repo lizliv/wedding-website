@@ -14,13 +14,19 @@ export default {
             ),
         },
         {
+            Question: () => <>Do I have a plus one? What about my kids?</>,
+            Answer: () => (
+                <>
+                    <p>If there is not a "Plus One" button on your RSVP form, and you think it is a mistake, please reach out to us.</p>
+                    <p>We know that this is a destination wedding for many of our guests, however, we elected to make this event adult only. Please reach out to us if this is a significant issue for you.</p> 
+                </>
+            ),
+        },
+        {
             Question: () => <>Is there a bus to and from the wedding site?</>,
             Answer: () => (
                 <>
-                    We will update this answer soon.
-                    {/* Yes, because we want you to be able to party your face off.
-                    There will be buses from the Westin to Cafe Brauer.
-                    See the schedule for more details. */}
+                    Yes! There will be a shuttle from the Westin to Cafe Brauer. If you are not in our hotel block and would like to take the shuttle, please let us know.
                 </>
             ),
         },
@@ -75,6 +81,15 @@ export default {
             ),
         },
         {
+            Question: () => <>Do I have a plus one? What about my kids?</>,
+            Answer: () => (
+                <>
+                    <p>If there is not a "Plus One" button on your RSVP form, and you think it is a mistake, please reach out to us.</p>
+                    <p>We know that this is a destination wedding for many of our guests, however, we elected to make this event adult only. Please reach out to us if this is a significant issue for you.</p> 
+                </>
+            ),
+        },
+        {
             Question: () => (
                 <>
                     Haverá transporte do hotel para o casamento?
@@ -82,11 +97,7 @@ export default {
             ),
             Answer: () => (
                 <>
-                    Atualizaremos esta resposta em breve.
-                    {/* Sim, por que queremos todos festejando at&eacute; cair. 
-                    Teremos um onibus do Westin para o Caf&eacute; Brauer e vice versa.
-                    Os horarios v&atilde;o ser postados no futuro. */}
-
+                    Sim, teremos um onibus do Westin para o Caf&eacute; Brauer e vice versa. If you are not in our hotel block and would like to take the shuttle, please let us know.
                 </>
             ),
         },
