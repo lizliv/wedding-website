@@ -25,10 +25,10 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        We have reserved a block at the Westin for a fixed rate of $259/night plus tax. This rate is for Friday June 10th until Monday June 13th.
+                        We have reserved a block at the Westin for a fixed rate of <b>$259/night plus tax</b>. This rate is for Friday June 10th until Monday June 13th.
                         {/* If you find an alternative option, make sure it is nearby if you would like to take the shuttle. */}
                     </p>
-                    <p>The last day to book is May 20th, 2022.</p>
+                    <p>The last day to book is <b>May 20th, 2022</b>.</p>
                 </>
             ),
             link: "https://www.marriott.com/events/start.mi?id=1645112218819&key=GRP",
@@ -58,12 +58,17 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        We have a block at the Four Seasons hotel as well. Link to follow.
-                        {/* If you find an alternative option, make sure it is nearby if you would like to take the shuttle. */}
+                        We have a block at the Four Seasons hotel as well for <b>$495/night plus taxes</b>. Click on "Check Rates", enter the dates, number of rooms, and the promo code "220611GRE" (all caps, no spaces, please type it in do not copy/paste). 
+                    </p>
+                    <p>
+                        The rate for a city view will appear. Click on "Select Room" and the option to select the <b>Livingston & Reichert Wedding Guestrooms</b> will appear. Follow the prompts to complete the reservation.
+                    </p>
+                    <p>
+                        This rate is only available before <b>Friday, May 13, 2022, at 6:00pm CST</b>.
                     </p>
                 </>
             ),
-            // link: "https://www.marriott.com/events/start.mi?id=1645112218819&key=GRP",
+            link: "https://www.fourseasons.com/chicago/",
         },
         // {
         //     Type: () => <>Shuttle</>,
@@ -148,10 +153,10 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        Reservamos um bloco no Westin por $259/noite + taxas. Esta pre&ccedil;o é para sexta-feira 10 de junho até segunda-feira 13 de junho.
+                        Reservamos um bloco no Westin por <b>$259/noite + taxas</b>. Esta pre&ccedil;o é para sexta-feira 10 de junho até segunda-feira 13 de junho.
                         {/* Existem opções mais em conta proximas ao Westin". */}
                     </p>
-                    <p>O último dia para reservar é 20 de maio de 2022.</p>
+                    <p>O último dia para reservar é <b>20 de maio de 2022</b>.</p>
                 </>
             ),
             link: "https://www.marriott.com/events/start.mi?id=1645112218819&key=GRP",
@@ -181,12 +186,17 @@ export default {
             Details: () => (
                 <>
                     <p>
-                        Teremos um bloco no Four Seasons tambem. Informa&ccedil;&otilde;es brevemente.
-                        {/* If you find an alternative option, make sure it is nearby if you would like to take the shuttle. */}
+                        We have a block at the Four Seasons hotel as well for <b>$495/night plus taxes</b>. Click on "Check Rates", enter the dates, number of rooms, and the promo code "220611GRE" (all caps, no spaces, please type it in do not copy/paste). 
+                    </p>
+                    <p>
+                        The rate for a city view will appear. Click on "Select Room" and the option to select the <b>Livingston & Reichert Wedding Guestrooms</b> will appear. Follow the prompts to complete the reservation.
+                    </p>
+                    <p>
+                        This rate is only available before <b>Friday, May 13, 2022, at 6:00pm CST</b>.
                     </p>
                 </>
             ),
-            // link: "https://www.marriott.com/events/start.mi?id=1645112218819&key=GRP",
+            link: "https://www.fourseasons.com/chicago/",
         },
         // {
         //     Type: () => <>Transporte</>,
