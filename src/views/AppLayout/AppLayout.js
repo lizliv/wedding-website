@@ -6,6 +6,7 @@ import { Footer } from "components/Footer"
 
 import { Home } from "views/Home"
 import { Schedule } from "views/Schedule"
+import { ScheduleBrazil } from "views/Schedule-Brazil"
 import { Travel } from "views/Travel"
 import { ThingsToDo } from "views/ThingsToDo"
 import { FAQ } from "views/FAQ"
@@ -42,6 +43,7 @@ class AppLayout extends Component {
             <Switch>
                 <Route exact path={"/"} component={Home} />
                 <Route exact path={"/schedule"} component={Schedule} />
+                <Route exact path={"/schedule-brazil"} component={ScheduleBrazil} />
                 <Route exact path={"/travel"} component={Travel} />
                 <Route exact path={"/things-to-do"} component={ThingsToDo} />
                 <Route exact path={"/faq"} component={FAQ} />

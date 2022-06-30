@@ -5,6 +5,7 @@ import { LANGUAGE } from "actions/constants"
 export default {
     [LANGUAGE.EN]: {
         schedule: () => <span>Schedule</span>,
+        scheduleBrazil: () => <span>Schedule - Brazil</span>,
         travel: () => <span>Travel</span>,
         thingsToDo: () => <span>Things to Do</span>,
         faq: () => <span>FAQs</span>,
@@ -16,6 +17,7 @@ export default {
     },
     [LANGUAGE.PT]: {
         schedule: () => <span>Programa&ccedil;&atilde;o</span>,
+        scheduleBrazil: () => <span>Programa&ccedil;&atilde;o - Brasil</span>,
         travel: () => <span>Como Chegar</span>,
         thingsToDo: () => <span>O Que Fazer</span>,
         faq: () => <span>FAQ</span>,

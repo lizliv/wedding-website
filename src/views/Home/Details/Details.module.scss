@@ -48,6 +48,16 @@
         }
     }
 
+    .locBox {
+        border:1px solid black;
+        box-shadow: 0px 0px 0px 0px;
+    }
+
+    .locTitle {
+        padding: 0.25em 0.75em;
+        text-align: left
+    }
+
     .date {
         padding-top: 40px;
         padding-bottom: 40px;

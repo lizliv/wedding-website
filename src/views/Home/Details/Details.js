@@ -13,7 +13,7 @@ import styles from "./Details.module.scss"
 function Details() {
     const [cookies] = useCookies(["language"])
 
-    const { Title, RSVPText, RSVPTextHelpPre, RSVPTextHelpPost, COVIDText, Date, Location, hashtag, locationLink } = details[
+    const { Title, WeddingBrazilTitle, WeddingUSTitle, RSVPText, RSVPTextHelpPre, RSVPTextHelpPost, COVIDText, Date, DateBrazil, Location, LocationBrazil, hashtag, locationLink, locationBrazilLink } = details[
         selectLanguage(cookies)
     ]
     return (
@@ -24,7 +24,25 @@ function Details() {
                         <h1 className={styles.announcement}>
                             <Title />
                         </h1>
+                        <COVIDText />
+                        <div className={styles.locBox}>
+                        <h2 className={styles.locTitle}><WeddingBrazilTitle/></h2>
+                        <h1 className={styles.date}>
+                            <DateBrazil />
+                        </h1>
+                        <h2 className={styles.location}>
+                            <a
+                                href={locationBrazilLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <LocationBrazil />
+                            </a>
+                        </h2>
+                        </div>
                         <br/>
+                        <div className={styles.locBox}>
+                        <h2 className={styles.locTitle}><WeddingUSTitle/></h2>
                         <h5>
                             <RSVPTextHelpPre/>
                         <Link to="/rsvp"><button className={styles.rsvp}>
@@ -33,8 +51,6 @@ function Details() {
                         </Link>
                             <RSVPTextHelpPost/>
                         </h5>
-                        <br/>
-                        <COVIDText />
                         <h1 className={styles.date}>
                             <Date />
                         </h1>
@@ -47,6 +63,8 @@ function Details() {
                                 <Location />
                             </a>
                         </h2>
+                        </div>
+                        <br/>
                         <h3 className={styles.hashtag}>
                             <a
                                 href={`https://www.instagram.com/explore/tags/${hashtag}`}

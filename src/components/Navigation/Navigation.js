@@ -41,6 +41,7 @@ function Navigation({ history }) {
 
     const {
         schedule: ScheduleNavText,
+        scheduleBrazil: ScheduleBRNavText,
         travel: TravelNavText,
         thingsToDo: ThingsToDoNavText,
         faq: FAQNavText,
@@ -75,6 +76,14 @@ function Navigation({ history }) {
                         onClick={() => setExpanded(false)}
                     >
                         <ScheduleNavText />
+                    </RouterNavLink>
+                    <RouterNavLink
+                        to="/schedule-brazil"
+                        className="nav-link"
+                        role="button"
+                        onClick={() => setExpanded(false)}
+                    >
+                        <ScheduleBRNavText />
                     </RouterNavLink>
                     <RouterNavLink
                         to="/travel"
