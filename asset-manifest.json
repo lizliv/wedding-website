@@ -1,24 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.95d511c7.chunk.css",
-    "main.js": "/static/js/main.94548d17.chunk.js",
-    "main.js.map": "/static/js/main.94548d17.chunk.js.map",
+    "main.css": "/static/css/main.720aef0e.chunk.css",
+    "main.js": "/static/js/main.7bc100ae.chunk.js",
+    "main.js.map": "/static/js/main.7bc100ae.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a4c40521.js",
     "runtime-main.js.map": "/static/js/runtime-main.a4c40521.js.map",
     "static/css/2.3661fc73.chunk.css": "/static/css/2.3661fc73.chunk.css",
-    "static/js/2.0f147ddb.chunk.js": "/static/js/2.0f147ddb.chunk.js",
-    "static/js/2.0f147ddb.chunk.js.map": "/static/js/2.0f147ddb.chunk.js.map",
+    "static/js/2.b3003c35.chunk.js": "/static/js/2.b3003c35.chunk.js",
+    "static/js/2.b3003c35.chunk.js.map": "/static/js/2.b3003c35.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.6526b8520c6c07235e6341fcdff529a5.js": "/precache-manifest.6526b8520c6c07235e6341fcdff529a5.js",
+    "precache-manifest.0718bc392f8b3a5889db393a643a0378.js": "/precache-manifest.0718bc392f8b3a5889db393a643a0378.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.3661fc73.chunk.css.map": "/static/css/2.3661fc73.chunk.css.map",
-    "static/css/main.95d511c7.chunk.css.map": "/static/css/main.95d511c7.chunk.css.map",
-    "static/js/2.0f147ddb.chunk.js.LICENSE.txt": "/static/js/2.0f147ddb.chunk.js.LICENSE.txt",
+    "static/css/main.720aef0e.chunk.css.map": "/static/css/main.720aef0e.chunk.css.map",
+    "static/js/2.b3003c35.chunk.js.LICENSE.txt": "/static/js/2.b3003c35.chunk.js.LICENSE.txt",
     "static/media/airplane.jpg": "/static/media/airplane.38ba9080.jpg",
+    "static/media/brazil.jpg": "/static/media/brazil.197ef9fc.jpg",
     "static/media/cafebrauer.jpg": "/static/media/cafebrauer.9ff1a03e.jpg",
     "static/media/faq.jpg": "/static/media/faq.8766bc37.jpg",
     "static/media/Header.module.scss": "/static/media/header_small.a3081ddf.jpg",
     "static/media/honeycomb.jpg": "/static/media/honeycomb.c04e9bb9.jpg",
+    "static/media/marcoluigi.jpg": "/static/media/marcoluigi.a22cd632.jpg",
     "static/media/registry.jpg": "/static/media/registry.c6ff88b0.jpg",
     "static/media/rsvp.jpg": "/static/media/rsvp.5d3f2328.jpg",
     "static/media/schedule.jpg": "/static/media/schedule.b919db3f.jpg",
@@ -27,8 +29,8 @@
   "entrypoints": [
     "static/js/runtime-main.a4c40521.js",
     "static/css/2.3661fc73.chunk.css",
-    "static/js/2.0f147ddb.chunk.js",
-    "static/css/main.95d511c7.chunk.css",
-    "static/js/main.94548d17.chunk.js"
+    "static/js/2.b3003c35.chunk.js",
+    "static/css/main.720aef0e.chunk.css",
+    "static/js/main.7bc100ae.chunk.js"
   ]
 }
