@@ -8,6 +8,7 @@ import { Home } from "views/Home"
 import { Schedule } from "views/Schedule"
 import { ScheduleBrazil } from "views/Schedule-Brazil"
 import { Travel } from "views/Travel"
+import { TravelBrazil } from "views/Travel-Brazil"
 import { ThingsToDo } from "views/ThingsToDo"
 import { FAQ } from "views/FAQ"
 import { Registry } from "views/Registry"
@@ -45,6 +46,7 @@ class AppLayout extends Component {
                 <Route exact path={"/schedule"} component={Schedule} />
                 <Route exact path={"/schedule-brazil"} component={ScheduleBrazil} />
                 <Route exact path={"/travel"} component={Travel} />
+                <Route exact path={"/travel-brazil"} component={TravelBrazil} />
                 <Route exact path={"/things-to-do"} component={ThingsToDo} />
                 <Route exact path={"/faq"} component={FAQ} />
                 <Route exact path={"/registry"} component={Registry} />

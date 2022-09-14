@@ -43,6 +43,7 @@ function Navigation({ history }) {
         schedule: ScheduleNavText,
         scheduleBrazil: ScheduleBRNavText,
         travel: TravelNavText,
+        travelBrazil: TravelBRNavText,
         thingsToDo: ThingsToDoNavText,
         faq: FAQNavText,
         registry: RegistryNavText,
@@ -92,6 +93,14 @@ function Navigation({ history }) {
                         onClick={() => setExpanded(false)}
                     >
                         <TravelNavText />
+                    </RouterNavLink>
+                    <RouterNavLink
+                        to="/travel-brazil"
+                        className="nav-link"
+                        role="button"
+                        onClick={() => setExpanded(false)}
+                    >
+                        <TravelBRNavText />
                     </RouterNavLink>
                     <RouterNavLink
                         to="/things-to-do"
