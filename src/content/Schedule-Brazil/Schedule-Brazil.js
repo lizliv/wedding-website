@@ -14,17 +14,17 @@ export default {
             Title: () => <>Reception</>,
             Date: () => <>Saturday, December 17th, 2022</>,
             Time: () => <>5:30 pm-11:30 pm</>,
-            Location: () => <>Marco Luigi</>,
+            Location: () => <>Centro de Eventos Marco Luigi</>,
             locationLink: "https://www.marcoluigi.com.br/",
             Address: () => (
                 <>
-                    <p>Via Trento 1458 - Vale dos Vinhedos</p>
+                    <p>RS-444, 12 - Vale dos Vinhedos</p>
                     <p>Bento Gonçalves - RS</p>
-                    <p>95711-000, Brazil</p> 
+                    <p>95700-000, Brazil</p> 
                 </>
             ),
             mapLink:
-                "https://g.page/vinicola-marcoluigi?share",
+                "https://goo.gl/maps/PfRi5ijKLP6zN5yz9",
             Details: () => (
                 <>
                     <p>
@@ -40,16 +40,16 @@ export default {
             Title: () => <>Recep&ccedil;&atilde;o</>,
             Date: () => <>Sabado, 17 de Dezembro, 2022</>,
             Time: () => <>17:30-23:00 </>,
-            Location: () => <>Marco Luigi</>,
+            Location: () => <>Centro de Eventos Marco Luigi</>,
             locationLink: "https://www.marcoluigi.com.br/",
             Address: () => (
                 <>
-                    <p>Via Trento 1458 - Vale dos Vinhedos</p>
-                    <p>Bento Gonçalves - RS</p>
-                    <p>95711-000, Brasil</p> 
+                <p>RS-444, 12 - Vale dos Vinhedos</p>
+                <p>Bento Gonçalves - RS</p>
+                <p>95700-000, Brazil</p> 
                 </>
             ),
-            mapLink: "https://g.page/vinicola-marcoluigi?share",
+            mapLink: "https://goo.gl/maps/PfRi5ijKLP6zN5yz9",
             Details: () => (
                 <>
                     <p>

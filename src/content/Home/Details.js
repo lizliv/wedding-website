@@ -14,8 +14,8 @@ export default {
                 <div>December 17th, 2022</div>
             </div>
         ),
-        LocationBrazil: () => <span>Marco Luigi, Bento Gonçalves - RS, BR</span>,
-        locationBrazilLink: "https://g.page/vinicola-marcoluigi?share",
+        LocationBrazil: () => <span>Centro de Eventos Marco Luigi, Bento Gonçalves - RS, BR</span>,
+        locationBrazilLink: "https://goo.gl/maps/HVduvvurai3hWaeg9",
         RSVPText: () => <>RSVP Here</>,
         RSVPTextHelpPre: () => <>Please&nbsp;</>,
         RSVPTextHelpPost: () => <>&nbsp;&nbsp;by May 6th</>,
@@ -38,8 +38,8 @@ export default {
                 <div>17 de Dezembro, 2022</div>
             </div>
         ),
-        LocationBrazil: () => <span>Marco Luigi, Bento Gonçalves - RS, BR</span>,
-        locationBrazilLink: "https://g.page/vinicola-marcoluigi?share",
+        LocationBrazil: () => <span>Centro de Eventos Marco Luigi, Bento Gonçalves - RS, BR</span>,
+        locationBrazilLink: "https://goo.gl/maps/HVduvvurai3hWaeg9",
         RSVPText: () => <>RSVP Aqui</>,
         RSVPTextHelpPre: () => <>Por favor&nbsp;</>,
         RSVPTextHelpPost: () => <>&nbsp;&nbsp;até 6 de maio</>,
