@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie"
 import Container from "react-bootstrap/Container"
 
 import { selectLanguage } from "utilities/cookies"
-import { schedule, title } from "content/Schedule-Brazil"
+import { scheduleBrazil, title } from "content/Schedule-Brazil"
 import { Header } from "components/Header"
 import { Item } from "components/Item"
 import headerImg from "photos/schedule.jpg"
@@ -12,7 +12,7 @@ function ScheduleBrazil() {
     const [cookies] = useCookies(["language"])
 
     const { Heading, SubHeading } = title[selectLanguage(cookies)]
-    const scheduleItems = schedule[cookies.language]
+    const scheduleItems = scheduleBrazil[cookies.language]
 
     // console.log( `url("${schedImg1}")`)
     // console.log( schedImg1)

@@ -1,2 +1,2 @@
 export { default as title } from "./Title"
-export { default as schedule } from "./Schedule-Brazil"
+export { default as scheduleBrazil } from "./Schedule-Brazil"
