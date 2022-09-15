@@ -16,7 +16,7 @@ export default {
             <span>
                 {/* <Link to="/auth">Sign in</Link> to manage your RSVP. Don't have
                 an account? <Link to="/auth/signup">Sign up</Link> now! */}
-                The RSVP for the US wedding is no longer accessible. Please go to the Brazil tab to RSVP to that event.
+                We will update with the new RSVP for the Brazil party shortly.
             </span>
         ),
     },
@@ -31,7 +31,7 @@ export default {
             <span>
                 {/* <Link to="/auth">Login</Link> para confirmar sua presen&ccedil;a. N&atilde;o tem uma conta?{" "}
                 <Link to="/auth/signup">Registre-se</Link>! */}
-                The RSVP for the US wedding is no longer accessible. Please go to the Brazil tab to RSVP to that event.
+                We will update with the new RSVP for the Brazil party shortly.
             </span>
         ),
     },

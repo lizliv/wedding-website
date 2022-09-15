@@ -48,6 +48,7 @@ function Navigation({ history }) {
         faq: FAQNavText,
         registry: RegistryNavText,
         rsvp: RSVPNavText,
+        rsvpBrazil: RSVPBRNavText,
         signOut: SignOutText,
         signIn: SignInText,
         manageRsvp: ManageRSVPText,
@@ -70,54 +71,100 @@ function Navigation({ history }) {
             <Navbar.Toggle onClick={() => setExpanded(expanded ? false : "expanded")} aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-left">
-                    <RouterNavLink
-                        to="/schedule"
-                        className="nav-link"
-                        role="button"
-                        onClick={() => setExpanded(false)}
-                    >
-                        <ScheduleNavText />
-                    </RouterNavLink>
-                    <RouterNavLink
-                        to="/schedule-brazil"
-                        className="nav-link"
-                        role="button"
-                        onClick={() => setExpanded(false)}
-                    >
-                        <ScheduleBRNavText />
-                    </RouterNavLink>
-                    <RouterNavLink
-                        to="/travel"
-                        className="nav-link"
-                        role="button"
-                        onClick={() => setExpanded(false)}
-                    >
-                        <TravelNavText />
-                    </RouterNavLink>
-                    <RouterNavLink
-                        to="/travel-brazil"
-                        className="nav-link"
-                        role="button"
-                        onClick={() => setExpanded(false)}
-                    >
-                        <TravelBRNavText />
-                    </RouterNavLink>
-                    <RouterNavLink
-                        to="/things-to-do"
-                        className="nav-link"
-                        role="button"
-                        onClick={() => setExpanded(false)}
-                    >
-                        <ThingsToDoNavText />
-                    </RouterNavLink>
-                    <RouterNavLink
-                        to="/faq"
-                        className="nav-link"
-                        role="button"
-                        onClick={() => setExpanded(false)}
-                    >
-                        <FAQNavText />
-                    </RouterNavLink>
+                    <Dropdown className="ml-left">
+                        <Dropdown.Toggle as={NavLink}>
+                            US
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item>
+                                <RouterNavLink
+                                    to="/schedule"
+                                    // className="nav-link"
+                                    role="button"
+                                    onClick={() => setExpanded(false)}
+                                >
+                                    <ScheduleNavText />
+                                </RouterNavLink>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                <RouterNavLink
+                                    to="/travel"
+                                    // className="nav-link"
+                                    role="button"
+                                    onClick={() => setExpanded(false)}
+                                >
+                                    <TravelNavText />
+                                </RouterNavLink>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                <RouterNavLink
+                                    to="/things-to-do"
+                                    // className="nav-link"
+                                    role="button"
+                                    onClick={() => setExpanded(false)}
+                                >
+                                    <ThingsToDoNavText />
+                                </RouterNavLink>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                <RouterNavLink
+                                    to="/faq"
+                                    // className="nav-link"
+                                    role="button"
+                                    onClick={() => setExpanded(false)}
+                                >
+                                    <FAQNavText />
+                                </RouterNavLink>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                <RouterNavLink
+                                    to="/rsvp"
+                                    // className="nav-link"
+                                    role="button"
+                                    onClick={() => setExpanded(false)}
+                                >
+                                    <RSVPNavText />
+                                </RouterNavLink>
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown className="ml-left">
+                        <Dropdown.Toggle as={NavLink}>
+                            Brasil
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            <Dropdown.Item>
+                                <RouterNavLink
+                                    to="/schedule-brazil"
+                                    // className="nav-link"
+                                    role="button"
+                                    onClick={() => setExpanded(false)}
+                                >
+                                    <ScheduleBRNavText />
+                                </RouterNavLink>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                <RouterNavLink
+                                    to="/travel-brazil"
+                                    // className="nav-link"
+                                    role="button"
+                                    onClick={() => setExpanded(false)}
+                                >
+                                    <TravelBRNavText />
+                                </RouterNavLink>
+                            </Dropdown.Item>
+                            <Dropdown.Item>
+                                <RouterNavLink
+                                    to="/rsvp-brazil"
+                                    // className="nav-link"
+                                    role="button"
+                                    onClick={() => setExpanded(false)}
+                                >
+                                    <RSVPBRNavText />
+                                </RouterNavLink>
+                            </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
                     <RouterNavLink
                         to="/registry"
                         className="nav-link"
@@ -125,14 +172,6 @@ function Navigation({ history }) {
                         onClick={() => setExpanded(false)}
                     >
                         <RegistryNavText />
-                    </RouterNavLink>
-                    <RouterNavLink
-                        to="/rsvp"
-                        className="nav-link"
-                        role="button"
-                        onClick={() => setExpanded(false)}
-                    >
-                        <RSVPNavText />
                     </RouterNavLink>
                 </Nav>
                 <Nav className="ml-auto">

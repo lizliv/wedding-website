@@ -1,0 +1,26 @@
+.intro {
+    text-align: center;
+}
+
+.form {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.hrclass1 {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: rgb(68, 68, 68); /* old IE */
+    background-color: rgb(68, 68, 68); /* Modern Browsers */
+}
+
+.hrclass2 {
+    border: none;
+    height: 2px;
+    /* Set the hr color */
+    color: rgb(68, 68, 68); /* old IE */
+    background-color: rgb(68, 68, 68); /* Modern Browsers */
+}
