@@ -14,8 +14,9 @@ export default {
         ),
         SubHeading: () => (
             <span>
-                <Link to="/auth">Sign in</Link> to manage your RSVP. Don't have
-                an account? <Link to="/auth/signup">Sign up</Link> now!
+                {/* <Link to="/auth">Sign in</Link> to manage your RSVP. Don't have
+                an account? <Link to="/auth/signup">Sign up</Link> now! */}
+                We will update with the new RSVP for the Brazil party shortly.
             </span>
         ),
     },
@@ -28,8 +29,9 @@ export default {
         ),
         SubHeading: () => (
             <span>
-                <Link to="/auth">Login</Link> para confirmar sua presen&ccedil;a. N&atilde;o tem uma conta?{" "}
-                <Link to="/auth/signup">Registre-se</Link>!
+                {/* <Link to="/auth">Login</Link> para confirmar sua presen&ccedil;a. N&atilde;o tem uma conta?{" "}
+                <Link to="/auth/signup">Registre-se</Link>! */}
+                We will update with the new RSVP for the Brazil party shortly.
             </span>
         ),
     },
