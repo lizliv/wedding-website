@@ -4,14 +4,14 @@ import { LANGUAGE } from "actions/constants"
 
 export default {
     [LANGUAGE.EN]: {
-        mapLink: "https://www.google.com/maps/d/u/2/embed?mid=17F7Ayiso5O3yhv2wBEziSXME6TAr8jwE&ehbc=2E312F",
+        mapLink: "https://www.google.com/maps/d/u/2/embed?mid=1pLKybgfWKi336Eu7f7oAnZO_n4v7S4s&ehbc=2E312F",
         travelItems: [
         {
             Type: () => <>Getting There</>,
             Details: () => (
                 <>
                     <p>
-                        You can fly into Porto Allegre. You then rent a car from the airport.
+                        You can fly into Porto Alegre. You then rent a car from the airport.
                     </p>
                 </>
             ),
@@ -114,14 +114,14 @@ export default {
     ],
 },
     [LANGUAGE.PT]: {
-        mapLink: "https://www.google.com/maps/d/u/2/embed?mid=17F7Ayiso5O3yhv2wBEziSXME6TAr8jwE&ehbc=2E312F",
+        mapLink: "https://www.google.com/maps/d/u/2/embed?mid=1pLKybgfWKi336Eu7f7oAnZO_n4v7S4s&ehbc=2E312F",
         travelItems: [
             {
                 Type: () => <>Getting There</>,
                 Details: () => (
                     <>
                         <p>
-                            You can fly into Porto Allegre. You then rent a car from the airport.
+                            You can fly into Porto Alegre. You then rent a car from the airport.
                         </p>
                     </>
                 ),
