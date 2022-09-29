@@ -29,8 +29,6 @@ function RSVP() {
         selectLanguage(cookies)
     ]
 
-    const namePlaceholder = NameExample();
-
     const schema = object().shape({
         guestName: string(),
     })
@@ -83,7 +81,7 @@ function RSVP() {
                             value={values.guestName}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            placeholder={namePlaceholder}
+                            placeholder={NameExample()}
                             // isInvalid={guestDataTouched.name && guestDataErrors.name}
                         />
                     </Form.Group>
