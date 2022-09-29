@@ -14,9 +14,20 @@ export default {
         ),
         SubHeading: () => (
             <span>
-                {/* <Link to="/auth">Sign in</Link> to manage your RSVP. Don't have
-                an account? <Link to="/auth/signup">Sign up</Link> now! */}
-                We will update with the new RSVP for the Brazil party shortly.
+                Use the form to find your RSVP
+            </span>
+        ),
+        NameEnter: () => (
+            <span>
+                <p>Please enter the first and last name of one member of your party below.</p>
+                
+                <p>You can manage RSVPs for your party (i.e. family members) on the next page.</p>
+            </span>
+        ),
+        NameExample: () => "Ex. Sarah Fortune (not The Fortune Family or Dr. & Mr. Fortune)",
+        ButtonText: () => (
+            <span>
+                Continue
             </span>
         ),
     },
@@ -29,9 +40,20 @@ export default {
         ),
         SubHeading: () => (
             <span>
-                {/* <Link to="/auth">Login</Link> para confirmar sua presen&ccedil;a. N&atilde;o tem uma conta?{" "}
-                <Link to="/auth/signup">Registre-se</Link>! */}
-                We will update with the new RSVP for the Brazil party shortly.
+                Use the form to find your RSVP
+            </span>
+        ),
+        NameEnter: () => (
+            <span>
+                <p>Please enter the first and last name of one member of your party below.</p>
+                
+                <p>You can manage RSVPs for your party (i.e. family members) on the next page.</p>
+            </span>
+        ),
+        NameExample: () => "Ex. Sarah Fortune (not The Fortune Family or Dr. & Mr. Fortune)",
+        ButtonText: () => (
+            <span>
+                Continuar
             </span>
         ),
     },
