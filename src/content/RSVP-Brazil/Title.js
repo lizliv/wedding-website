@@ -6,9 +6,9 @@ import { LANGUAGE } from "actions/constants"
 export default {
     [LANGUAGE.EN]: {
         Heading: () => <>RSVP</>,
-        SubHeadingAuthenticated: ({ user }) => (
+        SubHeadingAuthenticated: ({ name }) => (
             <span>
-                Hi <strong>{user.name}</strong>! We can't wait to see you in
+                Hi <strong>{name}</strong>! We can't wait to see you in
                 Chicago! Use the form below to manage your RSVP.
             </span>
         ),
@@ -33,9 +33,9 @@ export default {
     },
     [LANGUAGE.PT]: {
         Heading: () => <>Confirme sua Presen&ccedil;a</>,
-        SubHeadingAuthenticated: ({ user }) => (
+        SubHeadingAuthenticated: ({ name }) => (
             <span>
-                Bem Vindo {user.name}! Estamos muito felizes de compartilhar esse momento especial com nossas familias e amigos! Use o formulário abaixo para gerenciar sua presen&ccedil;a.
+                Bem Vindo {name}! Estamos muito felizes de compartilhar esse momento especial com nossas familias e amigos! Use o formulário abaixo para gerenciar sua presen&ccedil;a.
             </span>
         ),
         SubHeading: () => (

@@ -21,6 +21,16 @@ function RSVP() {
         selectLanguage(cookies)
     ]
 
+    let formDisplay
+    if (isAuthenticated) {
+        formDisplay = <RSVPFormBrazil />
+    }
+    else{
+        formDisplay = <SearchForm />
+    }
+
+
+
     return (
         <>
             <Header
@@ -28,15 +38,17 @@ function RSVP() {
                 Heading={Heading}
                 SubHeading={
                     isAuthenticated
-                        ? () => <SubHeadingAuthenticated user={name} />
+                        ? () => <SubHeadingAuthenticated name={name} />
                         : SubHeading
                 }
             />
-            {console.log('IsAuthenticated?', isAuthenticated)}
+
+            {formDisplay}
+            {/* {console.log('IsAuthenticated?', isAuthenticated)}
             {isAuthenticated ? () => 
                   <RSVPFormBrazil />
                   : <SearchForm />
-            }
+            } */}
         </>
     )
 }
