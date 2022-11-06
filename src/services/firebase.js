@@ -10,6 +10,7 @@ import {
 import {
   getFirestore,
   query,
+  getDoc,
   getDocs,
   collection,
   where,
@@ -132,17 +133,18 @@ const fetchUserName = async (user) => {
 //   return myUser
 // }
 
-const fetchUserRSVPallowed = async (email) => {
-  let allowed, confirmed
+const fetchUserRSVPallowedPartyIdx = async (email) => {
+  let allowed, partyIdx
 
   if (email) {
     try {
-      const q = query(collection(db, "rsvp"), where("email", "==", email));
+      const q = query(collection(db, "users"), where("email", "==", email));
       const doc = await getDocs(q);
       const rsvpData = doc.docs[0].data();
 
-      allowed = rsvpData.allowed
-      confirmed = rsvpData.confirmed
+      allowed = rsvpData.weddingAllowed
+      partyIdx = rsvpData.partyIdx
+      // confirmed = rsvpData.Wedding.confirmed
 
     } catch (err) {
       console.error(err);
@@ -150,7 +152,7 @@ const fetchUserRSVPallowed = async (email) => {
     }
   }
 
-  return { allowed, confirmed }
+  return { allowed, partyIdx }
 };
 
 const fetchUserRSVPdata = async (email) => {
@@ -174,17 +176,17 @@ const fetchUserRSVPdata = async (email) => {
 const fetchUserbyName = async (queryName) => {
   let userData;
 
-  console.log(queryName)
+  // console.log(queryName)
   const names = queryName.split(' ');
   let nameLength = names.length;
-  console.log(names)
-  console.log(nameLength)
+  // console.log(names)
+  // console.log(nameLength)
   try {
       const q = query(collection(db, "users") , where('nameLC', 'array-contains', names[nameLength-1].toLowerCase()));
       const snapshot = await getDocs(q);
       snapshot.forEach((doc) => {
         if (doc.data().nameLC.includes(names[0].toLowerCase())){
-          console.log(doc.id, " => ", doc.data());
+          // console.log(doc.id, " => ", doc.data());
           userData = doc.data();
         }
       });
@@ -202,7 +204,7 @@ const putRSVPDataToDB = async ({ UserName, UserEmail, Name, Email, Data, HasPlus
     // For all guests, update the rsvp information
     if (Data.Wedding.IsAPlusOne === false) {
       // console.log('Updating RSVP information')
-      const q = query(collection(db, "rsvp"), where("email", "==", Email));
+      const q = query(collection(db, "users"), where("email", "==", Email));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         setDoc(doc.ref, { email: Email, Wedding: Data.Wedding }, { merge: true })
@@ -234,7 +236,7 @@ const putRSVPDataToDB = async ({ UserName, UserEmail, Name, Email, Data, HasPlus
         userSnapshot.forEach((doc) => {
           setDoc(doc.ref, { name: Name, email: Email }, { merge: true })
         });
-        const qrsvp = query(collection(db, "rsvp"), where("email", "==", lastEmail));
+        const qrsvp = query(collection(db, "users"), where("email", "==", lastEmail));
         const rsvpSnapshot = await getDocs(qrsvp);
         rsvpSnapshot.forEach((doc) => {
           setDoc(doc.ref, { email: Email, Wedding: Data.Wedding }, { merge: true })
@@ -248,7 +250,7 @@ const putRSVPDataToDB = async ({ UserName, UserEmail, Name, Email, Data, HasPlus
           name: Name,
           email: Email,
         }, { merge: true })
-        await setDoc(doc(db, 'rsvp', UserName.replace(/\s+/g, '') + '-PlusOne'), {
+        await setDoc(doc(db, 'users', UserName.replace(/\s+/g, '') + '-PlusOne'), {
           allowed: true,
           confirmed: "yes",
           email: Email,
@@ -269,13 +271,13 @@ const putRSVPDataToDB = async ({ UserName, UserEmail, Name, Email, Data, HasPlus
   }
 };
 
-const fetchPartyUsers = async (email) => {
+const fetchPartyUsers = async (partyIdx) => {
   let partyGuests, partyGuestEmails, partyPlusOne, partyPlusOneAdded
   const partyGuestNames = []
   try {
-    const q = query(collection(db, "parties"), where("guests", "array-contains", email));
-    const doc = await getDocs(q);
-    const partyData = doc.docs[0].data();
+    const docRef = doc(db, "parties", "party"+partyIdx);
+    const docSnap = await getDoc(docRef)
+    const partyData = docSnap.data();
 
     partyGuestEmails = partyData.guests
     partyPlusOne = partyData.hasPlusOne
@@ -311,7 +313,7 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
-  fetchUserRSVPallowed,
+  fetchUserRSVPallowedPartyIdx,
   fetchUserRSVPdata,
   putRSVPDataToDB,
   fetchPartyUsers,

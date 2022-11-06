@@ -8,7 +8,7 @@ import {
     logout,
     // currentAuthenticatedUser,
     fetchUserName,
-    fetchUserRSVPallowed,
+    fetchUserRSVPallowedPartyIdx,
     putRSVPDataToDB,
     fetchUserRSVPdata,
     fetchPartyUsers,
@@ -74,7 +74,7 @@ export const signIn = async (
     dispatch
 ) => {
     try {
-        console.log('Logging in with:', providedEmail, ' , ', password)
+        // console.log('Logging in with:', providedEmail, ' , ', password)
         const myUser = await logInWithEmailAndPassword(providedEmail, password)
         const { name, email } = await fetchUserName(myUser)
 
@@ -135,7 +135,6 @@ export const passwordReset = async (
 export const fetchUserEmail = async ( searchName, setStatus, history, dispatch ) => {
     try {
         const userData = await fetchUserbyName(searchName)
-        // const name = userData.name
         const email = userData.email
         // console.log('Dispatching', name, email)
         // dispatch({
@@ -147,7 +146,6 @@ export const fetchUserEmail = async ( searchName, setStatus, history, dispatch )
         // })
         signIn({email:email,password:"Brasil2022"},setStatus,history,dispatch)
     } catch (error) {
-        console.log('SHIT')
         let { message } = error
         setStatus(message)
         dispatch({
@@ -159,9 +157,9 @@ export const fetchUserEmail = async ( searchName, setStatus, history, dispatch )
 export const fetchUserRSVPInformation = async (email, dispatch) => {
     try {
         let weddingData, partyGuests
-        const { allowed, confirmed } = await fetchUserRSVPallowed(email.toLowerCase())
+        const { allowed, partyIdx } = await fetchUserRSVPallowedPartyIdx(email.toLowerCase())
         if (allowed) {
-            partyGuests = await fetchPartyUsers(email)
+            partyGuests = await fetchPartyUsers(partyIdx)
             // weddingData = await fetchUserRSVPdata(email.toLowerCase())
             weddingData = await Promise.all(partyGuests.emails.map(function (guestEmails, index) {
                 return fetchUserRSVPdata(guestEmails)
@@ -172,7 +170,6 @@ export const fetchUserRSVPInformation = async (email, dispatch) => {
             type: APP.SET.RSVP,
             payload: {
                 allowed,
-                confirmed,
                 weddingData,
                 partyGuests,
             },
