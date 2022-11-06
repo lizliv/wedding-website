@@ -94,7 +94,6 @@ const checkEmailInUse = async (username, email) => {
   return emailIsInUse
 }
 
-
 const fetchUserName = async (user) => {
   // let userData
   let name, email
@@ -158,7 +157,7 @@ const fetchUserRSVPdata = async (email) => {
   let weddingData
 
   try {
-    const q = query(collection(db, "rsvp"), where("email", "==", email));
+    const q = query(collection(db, "users"), where("email", "==", email));
     const doc = await getDocs(q);
     const rsvpData = doc.docs[0].data();
 
@@ -170,6 +169,31 @@ const fetchUserRSVPdata = async (email) => {
   }
 
   return weddingData
+};
+
+const fetchUserbyName = async (queryName) => {
+  let userData;
+
+  console.log(queryName)
+  const names = queryName.split(' ');
+  let nameLength = names.length;
+  console.log(names)
+  console.log(nameLength)
+  try {
+      const q = query(collection(db, "users") , where('nameLC', 'array-contains', names[nameLength-1].toLowerCase()));
+      const snapshot = await getDocs(q);
+      snapshot.forEach((doc) => {
+        if (doc.data().nameLC.includes(names[0].toLowerCase())){
+          console.log(doc.id, " => ", doc.data());
+          userData = doc.data();
+        }
+      });
+  } catch (err) {
+    console.error(err);
+    // alert("An error occured while fetching user data");
+  }
+
+  return userData
 };
 
 
@@ -291,5 +315,6 @@ export {
   fetchUserRSVPdata,
   putRSVPDataToDB,
   fetchPartyUsers,
+  fetchUserbyName
   // currentAuthenticatedUser,
 };

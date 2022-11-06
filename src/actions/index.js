@@ -12,6 +12,7 @@ import {
     putRSVPDataToDB,
     fetchUserRSVPdata,
     fetchPartyUsers,
+    fetchUserbyName
 } from "services";
 
 import { APP } from "./constants"
@@ -73,6 +74,7 @@ export const signIn = async (
     dispatch
 ) => {
     try {
+        console.log('Logging in with:', providedEmail, ' , ', password)
         const myUser = await logInWithEmailAndPassword(providedEmail, password)
         const { name, email } = await fetchUserName(myUser)
 
@@ -130,7 +132,30 @@ export const passwordReset = async (
     }
     setSubmitting(false)
 }
-
+export const fetchUserEmail = async ( searchName, setStatus, history, dispatch ) => {
+    try {
+        const userData = await fetchUserbyName(searchName)
+        // const name = userData.name
+        const email = userData.email
+        // console.log('Dispatching', name, email)
+        // dispatch({
+        //     type: APP.SET.USER_SIGN_IN,
+        //     payload: {
+        //         name,
+        //         email
+        //     },
+        // })
+        signIn({email:email,password:"Brasil2022"},setStatus,history,dispatch)
+    } catch (error) {
+        console.log('SHIT')
+        let { message } = error
+        setStatus(message)
+        dispatch({
+            type: APP.SET.USER_ERROR,
+            payload: message,
+        })
+    }
+}
 export const fetchUserRSVPInformation = async (email, dispatch) => {
     try {
         let weddingData, partyGuests
