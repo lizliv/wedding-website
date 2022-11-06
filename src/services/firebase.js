@@ -185,7 +185,7 @@ const fetchUserbyName = async (queryName) => {
       const q = query(collection(db, "users") , where('nameLC', 'array-contains', names[nameLength-1].toLowerCase()));
       const snapshot = await getDocs(q);
       snapshot.forEach((doc) => {
-        if (doc.data().nameLC.includes(names[0].toLowerCase())){
+        if (doc.data().nameLC[0].includes(names[0].toLowerCase())){
           // console.log(doc.id, " => ", doc.data());
           userData = doc.data();
         }
