@@ -34,6 +34,12 @@ function SearchForm({ history }) {
 
     const handleSearch = (values, actions) => {
         const { setSubmitting, setStatus } = actions
+        const nameArray = values.guestName.split(' ')
+        if (nameArray.length < 2){
+            console.error('Please include first and last name');
+            actions.setStatus({message: 'Please include first and last name'})
+        }
+        else{
         fetchUserEmail(
             values.guestName,
             setStatus,
@@ -43,6 +49,7 @@ function SearchForm({ history }) {
             // setShowConfirmation,
         )
         // signIn(email,'Brasil2022', setStatus, history, dispatch)
+        }
         setSubmitting(false)
     };
 
@@ -91,11 +98,11 @@ function SearchForm({ history }) {
                 >
                     <ButtonText />
                 </Button>
-                {/* {status && (
+                {status && (
                     <Alert variant="danger" className="mt-4">
-                        {status}
+                        {status.message}
                     </Alert>
-                )} */}
+                )}
                 <Alert
                     variant="success"
                     className="mt-4"
