@@ -295,39 +295,6 @@ function RSVPFormBrazil() {
                     </Form.Group> : null
                     }
                     {values.guestData[guestIdx].isAttending === YES ?
-                    <Form.Group controlId="controlIdFoodChoice">
-                        <Form.Label>
-                            <FoodChoiceLabel />
-                        </Form.Label>
-                        <Form.Check
-                            name={`guestData.${guestIdx}.foodChoice`}
-                            aria-label="Radio 1"
-                            type="radio"
-                            value={CHICKEN}
-                            label={chickenLabel} 
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={guestDataTouched.foodChoice && guestDataErrors.foodChoice}
-                            checked={values.guestData[guestIdx].foodChoice===CHICKEN}
-                        >
-                        </Form.Check>
-                        <Form.Check
-                            name={`guestData.${guestIdx}.foodChoice`}
-                            aria-label="Radio 2"
-                            type="radio"
-                            value={VEGETARIAN}
-                            label={veggieLabel} 
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            isInvalid={guestDataTouched.foodChoice && guestDataErrors.foodChoice}
-                            checked={values.guestData[guestIdx].foodChoice===VEGETARIAN}
-                        ></Form.Check>
-                        {/* <Form.Text className="text-muted">
-                            <FoodChoiceHelp />
-                        </Form.Text> */}
-                    </Form.Group> : null
-                    }
-                    {values.guestData[guestIdx].isAttending === YES ?
                     <Form.Group controlId="controlIdWeddingDietRestrictions">
                         <Form.Label>
                             <DietRestrictionsLabel />
