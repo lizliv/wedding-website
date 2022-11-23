@@ -10,6 +10,7 @@ import {
 import {
   getFirestore,
   query,
+  getDoc,
   getDocs,
   collection,
   where,
@@ -94,7 +95,6 @@ const checkEmailInUse = async (username, email) => {
   return emailIsInUse
 }
 
-
 const fetchUserName = async (user) => {
   // let userData
   let name, email
@@ -111,6 +111,7 @@ const fetchUserName = async (user) => {
 
     } catch (err) {
       console.error(err);
+      alert(err.message)
       // alert("An error occured while fetching user data");
     }
   }
@@ -133,32 +134,34 @@ const fetchUserName = async (user) => {
 //   return myUser
 // }
 
-const fetchUserRSVPallowed = async (email) => {
-  let allowed, confirmed
+const fetchUserRSVPallowedPartyIdx = async (email) => {
+  let allowed, partyIdx
 
   if (email) {
     try {
-      const q = query(collection(db, "rsvp"), where("email", "==", email));
+      const q = query(collection(db, "users"), where("email", "==", email));
       const doc = await getDocs(q);
       const rsvpData = doc.docs[0].data();
 
-      allowed = rsvpData.allowed
-      confirmed = rsvpData.confirmed
+      allowed = rsvpData.weddingAllowed
+      partyIdx = rsvpData.partyIdx
+      // confirmed = rsvpData.Wedding.confirmed
 
     } catch (err) {
       console.error(err);
+      alert(err.message)
       // alert("An error occured while fetching user data");
     }
   }
 
-  return { allowed, confirmed }
+  return { allowed, partyIdx }
 };
 
 const fetchUserRSVPdata = async (email) => {
   let weddingData
 
   try {
-    const q = query(collection(db, "rsvp"), where("email", "==", email));
+    const q = query(collection(db, "users"), where("email", "==", email));
     const doc = await getDocs(q);
     const rsvpData = doc.docs[0].data();
 
@@ -166,10 +169,36 @@ const fetchUserRSVPdata = async (email) => {
 
   } catch (err) {
     console.error(err);
+    alert(err.message)
     // alert("An error occured while fetching user data");
   }
 
   return weddingData
+};
+
+const fetchUserbyName = async (queryName) => {
+  let userData;
+
+  // console.log(queryName)
+  const names = queryName.split(' ');
+  let nameLength = names.length;
+  // console.log(names)
+  // console.log(nameLength)
+  try {
+      const q = query(collection(db, "users") , where('nameLC', 'array-contains', names[nameLength-1].toLowerCase()));
+      const snapshot = await getDocs(q);
+      snapshot.forEach((doc) => {
+        if (doc.data().nameLC[0].includes(names[0].toLowerCase())){
+          // console.log(doc.id, " => ", doc.data());
+          userData = doc.data();
+        }
+      });
+  } catch (err) {
+    console.error(err);
+    alert(err.message)
+  }
+
+  return userData
 };
 
 
@@ -178,7 +207,7 @@ const putRSVPDataToDB = async ({ UserName, UserEmail, Name, Email, Data, HasPlus
     // For all guests, update the rsvp information
     if (Data.Wedding.IsAPlusOne === false) {
       // console.log('Updating RSVP information')
-      const q = query(collection(db, "rsvp"), where("email", "==", Email));
+      const q = query(collection(db, "users"), where("email", "==", Email));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         setDoc(doc.ref, { email: Email, Wedding: Data.Wedding }, { merge: true })
@@ -210,7 +239,7 @@ const putRSVPDataToDB = async ({ UserName, UserEmail, Name, Email, Data, HasPlus
         userSnapshot.forEach((doc) => {
           setDoc(doc.ref, { name: Name, email: Email }, { merge: true })
         });
-        const qrsvp = query(collection(db, "rsvp"), where("email", "==", lastEmail));
+        const qrsvp = query(collection(db, "users"), where("email", "==", lastEmail));
         const rsvpSnapshot = await getDocs(qrsvp);
         rsvpSnapshot.forEach((doc) => {
           setDoc(doc.ref, { email: Email, Wedding: Data.Wedding }, { merge: true })
@@ -224,7 +253,7 @@ const putRSVPDataToDB = async ({ UserName, UserEmail, Name, Email, Data, HasPlus
           name: Name,
           email: Email,
         }, { merge: true })
-        await setDoc(doc(db, 'rsvp', UserName.replace(/\s+/g, '') + '-PlusOne'), {
+        await setDoc(doc(db, 'users', UserName.replace(/\s+/g, '') + '-PlusOne'), {
           allowed: true,
           confirmed: "yes",
           email: Email,
@@ -245,13 +274,13 @@ const putRSVPDataToDB = async ({ UserName, UserEmail, Name, Email, Data, HasPlus
   }
 };
 
-const fetchPartyUsers = async (email) => {
+const fetchPartyUsers = async (partyIdx) => {
   let partyGuests, partyGuestEmails, partyPlusOne, partyPlusOneAdded
   const partyGuestNames = []
   try {
-    const q = query(collection(db, "parties"), where("guests", "array-contains", email));
-    const doc = await getDocs(q);
-    const partyData = doc.docs[0].data();
+    const docRef = doc(db, "parties", "party"+partyIdx);
+    const docSnap = await getDoc(docRef)
+    const partyData = docSnap.data();
 
     partyGuestEmails = partyData.guests
     partyPlusOne = partyData.hasPlusOne
@@ -287,9 +316,10 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
-  fetchUserRSVPallowed,
+  fetchUserRSVPallowedPartyIdx,
   fetchUserRSVPdata,
   putRSVPDataToDB,
   fetchPartyUsers,
+  fetchUserbyName
   // currentAuthenticatedUser,
 };

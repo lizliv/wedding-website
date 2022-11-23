@@ -76,55 +76,33 @@ function Navigation({ history }) {
                             US
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item>
-                                <RouterNavLink
-                                    to="/schedule"
-                                    // className="nav-link"
-                                    role="button"
-                                    onClick={() => setExpanded(false)}
-                                >
+                            <Dropdown.Item
+                                href="#/schedule"
+                                onClick={() => setExpanded(false)}>
                                     <ScheduleNavText />
-                                </RouterNavLink>
                             </Dropdown.Item>
-                            <Dropdown.Item>
-                                <RouterNavLink
-                                    to="/travel"
-                                    // className="nav-link"
-                                    role="button"
-                                    onClick={() => setExpanded(false)}
-                                >
+                            <Dropdown.Item
+                                href="#/travel"
+                                onClick={() => setExpanded(false)}>
                                     <TravelNavText />
-                                </RouterNavLink>
                             </Dropdown.Item>
-                            <Dropdown.Item>
-                                <RouterNavLink
-                                    to="/things-to-do"
-                                    // className="nav-link"
-                                    role="button"
+                            <Dropdown.Item
+                                    href="#/things-to-do"
                                     onClick={() => setExpanded(false)}
                                 >
                                     <ThingsToDoNavText />
-                                </RouterNavLink>
                             </Dropdown.Item>
-                            <Dropdown.Item>
-                                <RouterNavLink
-                                    to="/faq"
-                                    // className="nav-link"
-                                    role="button"
+                            <Dropdown.Item
+                                    href="#/faq"
                                     onClick={() => setExpanded(false)}
                                 >
                                     <FAQNavText />
-                                </RouterNavLink>
                             </Dropdown.Item>
-                            <Dropdown.Item>
-                                <RouterNavLink
-                                    to="/rsvp"
-                                    // className="nav-link"
-                                    role="button"
+                            <Dropdown.Item
+                                    href="#/rsvp"
                                     onClick={() => setExpanded(false)}
                                 >
                                     <RSVPNavText />
-                                </RouterNavLink>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
@@ -133,35 +111,23 @@ function Navigation({ history }) {
                             Brasil
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item>
-                                <RouterNavLink
-                                    to="/schedule-brazil"
-                                    // className="nav-link"
-                                    role="button"
+                            <Dropdown.Item
+                                    href="#/schedule-brazil"
                                     onClick={() => setExpanded(false)}
                                 >
                                     <ScheduleBRNavText />
-                                </RouterNavLink>
                             </Dropdown.Item>
-                            <Dropdown.Item>
-                                <RouterNavLink
-                                    to="/travel-brazil"
-                                    // className="nav-link"
-                                    role="button"
-                                    onClick={() => setExpanded(false)}
+                            <Dropdown.Item
+                                href="#/travel-brazil"
+                                onClick={() => setExpanded(false)}
                                 >
                                     <TravelBRNavText />
-                                </RouterNavLink>
                             </Dropdown.Item>
-                            <Dropdown.Item>
-                                <RouterNavLink
-                                    to="/rsvp-brazil"
-                                    // className="nav-link"
-                                    role="button"
+                            <Dropdown.Item
+                                    href="#/rsvp-brazil"
                                     onClick={() => setExpanded(false)}
                                 >
                                     <RSVPBRNavText />
-                                </RouterNavLink>
                             </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
