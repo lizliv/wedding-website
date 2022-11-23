@@ -111,6 +111,7 @@ const fetchUserName = async (user) => {
 
     } catch (err) {
       console.error(err);
+      alert(err.message)
       // alert("An error occured while fetching user data");
     }
   }
@@ -148,6 +149,7 @@ const fetchUserRSVPallowedPartyIdx = async (email) => {
 
     } catch (err) {
       console.error(err);
+      alert(err.message)
       // alert("An error occured while fetching user data");
     }
   }
@@ -167,6 +169,7 @@ const fetchUserRSVPdata = async (email) => {
 
   } catch (err) {
     console.error(err);
+    alert(err.message)
     // alert("An error occured while fetching user data");
   }
 
@@ -192,7 +195,7 @@ const fetchUserbyName = async (queryName) => {
       });
   } catch (err) {
     console.error(err);
-    // alert("An error occured while fetching user data");
+    alert(err.message)
   }
 
   return userData

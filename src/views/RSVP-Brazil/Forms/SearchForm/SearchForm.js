@@ -45,10 +45,7 @@ function SearchForm({ history }) {
             setStatus,
             history,
             dispatch
-            // setSubmitting,
-            // setShowConfirmation,
         )
-        // signIn(email,'Brasil2022', setStatus, history, dispatch)
         }
         setSubmitting(false)
     };

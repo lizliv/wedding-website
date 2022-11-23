@@ -133,20 +133,25 @@ export const passwordReset = async (
     setSubmitting(false)
 }
 export const fetchUserEmail = async ( searchName, setStatus, history, dispatch ) => {
+    let userData, email
     try {
-        const userData = await fetchUserbyName(searchName)
-        const email = userData.email
-        // console.log('Dispatching', name, email)
-        // dispatch({
-        //     type: APP.SET.USER_SIGN_IN,
-        //     payload: {
-        //         name,
-        //         email
-        //     },
-        // })
+        userData = await fetchUserbyName(searchName)
+    }
+    catch (error) {
+            // let { message } = error
+            let { message } = "Could not find user with that name."
+            setStatus(message)
+            dispatch({
+                type: APP.SET.USER_ERROR,
+                payload: message,
+            })
+        }
+    try{
+        email = userData.email
         signIn({email:email,password:"Brasil2022"},setStatus,history,dispatch)
     } catch (error) {
-        let { message } = error
+        let { message } = "Failed to retrieve user information. Please contact us."
+        // let { message } = error
         setStatus(message)
         dispatch({
             type: APP.SET.USER_ERROR,
