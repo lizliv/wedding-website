@@ -29,6 +29,7 @@ export default {
         WeddingFormHeader: () => <>Wedding</>,
         WeddingFormSubHeader: () => <><p>Please RSVP by December 1st</p>
         <p>The ceremony is at 5:30 pm on Saturday, December 17th, 2022. Reception to Follow</p>
+        <p>If this page has errors, i.e. showing the wrong RSVP, try refreshing the page.</p>
         {/* <p>Please check the <a href="#FAQ">FAQ</a> page for our COVID policy.</p> */}
         </>,
         zeroLabel: "Can't Attend",
@@ -100,6 +101,7 @@ export default {
         WeddingFormHeader: () => <>Casamento</>,
         WeddingFormSubHeader: () => <><p>Por favor, finalize o RSVP antes de 1 de Dezembro</p>
         <p>A ceremonia ser&aacute; as 17:30 no sabado, 17 de Dezembro, 2022. Recep&ccedil;&atilde;o a seguir.</p>
+        <p>Se esta página tiver erros, ou seja, mostrar o RSVP errado, tente refrescar a página.</p>
         {/* <p>Por favor, verifique a página FAQ <a href="#FAQ">FAQ</a> para nossa política de COVID.</p> */}
         </>,
         zeroLabel: "Nao poderemos ir",
