@@ -258,33 +258,54 @@ const fetchAllGuestRSVPInformation = async () => {
   console.log('All users:', doc.docs)
 }
 
+const initializeUser = async (guest) => {
+  return registerWithEmailAndPassword({ name: guest.name, email: guest.email, password:"Brasil2022" })
+}
+
 const initializeUserAndRSVPDB = async (guestList) => {
 
   await Promise.all(guestList.map(function (thisGuestData, guestIdx) {
     // return console.log(guestList[guestIdx].name)
+    let adminBool = false
     if (guestList[guestIdx].email === "elizabethrenee.livingston@gmail.com" || guestList[guestIdx].email === "christian.f.reichert@gmail.com") {
-      return setDoc(doc(db, 'users', guestList[guestIdx].name.replace(/\s+/g, '')), { name: guestList[guestIdx].name, email: guestList[guestIdx].email, isAdmin: true }, { merge: true })
+      adminBool = true
     }
-    else {
-      return setDoc(doc(db, 'users', guestList[guestIdx].name.replace(/\s+/g, '')), { name: guestList[guestIdx].name, email: guestList[guestIdx].email, isAdmin: false }, { merge: true })
-    }
+    let username = guestList[guestIdx].name
+    let useremail = guestList[guestIdx].email
+
+    return setDoc(doc(db, 'users', guestList[guestIdx].name.replace(/\s+/g, '')), { 
+      name: username, 
+      nameLC: guestList[guestIdx].nameLC, 
+      email: useremail, 
+      isAdmin: adminBool, 
+      partyIdx: guestList[guestIdx].partyID,
+      weddingAllowed: true,
+      Wedding: {} }, { merge: true })
+
+    // registerWithEmailAndPassword({ name: username, email: useremail, password:"Brasil2022" })
   })
   );
+
 
   console.log('Users have been added')
 
-  await Promise.all(guestList.map(function (thisGuestData, guestIdx) {
-    // return console.log(guestList[guestIdx].name)
-    return setDoc(doc(db, 'rsvp', guestList[guestIdx].name.replace(/\s+/g, '')), { email: guestList[guestIdx].email, allowed: true, Wedding: {} }, { merge: true })
-  })
-  );
+  // await Promise.all(guestList.map(function (thisGuestData, guestIdx) {
+  //   // return console.log(guestList[guestIdx].name)
+  //   return setDoc(doc(db, 'rsvp', guestList[guestIdx].name.replace(/\s+/g, '')), { 
+  //     email: guestList[guestIdx].email, 
+  //     allowed: true }, { merge: true })
+  // })
+  // );
 
-  console.log('RSVPs have been added')
+  // console.log('RSVPs have been added')
 
 }
 
 const initializePartyDB = async (partyIdx, partyList, partyHasPlusOne) => {
-  setDoc(doc(db, 'parties', 'party'+partyIdx), { guests: partyList, hasPlusOne: partyHasPlusOne, plusOneAdded: false }, { merge: true })
+  setDoc(doc(db, 'parties', 'party'+partyIdx), { 
+    guests: partyList, 
+    hasPlusOne: partyHasPlusOne, 
+    plusOneAdded: false }, { merge: true })
 }
 
 export {
@@ -301,6 +322,7 @@ export {
   fetchPartyUsers,
   // currentAuthenticatedUser,
   fetchAllGuestRSVPInformation,
+  initializeUser,
   initializeUserAndRSVPDB,
   initializePartyDB,
 };

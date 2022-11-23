@@ -8,7 +8,7 @@ import { title } from "content/ManageGuests"
 import { Header } from "components/Header"
 import headerImg from "photos/registry.jpg"
 
-import {initializeUserAndRSVPDB, initializePartyDB} from "services"
+import {registerWithEmailAndPassword, initializeUserAndRSVPDB, initializePartyDB, initializeUser} from "services"
 
 function processData(allText) {
     var allTextLines = allText.split(/\r\n|\n/);
@@ -60,13 +60,19 @@ function ManageGuests() {
             for (let i = 0; i < myData.lines.length; i++) {
                 const guest = {
                     name: "",
+                    nameLC: [],
                     email: "",
                     partyID: "",
                     hasPlusOne: false
                 }
                 guest.name = myData.lines[i][0]
+                let nameList = guest.name.split(" ")
+                for (let j = 0; j < nameList.length; j++) {
+                    guest.nameLC.push(nameList[j].toLowerCase())
+                }
+                console.log(guest.nameLC)
                 if (myData.lines[i][1] === "") {
-                    guest.email = myData.lines[i][0].toLowerCase().replace(/\s+/g, '') + "-placeholder"
+                    guest.email = myData.lines[i][0].toLowerCase().replace(/\s+/g, '') + "-placeholder@place.com"
                 }
                 else {
                     guest.email = myData.lines[i][1]
@@ -77,6 +83,10 @@ function ManageGuests() {
             }
 
             initializeUserAndRSVPDB(guestList)
+
+            for (let g=0; g < guestList.length; g++){
+                registerWithEmailAndPassword({name:guestList[g].name, email:guestList[g].email,password:"Brasil2022"})
+            }
 
             let partyIdx = guestList[0].partyID
             console.log(partyIdx)
