@@ -9,7 +9,7 @@ export default {
         SubHeadingAuthenticated: ({ name }) => (
             <span>
                 Hi <strong>{name}</strong>! We can't wait to see you in
-                Chicago! Use the form below to manage your RSVP.
+                Bento Gonçalves! Use the form below to manage your RSVP.
             </span>
         ),
         SubHeading: () => (
@@ -40,17 +40,17 @@ export default {
         ),
         SubHeading: () => (
             <span>
-                Use the form to find your RSVP
+                Use o formulário para encontrar seu RSVP
             </span>
         ),
         NameEnter: () => (
             <span>
-                <p>Please enter the first and last name of one member of your party below.</p>
+                <p>Favor digitar abaixo o nome e sobrenome de um membro de seu partido.</p>
                 
-                <p>You can manage RSVPs for your party (i.e. family members) on the next page.</p>
+                <p>Você pode gerenciar RSVPs para seu partido (ou seja, membros da família) na página seguinte.</p>
             </span>
         ),
-        NameExample: () => "Ex. Sarah Fortune (not The Fortune Family or Dr. & Mr. Fortune)",
+        NameExample: () => "Ex. Sarah Fortune (não A Família Fortuna ou Dr. & Sr. Fortune)",
         ButtonText: () => (
             <span>
                 Continuar
